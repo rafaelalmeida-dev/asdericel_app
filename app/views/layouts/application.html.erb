@@ -6,13 +6,22 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= yield :head %>
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "/layout/assets/css/core.css",                          "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "/layout/assets/css/demo.css",                          "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "/layout/assets/css/page-auth.css",                     "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "/layout/assets/css/page-icons.css",                    "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "/layout/assets/css/page-misc.css",                     "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "/layout/assets/css/theme-default.css",                 "data-turbo-track": "reload" %>
+    <% # Fonts %>
+    <%= stylesheet_link_tag "/layout/assets/fonts/boxicons/boxicons.css",           "data-turbo-track": "reload" %>
+    <% # CDN GLOBAL HEHE %>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"/>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <% #JAVASCRIPTO%>
+    <%= javascript_include_tag "/layout/assets/js/bootstrap.js",                           "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "/layout/assets/js/config.js",                              "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "/layout/assets/js/main.js",                                "data-turbo-track": "reload" %>
   </head>
   <body>
     <div class="layout-wrapper layout-content-navbar">
