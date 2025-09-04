@@ -11,30 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.2].define(version: 2025_09_04_024921) do
-  create_table "alunos", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
-  create_table "eventos", force: :cascade do |t|
-    t.string "nome"
-    t.string "edicao"
-    t.string "categoria"
-    t.string "municipio"
-    t.string "estado"
-    t.string "pais"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
-  create_table "os", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+
 
   create_table "users", force: :cascade do |t|
     t.string "name"
