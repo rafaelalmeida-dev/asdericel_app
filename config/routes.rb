@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :eventos
   get "pages/dashboard"
 
   get "up" => "rails/health#show", as: :rails_health_check
