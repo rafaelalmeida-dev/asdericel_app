@@ -65,16 +65,5 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_10_004027) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "eventos", force: :cascade do |t|
-    t.string "nome"
-    t.string "edicao"
-    t.string "categoria"
-    t.string "municipio"
-    t.string "estado"
-    t.string "pais"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   add_foreign_key "associados", "enderecos"
 end
