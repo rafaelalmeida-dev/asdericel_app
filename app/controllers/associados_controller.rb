@@ -3,7 +3,7 @@ class AssociadosController < ApplicationController
 
   # GET /associados or /associados.json
   def index
-   @q = Associado.ransack(params[:q])   # inicializa o Ransack
+    @q = Associado.ransack(params[:q])   # inicializa o Ransack
     @associados = @q.result(distinct: true) # retorna resultado
   end
 
