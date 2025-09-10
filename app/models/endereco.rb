@@ -14,5 +14,4 @@
 # Adicione aqui quaisquer métodos ou validações abaixo
 class Endereco < ApplicationRecord
   include Datafilter
-
 end

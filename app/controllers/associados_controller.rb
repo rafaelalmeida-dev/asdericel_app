@@ -3,7 +3,7 @@ class AssociadosController < ApplicationController
 
   # GET /associados or /associados.json
   def index
-   @q = Associado.ransack(params[:q])   # inicializa o Ransack
+    @q = Associado.ransack(params[:q])   # inicializa o Ransack
     @associados = @q.result(distinct: true) # retorna resultado
   end
 
@@ -14,6 +14,7 @@ class AssociadosController < ApplicationController
   # GET /associados/new
   def new
     @associado = Associado.new
+    @associado.build_endereco
   end
 
   # GET /associados/1/edit
@@ -66,6 +67,8 @@ class AssociadosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def associado_params
-      params.require(:associado).permit(:nome, :nome_social, :nome_conhecido, :mae, :pai, :data_nascimento, :sexo, :cpf, :rg, :orgao_emissor, :data_expedicao, :passaporte, :estado_civil, :profissao, :ensino, :celular, :email, :instagram, :observacao, :tipo_cadastro, :endereco_id)
+      params.require(:associado).permit(:nome, :nome_social, :nome_conhecido, :mae, :pai, :data_nascimento, :sexo, :cpf, :rg, :orgao_emissor, :data_expedicao, :passaporte, :estado_civil, :profissao, :ensino, :celular, :email, :instagram, :observacao, :tipo_cadastro,
+      endereco_attributes: [ :cep, :logradouro, :bairro, :localidade, :uf, :pais, :numero ]
+      )
     end
 end

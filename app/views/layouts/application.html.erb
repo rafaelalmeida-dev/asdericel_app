@@ -19,9 +19,12 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <% #JAVASCRIPTO%>
+    <%= javascript_include_tag "/layout/assets/js/jquery/jquery.min.js",                                  "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/bootstrap.js",                           "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/config.js",                              "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/main.js",                                "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "/layout/assets/js/jquery/jquery.mask.min.js",                             "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "/layout/assets/js/custom.js",                                             "data-turbo-track": "reload" %>
   </head>
   <body>
     <div class="layout-wrapper layout-content-navbar">
