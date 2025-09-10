@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :eventos
+  resources :cidades
+  resources :associados
   get "pages/dashboard"
 
   get "up" => "rails/health#show", as: :rails_health_check
@@ -9,5 +10,5 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  root "eventos#index"
+  root "home#index"
 end

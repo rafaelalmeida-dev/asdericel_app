@@ -10,7 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_03_160502) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_10_004027) do
+  create_table "associados", force: :cascade do |t|
+    t.string "nome"
+    t.string "nome_social"
+    t.string "nome_conhecido"
+    t.string "mae"
+    t.string "pai"
+    t.date "data_nascimento"
+    t.integer "sexo"
+    t.string "cpf"
+    t.string "rg"
+    t.string "orgao_emissor"
+    t.date "data_expedicao"
+    t.string "passaporte"
+    t.integer "estado_civil"
+    t.string "profissao"
+    t.integer "ensino"
+    t.string "celular"
+    t.string "email"
+    t.string "instagram"
+    t.string "observacao"
+    t.integer "tipo_cadastro"
+    t.integer "endereco_id"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["endereco_id"], name: "index_associados_on_endereco_id"
+  end
+
+  create_table "cidades", force: :cascade do |t|
+    t.string "nome"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "enderecos", force: :cascade do |t|
+    t.string "cep"
+    t.string "logradouro"
+    t.string "bairro"
+    t.string "localidade"
+    t.string "uf"
+    t.string "pais"
+    t.string "numero"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "eventos", force: :cascade do |t|
     t.string "nome"
     t.string "edicao"
@@ -21,4 +75,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_03_160502) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "associados", "enderecos"
 end

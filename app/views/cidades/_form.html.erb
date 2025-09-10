@@ -1,0 +1,17 @@
+
+<div class="card mb-4">
+  <div class="card-body">
+    <%= simple_form_for(@cidade) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="row">
+        <div class="mb-3 col-md-6">
+          <%= f.input :nome %>
+        </div>
+    </div>
+    <div class="mt-3">
+      <%= f.button :submit,"Incluir", class: "btn btn-primary me-2 " %>
+    </div>
+    <% end %>
+  </div>
+</div>
