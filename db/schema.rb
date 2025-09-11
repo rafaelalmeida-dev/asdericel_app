@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_08_134423) do
-  create_table "alunos", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[7.2].define(version: 2025_09_10_004027) do
   create_table "associados", force: :cascade do |t|
     t.string "nome"
     t.string "nome_social"
@@ -48,6 +41,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_08_134423) do
     t.index ["endereco_id"], name: "index_associados_on_endereco_id"
   end
 
+  create_table "cidades", force: :cascade do |t|
+    t.string "nome"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "enderecos", force: :cascade do |t|
     t.string "cep"
     t.string "logradouro"
@@ -70,20 +72,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_08_134423) do
     t.string "municipio"
     t.string "estado"
     t.string "pais"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "os", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
