@@ -1,7 +1,12 @@
-<div id="<%= dom_id cidade %>">
-  <p>
-    <strong>Nome:</strong>
-    <%= cidade.nome %>
-  </p>
-
+<div class="col-md-12">
+  <%= f.label :nome, class: "form-label" %>
+  <div class="input-group">
+    <%= f.text_field :nome, class: "form-control", id: "input25", placeholder: "Nome" %>
+  </div>
+</div>
+<div class="col-md-12 mt-4">
+  <div class="d-flex justify-content-center align-items-center gap-3">
+    <%= link_to "Voltar", cidades_path, class: "btn btn-secondary px-4" %>
+    <%= f.submit "Salvar", class: "btn btn-primary px-4" %>
+  </div>
 </div>
