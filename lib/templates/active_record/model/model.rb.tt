@@ -18,4 +18,22 @@ class <%= class_name %> < ApplicationRecord
 <% attributes.select { |attribute| attribute.type == :references }.each do |attribute| -%>
   belongs_to :<%= attribute.name %>
 <% end -%>
+
+  # Permitir os atributos buscáveis pelo Ransack
+  def self.ransackable_attributes(auth_object = nil)
+    %w[
+<% attributes.reject { |attribute| attribute.type == :references }.each do |attribute| -%>
+      <%= attribute.name %>
+<% end -%>
+    ]
+  end
+
+  # Permitir as associações buscáveis pelo Ransack
+  def self.ransackable_associations(auth_object = nil)
+    %w[
+<% attributes.select { |attribute| attribute.type == :references }.each do |attribute| -%>
+      <%= attribute.name %>
+<% end -%>
+    ]
+  end
 end

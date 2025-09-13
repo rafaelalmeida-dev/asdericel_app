@@ -1,12 +1,21 @@
-<div class="col-md-12">
-  <%= f.label :nome, class: "form-label" %>
-  <div class="input-group">
-    <%= f.text_field :nome, class: "form-control", id: "input25", placeholder: "Nome" %>
+<div class="row">
+
+  <div class="col-12">
+  
+    <%= f.input :nome, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "nome",disabled: local_assigns[:disabled] } %>
+  
   </div>
-</div>
-<div class="col-md-12 mt-4">
-  <div class="d-flex justify-content-center align-items-center gap-3">
-    <%= link_to "Voltar", cidades_path, class: "btn btn-secondary px-4" %>
-    <%= f.submit "Salvar", class: "btn btn-primary px-4" %>
+
+  <div class="col-12">
+  
+    <%= f.input :sigla, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "sigla",disabled: local_assigns[:disabled] } %>
+  
   </div>
+
+  <div class="col-12">
+  
+    <%= f.association :estado, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
 </div>

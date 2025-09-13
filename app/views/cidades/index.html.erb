@@ -1,71 +1,65 @@
-<div class="card mb-4">
-    <div class="card-body">
-      <div class="card-header d-flex justify-content-between align-items-center p-0">
-      <h5>Cidades</h5>
-          <%=link_to new_cidade_path, class:"btn btn-primary" do %>
-                <i>+</i>
-          <% end %>
-      </div>
-  </div>
-</div>
+<%= render "shared/context_nav", title: t("activerecord.models.cidade.other"), new_path: new_cidade_path do  %>
+  <span class="breadcrumb-item active"><%= t("activerecord.models.cidade.other") %></span>
+<% end %>
 <%= render "shared/notice" %>
 <div class="card">
+  <div class="card-header d-flex">
+    <%= search_form_for @q, html: { class: "d-flex gap-2" , autocomplete: "off"} do |f| %>
+      <%= f.search_field :nome_cont, class: "form-control", placeholder: t("activerecord.attributes.cidade.nome") %>
+      <%= link_to cidades_path, class: "btn btn-outline-secondary d-flex align-items-center justify-content-center" do %>
+        <i class="ph ph-x"></i>
+      <% end if params[:q] %>
+    <% end %>      
+  </div>
   <div class="card-body">
-    <div class="col-9 col-sm-10 col-md-6 col-lg-4 mb-2">
-      <%= search_form_for @q, url: cidades_path, method: :get, html: { class: "position-relative" } do |f| %>
-        <%= f.search_field :nome_cont, class: "form-control", placeholder: "Pesquisar" %>
-      <% end %>
-    </div>
     <div class="table-responsive">
-      <table class="table table-bordered table-sm align-middle mb-5">
-        <thead class="table-light">
+      <table class="table table-sm table-bordered table-striped">
+        <thead>
           <tr>
-            <th>Nome</th>
-            <th class="text-center">Actions</th>
+            <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
+            
+              <th><%= sort_link(@q, :nome, t("activerecord.attributes.cidade.nome")) %></th>
+            
+              <th><%= sort_link(@q, :sigla, t("activerecord.attributes.cidade.sigla")) %></th>
+            
+              <th><%= sort_link(@q, :estado, t("activerecord.attributes.cidade.estado")) %></th>
+            
           </tr>
         </thead>
         <tbody>
           <% @cidades.each do |cidade| %>
             <tr>
-              <td><%= cidade.nome %></td>
               <td class="text-center">
-                <div class="dropdown">
-                <button type="button" class="btn btn-sm p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                  <i class="icon-base bx bx-dots-vertical-rounded"></i>
-                </button>
-                  <ul class="dropdown-menu">
-                    <li>
-                        <%= link_to "Editar", edit_cidade_path(cidade), class: "dropdown-item text-warning" %>
-                    </li>
-                    <li>
-                      <a href="#" class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal_<%= cidade.id %>">
-                        Deletar
+                <div class="dropdown-toggle">
+                  <a href="#" class="text-body dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="ph ph-gear"></i>
+                  </a>
+                  <div class="dropdown-menu">
+                    <div class="dropdown-header"><%= t("common.table_dropdown_options") %></div>
+                    <%= link_to content_tag(:i, "", class: "ph ph-eye me-2") + t("common.actions.show"), cidade_path(cidade), class: "dropdown-item" %>
+                    <%= link_to content_tag(:i, "", class: "ph ph-pen me-2") + t("common.actions.edit"), edit_cidade_path(cidade), class: "dropdown-item" %>
+                    <%= form_for cidade, method: :delete do |f| %>
+                      <a class="dropdown-item hand-pointer" data-confirm-delete="<%= cidade_path(cidade) %>" data-csrf-token="<%= form_authenticity_token %>">
+                        <i class="ph ph-trash-simple me-2"></i><%= t("common.actions.delete") %>
                       </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-              <div class="modal fade" id="confirmDeleteModal_<%= cidade.id %>" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="confirmDeleteLabel">Confirmar Exclusão</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                    </div>
-                    <div class="modal-body" style="word-wrap: break-word; word-break: break-word;">
-                      Tem certeza que deseja excluir?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                      <%= button_to "Confirmar", cidade_path(cidade), method: :delete, form_class: "d-inline", class: "btn btn-danger" %>
-                    </div>
+                    <% end %>
                   </div>
                 </div>
-              </div>
+              </td>
+              
+                <td><%= cidade.nome %></td>
+              
+                <td><%= cidade.sigla %></td>
+              
+                <td><%= cidade.estado %></td>
+              
             </tr>
-          <% end %> 
+          <% end %>
         </tbody>
       </table>
     </div>
+  </div>
+  <div class="card-footer">
+    <%= pagy_navigation(@pagy) %>
   </div>
 </div>

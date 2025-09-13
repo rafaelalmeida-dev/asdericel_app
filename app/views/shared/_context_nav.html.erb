@@ -1,0 +1,19 @@
+<% content_for :context_nav do %>
+  <div class="card mb-2">
+    <div class="card-header d-flex justify-content-between align-items-center pt-2 pb-1">
+      <% if action_name == "index" && defined?(new_path) && new_path.present? %>
+        <h4 class="mb-0"><%= title %></h4>
+        <%= link_to new_path, class: "btn btn-primary d-flex align-items-center gap-1" do %>
+          <i class="ph ph-plus"></i>
+          <span class="d-none d-sm-block"><%= t("common.actions.new") %></span>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="card-body pb-2">
+      <nav aria-label="breadcrumb">
+        <%= render_breadcrumbs separator: " > " %>
+      </nav>
+    </div>
+  </div>
+<% end %>

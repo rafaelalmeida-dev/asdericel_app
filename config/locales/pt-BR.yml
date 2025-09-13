@@ -1,0 +1,27 @@
+pt-BR:
+  common:
+    table_th_actions: "Ações"
+    table_dropdown_options: "Opções"
+    actions:
+      show: "Visualizar"
+      edit: "Editar"
+      delete: "Excluir"
+      new: "Novo"
+  messages:
+    created_successfully: "Registro criado com sucesso!"
+    updated_successfully: "Registro atualizado com sucesso!"
+    deleted_successfully: "Registro marcado como excluído!"
+    delete_failed_due_to_dependencies: "Exclusão falhou devido a dependências."
+    not_found: "Registro não encontrado."
+  activerecord:
+    models:
+      estado:
+        one: "Estado"
+        other: "Estados"
+    attributes:
+      estado:
+        nome: "Nome"
+        sigla: "Sigla"
+  helper:
+    submit:
+

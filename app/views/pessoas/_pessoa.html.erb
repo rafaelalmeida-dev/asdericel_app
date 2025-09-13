@@ -1,0 +1,62 @@
+<div class="row">
+
+  <div class="col-12">
+  
+    <%= f.input :nome, input_html: { class: "string", placeholder: "nome",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.input :cpf, input_html: { class: "string", placeholder: "cpf",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.input :rg, input_html: { class: "string", placeholder: "rg",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.input :sexo, input_html: { class: "string", placeholder: "sexo",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.input :telefone, input_html: { class: "string", placeholder: "telefone",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.input :email ,input_html: { class: "string", placeholder: "email",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.input :data_nascimento, as: :tel ,input_html: { class: "date", placeholder: "data_nascimento",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <%= f.fields_for :endereco do |e| %>
+    <h6>Endereço</h6>
+    <div class="row">
+      <div class="col-12">
+        <%= e.input :cep, input_html: { id: "cep" , class: "cep", placeholder: "00000-000", disabled: local_assigns[:disabled]} %>
+      </div>
+      <div class="col-12">
+        <%= e.input :bairro, input_html: { id: "bairro", class: "keyup", placeholder: "Bairro", disabled: local_assigns[:disabled] } %>
+      </div>
+      <div class="col-12">
+        <%= e.input :numero, input_html: { id: "numero", class: "numeros", placeholder: "Número", disabled: local_assigns[:disabled] } %>
+      </div>
+      <div class="col-12 ">
+        <%= e.association :cidade, input_html: { id: "cidade", class: "select2", disabled: local_assigns[:disabled] } %>
+      </div>
+    </div>
+  <% end %>
+</div>
