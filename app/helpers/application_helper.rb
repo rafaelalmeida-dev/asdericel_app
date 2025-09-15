@@ -20,6 +20,7 @@ module ApplicationHelper
     end
   end
 
+  # helper para traduções no Rails
   def translate_concat(*keys, separator: " ")
     keys.map { |key| t(key) }.join(separator).html_safe
   end
