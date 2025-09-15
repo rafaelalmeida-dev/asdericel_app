@@ -1,10 +1,23 @@
-<p style="color: green"><%= notice %></p>
+<%= render "shared/context_nav", title: t("activerecord.models.cidade.other") do %>
+  <%= content_tag(:span, link_to(t("activerecord.models.cidade.other"), cidades_path, class: "text-dark"), class: "breadcrumb-item") %>
+  <%= content_tag(:span, t("common.actions.#{params[:action]}"), class: "breadcrumb-item active") %>
+<% end %>
 
-<%= render @cidade %>
-
-<div>
-  <%= link_to "Edit this cidade", edit_cidade_path(@cidade) %> |
-  <%= link_to "Back to cidades", cidades_path %>
-
-  <%= button_to "Destroy this cidade", @cidade, method: :delete %>
-</div>
+<%= simple_form_for(@cidade, url: "#", method: "get", html: { disabled: true }) do |f| %>
+  <%= render "shared/model_errors" %>
+  <%= render "shared/notice" %>
+  <div class="card">
+    <div class="card-header">
+      <h5 class="my-0">
+        <%= translate_concat("common.actions.#{params[:action]}", "activerecord.models.cidade.one") %>
+      </h5>
+    </div>
+    <div class="card-body">
+      <form>
+        <%= render "cidade", f: f %>
+        <%= link_to t("common.back"), cidades_path, class: "btn btn-outline-secondary" %>
+        <%= btn_submit(f) %>
+      </form>    
+    </div>
+  </div>
+<% end %>

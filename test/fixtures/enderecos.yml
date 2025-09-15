@@ -2,18 +2,12 @@
 
 one:
   cep: MyString
-  logradouro: MyString
   bairro: MyString
-  localidade: MyString
-  uf: MyString
-  pais: MyString
-  numero: MyString
+  numero: 1
+  cidade: one
 
 two:
   cep: MyString
-  logradouro: MyString
   bairro: MyString
-  localidade: MyString
-  uf: MyString
-  pais: MyString
-  numero: MyString
+  numero: 1
+  cidade: two

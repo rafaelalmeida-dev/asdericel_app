@@ -83,6 +83,8 @@ GEM
       msgpack (~> 1.2)
     brakeman (7.1.0)
       racc
+    breadcrumbs_on_rails (4.1.0)
+      railties (>= 5.0)
     builder (3.3.0)
     capybara (3.40.0)
       addressable
@@ -164,6 +166,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.9-x86_64-linux-musl)
       racc (~> 1.4)
+    pagy (9.4.0)
     parallel (1.27.0)
     parser (3.3.9.0)
       ast (~> 2.4.1)
@@ -327,11 +330,13 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   brakeman
+  breadcrumbs_on_rails
   capybara
   cssbundling-rails
   debug
   importmap-rails
   jbuilder
+  pagy (~> 9.4)
   puma (>= 5.0)
   rails (~> 7.2.2, >= 7.2.2.1)
   ransack
