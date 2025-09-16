@@ -1,17 +1,25 @@
-
-<div class="card mb-4">
-  <div class="card-body">
-    <%= simple_form_for(@cidade) do |f| %>
-    <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-    <div class="row">
-        <div class="mb-3 col-md-6">
-          <%= f.input :nome %>
-        </div>
+<%= render "shared/context_nav", title: t("activerecord.models.cidade.other") do  %>
+  <%= content_tag(:span, link_to(t("activerecord.models.cidade.other"), cidades_path, class: "text-dark"), class: "breadcrumb-item") %>
+  <%= content_tag(:span, t("common.actions.#{params[:action]}"),class: "breadcrumb-item active")%>
+<% end %>
+<!-- Form Customizado -->
+<%= simple_form_for(@cidade) do |f| %>
+  <!-- Área de notificações -->
+  <%= render "shared/model_errors" %>
+  <%= render "shared/notice" %>
+  <!-- Card e formulário -->
+  <div class="card">
+    <div class="card-header">
+      <h5 class="my-0">
+        <%= translate_concat("common.actions.#{params[:action]}", "activerecord.models.cidade.one") %>
+      </h5>
     </div>
-    <div class="mt-3">
-      <%= f.button :submit,"Incluir", class: "btn btn-primary me-2 " %>
+    <div class="card-body">
+      <form>
+        <%= render "cidade", f: f %>
+        <%= link_to t("common.back"), cidades_path, class: "btn btn-outline-secondary" %>
+        <%= btn_submit(f) %>
+      </form>    
     </div>
-    <% end %>
   </div>
-</div>
+<% end %>

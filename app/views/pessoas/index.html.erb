@@ -1,0 +1,85 @@
+<%= render "shared/context_nav", title: t("activerecord.models.pessoa.other"), new_path: new_pessoa_path do  %>
+  <span class="breadcrumb-item active"><%= t("activerecord.models.pessoa.other") %></span>
+<% end %>
+<%= render "shared/notice" %>
+<div class="card">
+  <div class="card-header d-flex">
+    <%= search_form_for @q, html: { class: "d-flex gap-2" , autocomplete: "off"} do |f| %>
+      <%= f.search_field :nome_cont, class: "form-control", placeholder: t("activerecord.attributes.pessoa.nome") %>
+      <%= link_to pessoas_path, class: "btn btn-outline-secondary d-flex align-items-center justify-content-center" do %>
+        <i class="ph ph-x"></i>
+      <% end if params[:q] %>
+    <% end %>      
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-sm table-bordered table-striped">
+        <thead>
+          <tr>
+            <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
+            
+              <th><%= sort_link(@q, :nome, t("activerecord.attributes.pessoa.nome")) %></th>
+            
+              <th><%= sort_link(@q, :cpf, t("activerecord.attributes.pessoa.cpf")) %></th>
+            
+              <th><%= sort_link(@q, :rg, t("activerecord.attributes.pessoa.rg")) %></th>
+            
+              <th><%= sort_link(@q, :sexo, t("activerecord.attributes.pessoa.sexo")) %></th>
+            
+              <th><%= sort_link(@q, :telefone, t("activerecord.attributes.pessoa.telefone")) %></th>
+            
+              <th><%= sort_link(@q, :email, t("activerecord.attributes.pessoa.email")) %></th>
+            
+              <th><%= sort_link(@q, :data_nascimento, t("activerecord.attributes.pessoa.data_nascimento")) %></th>
+            
+              <th><%= sort_link(@q, :endereco, t("activerecord.attributes.pessoa.endereco")) %></th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <% @pessoas.each do |pessoa| %>
+            <tr>
+              <td class="text-center">
+                <div class="dropdown-toggle">
+                  <a href="#" class="text-body dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="ph ph-gear"></i>
+                  </a>
+                  <div class="dropdown-menu">
+                    <div class="dropdown-header"><%= t("common.table_dropdown_options") %></div>
+                    <%= link_to content_tag(:i, "", class: "ph ph-eye me-2") + t("common.actions.show"), pessoa_path(pessoa), class: "dropdown-item" %>
+                    <%= link_to content_tag(:i, "", class: "ph ph-pen me-2") + t("common.actions.edit"), edit_pessoa_path(pessoa), class: "dropdown-item" %>
+                    <%= form_for pessoa, method: :delete do |f| %>
+                      <a class="dropdown-item hand-pointer" data-confirm-delete="<%= pessoa_path(pessoa) %>" data-csrf-token="<%= form_authenticity_token %>">
+                        <i class="ph ph-trash-simple me-2"></i><%= t("common.actions.delete") %>
+                      </a>
+                    <% end %>
+                  </div>
+                </div>
+              </td>
+              
+                <td><%= pessoa.nome %></td>
+              
+                <td><%= pessoa.cpf %></td>
+              
+                <td><%= pessoa.rg %></td>
+              
+                <td><%= pessoa.sexo %></td>
+              
+                <td><%= pessoa.telefone %></td>
+              
+                <td><%= pessoa.email %></td>
+              
+                <td><%= pessoa.data_nascimento %></td>
+              
+                <td><%= pessoa.endereco %></td>
+              
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer">
+    <%= pagy_navigation(@pagy) %>
+  </div>
+</div>

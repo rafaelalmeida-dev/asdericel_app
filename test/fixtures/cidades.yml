@@ -2,6 +2,10 @@
 
 one:
   nome: MyString
+  sigla: MyString
+  estado: one
 
 two:
   nome: MyString
+  sigla: MyString
+  estado: two

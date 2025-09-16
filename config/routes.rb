@@ -3,8 +3,11 @@ Rails.application.routes.draw do
     sessions: "users/sessions"
   }
   resources :users, only: %i[index show edit ]
+  resources :pessoas
+  resources :enderecos
   resources :cidades
-  resources :associados
+  resources :estados
+  resources :paises
   get "pages/dashboard"
 
   get "up" => "rails/health#show", as: :rails_health_check

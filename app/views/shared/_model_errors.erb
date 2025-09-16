@@ -1,0 +1,15 @@
+<% record = local_assigns[:object] || instance_variable_get("@#{controller_name.singularize}") %>
+<% if record&.errors&.any? %>
+  <div class="alert alert-danger border-0 bg-grd-danger alert-dismissible fade show">
+    <div class="d-flex align-items-center">
+      <div class="ms-3">
+        <ul class="mb-0 text-white">
+          <% record.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>

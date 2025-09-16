@@ -14,7 +14,9 @@ class CidadesTest < ApplicationSystemTestCase
     visit cidades_url
     click_on "New cidade"
 
+    fill_in "Estado", with: @cidade.estado_id
     fill_in "Nome", with: @cidade.nome
+    fill_in "Sigla", with: @cidade.sigla
     click_on "Create Cidade"
 
     assert_text "Cidade was successfully created"
@@ -25,7 +27,9 @@ class CidadesTest < ApplicationSystemTestCase
     visit cidade_url(@cidade)
     click_on "Edit this cidade", match: :first
 
+    fill_in "Estado", with: @cidade.estado_id
     fill_in "Nome", with: @cidade.nome
+    fill_in "Sigla", with: @cidade.sigla
     click_on "Update Cidade"
 
     assert_text "Cidade was successfully updated"

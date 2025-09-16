@@ -1,71 +1,64 @@
 class CidadesController < ApplicationController
-  before_action :set_cidade, only: %i[ show edit update destroy ]
+  before_action :set_cidade, only: %i[show edit update destroy]
 
-  # GET /cidades or /cidades.json
+  add_breadcrumb "Home", :root_path
+  add_breadcrumb "Cidades", :cidades_path
+
   def index
     @q = Cidade.ransack(params[:q])
-    @cidades = @q.result(distinct: true)
+    @pagy, @cidades = pagy(@q.result)
   end
 
-  # GET /cidades/1 or /cidades/1.json
   def show
+    add_breadcrumb @cidade.nome, cidade_path(@cidade)
   end
 
-  # GET /cidades/new
   def new
     @cidade = Cidade.new
+    add_breadcrumb t("common.actions.new"), new_cidade_path
   end
 
-  # GET /cidades/1/edit
   def edit
+    add_breadcrumb @cidade.nome, cidade_path(@cidade)
+    add_breadcrumb t("common.actions.edit"), edit_cidade_path(@cidade)
   end
 
-  # POST /cidades or /cidades.json
   def create
     @cidade = Cidade.new(cidade_params)
 
-    respond_to do |format|
-      if @cidade.save
-        format.html { redirect_to @cidade, notice: "Cidade was successfully created." }
-        format.json { render :show, status: :created, location: @cidade }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @cidade.errors, status: :unprocessable_entity }
-      end
+    if @cidade.save
+      redirect_to cidades_path, notice: t("messages.created_successfully")
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /cidades/1 or /cidades/1.json
   def update
-    respond_to do |format|
-      if @cidade.update(cidade_params)
-        format.html { redirect_to @cidade, notice: "Cidade was successfully updated.", status: :see_other }
-        format.json { render :show, status: :ok, location: @cidade }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @cidade.errors, status: :unprocessable_entity }
-      end
+    if @cidade.update(cidade_params)
+      redirect_to cidades_path, notice: t("messages.updated_successfully"), status: :see_other
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /cidades/1 or /cidades/1.json
   def destroy
-    @cidade.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to cidades_path, notice: "Cidade was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
+    if @cidade.destroy
+      redirect_to cidades_url, notice: t("messages.deleted_successfully")
+    else
+      redirect_to cidades_url, alert: t("messages.delete_failed_due_to_dependencies")
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cidade
-      @cidade = Cidade.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def cidade_params
-      params.require(:cidade).permit(:nome)
-    end
+  def set_cidade
+    @cidade = Cidade.find_by(id: params[:id])
+    redirect_to cidades_path, alert: t("messages.not_found") unless @cidade
+  end
+
+  def cidade_params
+    unpermitted = %w[id deleted_at created_by updated_by]
+    permitted = Cidade.column_names.reject { |col| unpermitted.include?(col) }
+    params.require(:cidade).permit(permitted.map(&:to_sym))
+  end
 end

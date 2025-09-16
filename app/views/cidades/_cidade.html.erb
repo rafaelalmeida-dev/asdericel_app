@@ -1,7 +1,21 @@
-<div id="<%= dom_id cidade %>">
-  <p>
-    <strong>Nome:</strong>
-    <%= cidade.nome %>
-  </p>
+<div class="row">
+
+  <div class="col-12">
+  
+    <%= f.input :nome, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "nome",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.input :sigla, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "sigla",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.association :estado, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
+  
+  </div>
 
 </div>

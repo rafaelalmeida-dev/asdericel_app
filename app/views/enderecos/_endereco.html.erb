@@ -1,0 +1,27 @@
+<div class="row">
+
+  <div class="col-12">
+  
+    <%= f.input :cep, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "cep",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.input :bairro, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "bairro",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.input :numero, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "numero",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.association :cidade, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+</div>
