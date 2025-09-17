@@ -4,10 +4,6 @@ Rails.application.routes.draw do
   }
   resources :users, only: %i[index show edit ]
   resources :pessoas
-  resources :enderecos
-  resources :cidades
-  resources :estados
-  resources :paises
   get "pages/dashboard"
 
   get "up" => "rails/health#show", as: :rails_health_check
