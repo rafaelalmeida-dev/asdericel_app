@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :responsavels
   resources :parentescos
   resources :sexos
   devise_for :users, controllers: {
