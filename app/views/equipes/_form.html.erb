@@ -1,0 +1,25 @@
+<%= render "shared/context_nav", title: t("activerecord.models.equipe.other") do  %>
+  <%= content_tag(:span, link_to(t("activerecord.models.equipe.other"), equipes_path, class: "text-dark"), class: "breadcrumb-item") %>
+  <%= content_tag(:span, t("common.actions.#{params[:action]}"),class: "breadcrumb-item active")%>
+<% end %>
+<!-- Form Customizado -->
+<%= simple_form_for(@equipe) do |f| %>
+  <!-- Área de notificações -->
+  <%= render "shared/model_errors" %>
+  <%= render "shared/notice" %>
+  <!-- Card e formulário -->
+  <div class="card">
+    <div class="card-header">
+      <h5 class="my-0">
+        <%= translate_concat("common.actions.#{params[:action]}", "activerecord.models.equipe.one") %>
+      </h5>
+    </div>
+    <div class="card-body">
+      <form>
+        <%= render "equipe", f: f %>
+        <%= link_to t("common.back"), equipes_path, class: "btn btn-outline-secondary" %>
+        <%= btn_submit(f) %>
+      </form>    
+    </div>
+  </div>
+<% end %>

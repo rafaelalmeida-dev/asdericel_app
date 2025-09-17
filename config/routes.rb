@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :categoria
+  resources :equipes
+  resources :escolas
+  resources :eventos
+  resources :federacaos
   resources :responsavels
   resources :parentescos
   resources :sexos

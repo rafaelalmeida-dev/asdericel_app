@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  edicacao: MyString
+  promotor: MyString
+  local: MyString
+  datainicio: 2025-09-17 13:08:23
+  datafim: 2025-09-17 13:08:23
+
+two:
+  nome: MyString
+  edicacao: MyString
+  promotor: MyString
+  local: MyString
+  datainicio: 2025-09-17 13:08:23
+  datafim: 2025-09-17 13:08:23
