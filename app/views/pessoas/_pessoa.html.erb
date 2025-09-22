@@ -2,61 +2,98 @@
 
   <div class="col-12">
   
-    <%= f.input :nome, input_html: { class: "string", placeholder: "nome",disabled: local_assigns[:disabled] } %>
+    <%= f.input :nome, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "nome",disabled: local_assigns[:disabled] } %>
   
   </div>
 
   <div class="col-12">
   
-    <%= f.input :cpf, input_html: { class: "string", placeholder: "cpf",disabled: local_assigns[:disabled] } %>
+    <%= f.input :nomesocial, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "nomesocial",disabled: local_assigns[:disabled] } %>
   
   </div>
 
   <div class="col-12">
   
-    <%= f.input :rg, input_html: { class: "string", placeholder: "rg",disabled: local_assigns[:disabled] } %>
+    <%= f.input :nomeconhecido, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "nomeconhecido",disabled: local_assigns[:disabled] } %>
   
   </div>
 
   <div class="col-12">
   
-    <%= f.input :sexo, input_html: { class: "string", placeholder: "sexo",disabled: local_assigns[:disabled] } %>
+    <%= f.input :pai, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "pai",disabled: local_assigns[:disabled] } %>
   
   </div>
 
   <div class="col-12">
   
-    <%= f.input :telefone, input_html: { class: "string", placeholder: "telefone",disabled: local_assigns[:disabled] } %>
+    <%= f.input :mae, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "mae",disabled: local_assigns[:disabled] } %>
   
   </div>
 
   <div class="col-12">
   
-    <%= f.input :email ,input_html: { class: "string", placeholder: "email",disabled: local_assigns[:disabled] } %>
+    <%= f.input :datanascimento, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "datanascimento",disabled: local_assigns[:disabled] } %>
   
   </div>
 
   <div class="col-12">
   
-    <%= f.input :data_nascimento, as: :tel ,input_html: { class: "date", placeholder: "data_nascimento",disabled: local_assigns[:disabled] } %>
+    <%= f.input :cpf, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "cpf",disabled: local_assigns[:disabled] } %>
   
   </div>
 
-  <%= f.fields_for :endereco do |e| %>
-    <h6>Endereço</h6>
-    <div class="row">
-      <div class="col-12">
-        <%= e.input :cep, input_html: { id: "cep" , class: "cep", placeholder: "00000-000", disabled: local_assigns[:disabled]} %>
-      </div>
-      <div class="col-12">
-        <%= e.input :bairro, input_html: { id: "bairro", class: "keyup", placeholder: "Bairro", disabled: local_assigns[:disabled] } %>
-      </div>
-      <div class="col-12">
-        <%= e.input :numero, input_html: { id: "numero", class: "numeros", placeholder: "Número", disabled: local_assigns[:disabled] } %>
-      </div>
-      <div class="col-12 ">
-        <%= e.association :cidade, input_html: { id: "cidade", class: "select2", disabled: local_assigns[:disabled] } %>
-      </div>
-    </div>
-  <% end %>
+  <div class="col-12">
+  
+    <%= f.input :cinrg, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "cinrg",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.input :orgaoemissor, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "orgaoemissor",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.input :dataexpedicao, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "dataexpedicao",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.input :passaporte, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "passaporte",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.input :profissao, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "profissao",disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.association :sexo, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.association :estadocivil, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.association :ensino, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
+  <div class="col-12">
+  
+    <%= f.association :funcao, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
+  
+  </div>
+
 </div>

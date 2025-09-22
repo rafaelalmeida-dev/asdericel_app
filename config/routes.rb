@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :pessoas
+  resources :funcaos
+  resources :ensinos
+  resources :estadocivils
   resources :categoria
   resources :equipes
   resources :escolas
@@ -11,7 +15,6 @@ Rails.application.routes.draw do
     sessions: "users/sessions"
   }
   resources :users, only: %i[index show edit ]
-  resources :pessoas
   get "pages/dashboard"
 
   get "up" => "rails/health#show", as: :rails_health_check

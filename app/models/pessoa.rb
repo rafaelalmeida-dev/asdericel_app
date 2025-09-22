@@ -1,41 +1,60 @@
 # frozen_string_literal: true
 
 # Associações:
-# endereco
+# sexo
+# estadocivil
+# ensino
+# funcao
 
 # Atributos:
 # string - nome
+# string - nomesocial
+# string - nomeconhecido
+# string - pai
+# string - mae
+# date - datanascimento
 # string - cpf
-# string - rg
-# string - sexo
-# string - telefone
-# string - email
-# date - data_nascimento
+# integer - cinrg
+# string - orgaoemissor
+# date - dataexpedicao
+# string - passaporte
+# string - profissao
 
 # Adicione aqui quaisquer métodos ou validações abaixo
 class Pessoa < ApplicationRecord
   include Datafilter
 
-  has_one :endereco, inverse_of: :pessoa
-  accepts_nested_attributes_for :endereco
+  belongs_to :sexo
+  belongs_to :estadocivil
+  belongs_to :ensino
+  belongs_to :funcao
 
   # Permitir os atributos buscáveis pelo Ransack
   def self.ransackable_attributes(auth_object = nil)
+    # array de strings
     %w[
       nome
+      nomesocial
+      nomeconhecido
+      pai
+      mae
+      datanascimento
       cpf
-      rg
-      sexo
-      telefone
-      email
-      data_nascimento
+      cinrg
+      orgaoemissor
+      dataexpedicao
+      passaporte
+      profissao
     ]
   end
 
   # Permitir as associações buscáveis pelo Ransack
   def self.ransackable_associations(auth_object = nil)
     %w[
-      endereco
+      sexo
+      estadocivil
+      ensino
+      funcao
     ]
   end
 end
