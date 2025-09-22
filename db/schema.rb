@@ -10,12 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_19_131417) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_22_172650) do
   create_table "alunos", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "associados", force: :cascade do |t|
+    t.string "celular"
+    t.string "email"
+    t.string "instagram"
+    t.string "observacao"
+    t.integer "pessoa_id"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pessoa_id"], name: "index_associados_on_pessoa_id"
   end
 
   create_table "categoria", force: :cascade do |t|
@@ -164,7 +178,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_19_131417) do
   create_table "pessoas", force: :cascade do |t|
     t.string "nome"
     t.string "cpf"
-    t.string "rg"
+    t.integer "cinrg"
     t.string "sexo"
     t.string "telefone"
     t.string "email"
@@ -175,6 +189,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_19_131417) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nomeconhecido"
+    t.string "pai"
+    t.string "mae"
+    t.string "orgaoemissor"
+    t.date "dataexpedicao"
+    t.string "passaporte"
+    t.string "profissao"
     t.index ["endereco_id"], name: "index_pessoas_on_endereco_id"
   end
 
@@ -216,6 +237,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_19_131417) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "associados", "pessoas"
   add_foreign_key "enderecos", "pessoas"
   add_foreign_key "estados", "paises"
   add_foreign_key "pessoas", "enderecos"

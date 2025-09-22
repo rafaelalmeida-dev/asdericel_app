@@ -1,0 +1,51 @@
+<%= f.simple_fields_for :pessoa do |pf| %>
+  <div class="row">
+    <div class="col-6">
+      <%= pf.input :nome %>
+    </div>
+    <div class="col-6">
+      <%= pf.input :nomeconhecido %>
+    </div>
+    <div class="col-6">
+      <%= pf.input :pai %>
+    </div>
+    <div class="col-6">
+      <%= pf.input :mae %>
+    </div>
+    <div class="col-6">
+      <%= pf.input :data_nascimento,as: :tel  %>
+    </div>
+    <div class="col-6">
+      <%= pf.input :cpf %>
+    </div>
+    <div class="col-6">
+      <%= pf.input :cinrg %>
+    </div>
+    <div class="col-6">
+      <%= pf.input :orgaoemissor %>
+    </div>
+    <div class="col-6">
+      <%= pf.input :dataexpedicao,as: :tel %>
+    </div>
+    <div class="col-6">
+      <%= pf.input :passaporte %>
+    </div>
+    <div class="col-6">
+      <%= pf.input :profissao %>
+    </div>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-6">
+    <%= f.input :celular, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "celular",disabled: local_assigns[:disabled] } %>
+  </div>
+  <div class="col-6">
+    <%= f.input :email, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "email",disabled: local_assigns[:disabled] } %>
+  </div>
+  <div class="col-6">
+    <%= f.input :instagram, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "instagram",disabled: local_assigns[:disabled] } %>
+  </div>
+  <div class="col-6">
+    <%= f.input :observacao, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "observacao",disabled: local_assigns[:disabled] } %>
+  </div>
+</div>
