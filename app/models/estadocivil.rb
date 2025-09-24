@@ -23,4 +23,7 @@ class Estadocivil < ApplicationRecord
     %w[
     ]
   end
+  def to_s
+   nome
+  end
 end

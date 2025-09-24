@@ -5,11 +5,11 @@
 <div class="card">
   <div class="card-header d-flex">
     <%= search_form_for @q, html: { class: "d-flex gap-2" , autocomplete: "off"} do |f| %>
-      <%= f.search_field :celular_cont, class: "form-control", placeholder: t("activerecord.attributes.associado.celular") %>
+      <%= f.search_field :celular_cont, class: "form-control", placeholder: t("activerecord.attributes.associado.pessoa.nome") %>
       <%= link_to associados_path, class: "btn btn-outline-secondary d-flex align-items-center justify-content-center" do %>
         <i class="ph ph-x"></i>
       <% end if params[:q] %>
-    <% end %>      
+    <% end %>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -17,17 +17,9 @@
         <thead>
           <tr>
             <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
-            
-              <th><%= sort_link(@q, :celular, t("activerecord.attributes.associado.celular")) %></th>
-            
-              <th><%= sort_link(@q, :email, t("activerecord.attributes.associado.email")) %></th>
-            
-              <th><%= sort_link(@q, :instagram, t("activerecord.attributes.associado.instagram")) %></th>
-            
-              <th><%= sort_link(@q, :observacao, t("activerecord.attributes.associado.observacao")) %></th>
-            
-              <th><%= sort_link(@q, :pessoa, t("activerecord.attributes.associado.pessoa")) %></th>
-            
+            <th><%= sort_link(@q, :nome, t("activerecord.attributes.associado.pessoa.nome")) %></th>
+            <th><%= sort_link(@q, :cpf, t("activerecord.attributes.associado.pessoa.cpf")) %></th>
+            <th><%= sort_link(@q, :data_nascimento, t("activerecord.attributes.associado.pessoa.datanascimento")) %></th>
           </tr>
         </thead>
         <tbody>
@@ -50,17 +42,9 @@
                   </div>
                 </div>
               </td>
-              
-                <td><%= associado.celular %></td>
-              
-                <td><%= associado.email %></td>
-              
-                <td><%= associado.instagram %></td>
-              
-                <td><%= associado.observacao %></td>
-              
-                <td><%= associado.pessoa %></td>
-              
+              <td><%= associado.pessoa.nome %></td>
+              <td><%= associado.pessoa.cpf %></td>
+              <td><%= associado.pessoa.data_nascimento%></td>
             </tr>
           <% end %>
         </tbody>

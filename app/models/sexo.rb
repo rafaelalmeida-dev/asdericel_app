@@ -23,4 +23,7 @@ class Sexo < ApplicationRecord
     %w[
     ]
   end
+  def to_s
+    nome
+  end
 end

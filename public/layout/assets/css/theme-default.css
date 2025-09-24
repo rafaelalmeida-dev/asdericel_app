@@ -236,14 +236,14 @@ button.list-group-item-primary.active {
 
 .btn-primary {
   color: #fff;
-  background-color: #F28322;
+  background-color: #3737a9;
   border-color: #696cff;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4);
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #F28322;
+  background-color: #5a5ade;
   border-color: #5f61e6;
   transform: translateY(-1px);
 }
@@ -787,7 +787,7 @@ a:hover {
 }
 
 .bg-menu-theme {
-  background: linear-gradient(to top, #2E338C,#d36200, #F28322) !important;
+  background: linear-gradient(to top, #2C2C87, #F07F1A) !important;
   color: #697a8d;
 }
 

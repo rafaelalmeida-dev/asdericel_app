@@ -28,7 +28,7 @@ class Pessoa < ApplicationRecord
   
   belongs_to :sexo
   belongs_to :estadocivil
-  belongs_to :ensino
+  # belongs_to :ensino
   belongs_to :funcao
   
 

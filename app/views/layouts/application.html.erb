@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "/layout/assets/css/core.css",                          "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "/layout/assets/css/core.css?v=#{Time.now.to_i}",       "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "/layout/assets/css/demo.css",                          "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "/layout/assets/css/page-auth.css",                     "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "/layout/assets/css/page-icons.css",                    "data-turbo-track": "reload" %>

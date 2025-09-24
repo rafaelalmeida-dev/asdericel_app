@@ -4,48 +4,57 @@
       <%= pf.input :nome %>
     </div>
     <div class="col-6">
-      <%= pf.input :nomeconhecido %>
+      <%= pf.input :nomesocial %>
     </div>
     <div class="col-6">
-      <%= pf.input :pai %>
+      <%= pf.input :nomeconhecido ,input_html: {  placeholder: "Nome conhecido na Modalidade" }%>
+    </div>
+    <div class="col-3">
+      <%= pf.association :sexo, input_html: {  class: "select2" } %>
+    </div>
+    <div class="col-3">
+      <%= pf.association :estadocivil, input_html: {  class: "select2" } %>
     </div>
     <div class="col-6">
       <%= pf.input :mae %>
     </div>
     <div class="col-6">
-      <%= pf.input :data_nascimento,as: :tel  %>
+      <%= pf.input :pai %>
     </div>
-    <div class="col-6">
-      <%= pf.input :cpf %>
+    <div class="col-3">
+      <%= pf.input :data_nascimento,as: :tel, input_html: { class: "data"} %>
     </div>
-    <div class="col-6">
+    <div class="col-3">
+      <%= pf.association :funcao, input_html: {  class: "select2" } %>
+    </div>
+    <div class="col-3">
+      <%= pf.input :cpf, input_html: { class: "cpf"}%>
+    </div>
+    <div class="col-3">
       <%= pf.input :cinrg %>
     </div>
-    <div class="col-6">
+    <div class="col-3">
       <%= pf.input :orgaoemissor %>
     </div>
-    <div class="col-6">
-      <%= pf.input :dataexpedicao,as: :tel %>
+    <div class="col-3">
+      <%= pf.input :dataexpedicao,as: :tel,input_html: { class: "data"} %>
     </div>
     <div class="col-6">
       <%= pf.input :passaporte %>
     </div>
-    <div class="col-6">
-      <%= pf.input :profissao %>
-    </div>
   </div>
 <% end %>
 <div class="row">
-  <div class="col-6">
-    <%= f.input :celular, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "celular",disabled: local_assigns[:disabled] } %>
+  <div class="col-3">
+    <%= f.input :celular, wrapper: :vertical_form ,input_html: { class: "keyup telefone", placeholder: "celular",disabled: local_assigns[:disabled] } %>
   </div>
-  <div class="col-6">
+  <div class="col-3">
     <%= f.input :email, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "email",disabled: local_assigns[:disabled] } %>
   </div>
   <div class="col-6">
     <%= f.input :instagram, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "instagram",disabled: local_assigns[:disabled] } %>
   </div>
-  <div class="col-6">
-    <%= f.input :observacao, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "observacao",disabled: local_assigns[:disabled] } %>
+  <div class="col-12">
+    <%= f.input :observacao, as: :text, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "observacao",disabled: local_assigns[:disabled] } %>
   </div>
 </div>

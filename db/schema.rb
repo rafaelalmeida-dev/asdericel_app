@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_22_172650) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_24_161341) do
   create_table "alunos", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -195,8 +195,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_22_172650) do
     t.string "orgaoemissor"
     t.date "dataexpedicao"
     t.string "passaporte"
-    t.string "profissao"
+    t.integer "funcao_id"
+    t.integer "sexo_id"
+    t.integer "estadocivil_id"
+    t.string "nomesocial"
     t.index ["endereco_id"], name: "index_pessoas_on_endereco_id"
+    t.index ["estadocivil_id"], name: "index_pessoas_on_estadocivil_id"
+    t.index ["funcao_id"], name: "index_pessoas_on_funcao_id"
+    t.index ["sexo_id"], name: "index_pessoas_on_sexo_id"
   end
 
   create_table "responsavels", force: :cascade do |t|
@@ -241,5 +247,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_22_172650) do
   add_foreign_key "enderecos", "pessoas"
   add_foreign_key "estados", "paises"
   add_foreign_key "pessoas", "enderecos"
+  add_foreign_key "pessoas", "estadocivils"
+  add_foreign_key "pessoas", "funcaos"
+  add_foreign_key "pessoas", "sexos"
   add_foreign_key "responsavels", "parentescos"
 end
