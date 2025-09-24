@@ -787,14 +787,14 @@ a:hover {
 }
 
 .bg-menu-theme {
-  background-color: #fff !important;
+  background: linear-gradient(to top, #2E338C,#d36200, #F28322) !important;
   color: #697a8d;
 }
 
 .bg-menu-theme .menu-link,
 .bg-menu-theme .menu-horizontal-prev,
 .bg-menu-theme .menu-horizontal-next {
-  color: #697a8d;
+  color: #ffffff;
 }
 
 .bg-menu-theme .menu-link:hover,
@@ -803,13 +803,13 @@ a:hover {
 .bg-menu-theme .menu-horizontal-prev:focus,
 .bg-menu-theme .menu-horizontal-next:hover,
 .bg-menu-theme .menu-horizontal-next:focus {
-  color: #566a7f;
+  color: #ffffff;
 }
 
 .bg-menu-theme .menu-link.active,
 .bg-menu-theme .menu-horizontal-prev.active,
 .bg-menu-theme .menu-horizontal-next.active {
-  color: #566a7f;
+  color: #958e84;
 }
 
 .bg-menu-theme .menu-item.disabled .menu-link,
@@ -847,7 +847,7 @@ a:hover {
 }
 
 .bg-menu-theme .menu-text {
-  color: #566a7f;
+  color: #ffffff;
 }
 
 .bg-menu-theme .menu-header {
