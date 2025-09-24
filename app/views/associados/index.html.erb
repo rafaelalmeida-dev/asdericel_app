@@ -5,7 +5,7 @@
 <div class="card">
   <div class="card-header d-flex">
     <%= search_form_for @q, html: { class: "d-flex gap-2" , autocomplete: "off"} do |f| %>
-      <%= f.search_field :celular_cont, class: "form-control", placeholder: t("activerecord.attributes.associado.pessoa.nome") %>
+      <%= f.search_field :pessoa_nome_or_pessoa_cpf_cont, class: "form-control", placeholder: t("activerecord.attributes.associado.pessoa.nome") %>
       <%= link_to associados_path, class: "btn btn-outline-secondary d-flex align-items-center justify-content-center" do %>
         <i class="ph ph-x"></i>
       <% end if params[:q] %>
