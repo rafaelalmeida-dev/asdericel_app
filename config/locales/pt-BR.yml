@@ -48,6 +48,9 @@ pt-BR:
       sexo:
         one: "Sexo"
         other: "Sexos"
+      atleta:
+        one: "Atleta" 
+        other: "Atletas"
       User:
         one: "Usuário"
         other: "Usuários"

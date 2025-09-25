@@ -3,7 +3,6 @@
 # Associações:
 # sexo
 # estadocivil
-# ensino
 # funcao
 
 # Atributos:

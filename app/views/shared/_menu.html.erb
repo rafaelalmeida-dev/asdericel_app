@@ -23,6 +23,12 @@
       <% end %>
     </li>
     <li class="menu-item">
+      <%= link_to atletas_path, class: "menu-link" do %>
+        <i class="menu-icon tf-icons bx bx-layout"></i>
+        <div class="menu-title">Atletas</div>
+      <% end %>
+    </li>
+    <li class="menu-item">
       <%= link_to equipes_path, class: "menu-link" do %>
         <i class="menu-icon tf-icons bx bx-layout"></i>
         <div class="menu-title">Equipes</div>
@@ -51,7 +57,7 @@
       <ul class="collapse list-unstyled ps-4 mt-1" id="submenuLayouts">
         <li class="menu-item">
           <%= link_to ensinos_path, class:"menu-link" do %>
-            <div data-i18n="Without menu">Without menu</div>
+            <div data-i18n="Without menu">Ensino</div>
           <% end %>
         </li>
         <li class="menu-item">
@@ -72,6 +78,16 @@
         <li class="menu-item">
           <%= link_to federacaos_path, class:"menu-link" do %>
             <div data-i18n="Without navbar">Federação</div>
+          <% end %>
+        </li>
+        <li class="menu-item">
+          <%= link_to camisas_path, class:"menu-link" do %>
+            <div data-i18n="Without navbar">Camisa</div>
+          <% end %>
+        </li>
+        <li class="menu-item">
+          <%= link_to calcas_path, class:"menu-link" do %>
+            <div data-i18n="Without navbar">Calça</div>
           <% end %>
         </li>
       </ul>

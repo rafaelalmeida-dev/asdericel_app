@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_24_161341) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
   create_table "alunos", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -30,6 +30,43 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_24_161341) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pessoa_id"], name: "index_associados_on_pessoa_id"
+  end
+
+  create_table "atletas", force: :cascade do |t|
+    t.string "numeroSus"
+    t.string "peso"
+    t.string "altura"
+    t.integer "pessoa_id"
+    t.integer "camisa_id"
+    t.integer "calca_id"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "ensino_id"
+    t.index ["calca_id"], name: "index_atletas_on_calca_id"
+    t.index ["camisa_id"], name: "index_atletas_on_camisa_id"
+    t.index ["ensino_id"], name: "index_atletas_on_ensino_id"
+    t.index ["pessoa_id"], name: "index_atletas_on_pessoa_id"
+  end
+
+  create_table "calcas", force: :cascade do |t|
+    t.string "numero"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "camisas", force: :cascade do |t|
+    t.string "numero"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categoria", force: :cascade do |t|
@@ -244,6 +281,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_24_161341) do
   end
 
   add_foreign_key "associados", "pessoas"
+  add_foreign_key "atletas", "calcas"
+  add_foreign_key "atletas", "camisas"
+  add_foreign_key "atletas", "ensinos"
+  add_foreign_key "atletas", "pessoas"
   add_foreign_key "enderecos", "pessoas"
   add_foreign_key "estados", "paises"
   add_foreign_key "pessoas", "enderecos"
