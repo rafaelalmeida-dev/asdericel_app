@@ -1,7 +1,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
   <div class="app-brand demo">
     <%= link_to root_path, class: "app-brand-link" do %>
-        <span class="app-brand-text demo menu-text fw-bolder ms-2">Asdericel</span>
+      <span class="app-brand-text demo menu-text fw-bolder ms-2">Asdericel</span>
     <% end %>
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
       <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -17,18 +17,23 @@
       <% end %>
     </li>
     <li class="menu-item">
-      <%= link_to cidades_path, class: "menu-link" do %>
+      <%= link_to associados_path, class: "menu-link" do %>
         <i class="menu-icon tf-icons bx bx-layout"></i>
-        <div class="menu-title">Cidades</div>
+        <div class="menu-title">Associados</div>
       <% end %>
     </li>
     <li class="menu-item">
-      <%= link_to estados_path, class: "menu-link" do %>
+      <%= link_to equipes_path, class: "menu-link" do %>
         <i class="menu-icon tf-icons bx bx-layout"></i>
-        <div class="menu-title">Estados</div>
+        <div class="menu-title">Equipes</div>
       <% end %>
     </li>
-    <!-- Layouts -->
+    <li class="menu-item">
+      <%= link_to equipes_path, class: "menu-link" do %>
+        <i class="menu-icon tf-icons bx bx-layout"></i>
+        <div class="menu-title">Eventos</div>
+      <% end %>
+    </li>
     <li class="menu-item">
       <a class="menu-link d-flex justify-content-between align-items-center" 
         data-bs-toggle="collapse" 
@@ -38,22 +43,36 @@
         aria-controls="submenuLayouts">
         <span>
           <i class="menu-icon tf-icons bx bx-layout"></i>
-          <span data-i18n="Layouts">Layouts</span>
+          <span data-i18n="Layouts">Tabelas Referenciais</span>
         </span>
         <!-- Ícone da seta -->
         <i class="bx bx-chevron-down ms-2 collapse-toggle"></i>
       </a>
-
       <ul class="collapse list-unstyled ps-4 mt-1" id="submenuLayouts">
         <li class="menu-item">
-          <a href="layouts-without-menu.html" class="menu-link">
+          <%= link_to ensinos_path, class:"menu-link" do %>
             <div data-i18n="Without menu">Without menu</div>
-          </a>
+          <% end %>
         </li>
         <li class="menu-item">
-          <a href="layouts-without-navbar.html" class="menu-link">
-            <div data-i18n="Without navbar">Without navbar</div>
-          </a>
+          <%= link_to estadocivils_path	, class:"menu-link" do %>
+            <div data-i18n="Without navbar">Estado Civil</div>
+          <% end %>
+        </li>
+        <li class="menu-item">
+          <%= link_to sexos_path, class:"menu-link" do %>
+            <div data-i18n="Without menu">Sexo</div>
+          <% end %>
+        </li>
+        <li class="menu-item">
+          <%= link_to funcaos_path, class:"menu-link" do %>
+            <div data-i18n="Without navbar">Função</div>
+          <% end %>
+        </li>
+        <li class="menu-item">
+          <%= link_to federacaos_path, class:"menu-link" do %>
+            <div data-i18n="Without navbar">Federação</div>
+          <% end %>
         </li>
       </ul>
     </li>

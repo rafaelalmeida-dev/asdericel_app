@@ -17,7 +17,7 @@ class PessoasControllerTest < ActionDispatch::IntegrationTest
 
   test "should create pessoa" do
     assert_difference("Pessoa.count") do
-      post pessoas_url, params: { pessoa: { cpf: @pessoa.cpf, data_nascimento: @pessoa.data_nascimento, email: @pessoa.email, endereco_id: @pessoa.endereco_id, nome: @pessoa.nome, rg: @pessoa.rg, sexo: @pessoa.sexo, telefone: @pessoa.telefone } }
+      post pessoas_url, params: { pessoa: { cinrg: @pessoa.cinrg, cpf: @pessoa.cpf, dataexpedicao: @pessoa.dataexpedicao, datanascimento: @pessoa.datanascimento, ensino_id: @pessoa.ensino_id, estadocivil_id: @pessoa.estadocivil_id, funcao_id: @pessoa.funcao_id, mae: @pessoa.mae, nome: @pessoa.nome, nomeconhecido: @pessoa.nomeconhecido, nomesocial: @pessoa.nomesocial, orgaoemissor: @pessoa.orgaoemissor, pai: @pessoa.pai, passaporte: @pessoa.passaporte, profissao: @pessoa.profissao, sexo_id: @pessoa.sexo_id } }
     end
 
     assert_redirected_to pessoa_url(Pessoa.last)
@@ -34,7 +34,7 @@ class PessoasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update pessoa" do
-    patch pessoa_url(@pessoa), params: { pessoa: { cpf: @pessoa.cpf, data_nascimento: @pessoa.data_nascimento, email: @pessoa.email, endereco_id: @pessoa.endereco_id, nome: @pessoa.nome, rg: @pessoa.rg, sexo: @pessoa.sexo, telefone: @pessoa.telefone } }
+    patch pessoa_url(@pessoa), params: { pessoa: { cinrg: @pessoa.cinrg, cpf: @pessoa.cpf, dataexpedicao: @pessoa.dataexpedicao, datanascimento: @pessoa.datanascimento, ensino_id: @pessoa.ensino_id, estadocivil_id: @pessoa.estadocivil_id, funcao_id: @pessoa.funcao_id, mae: @pessoa.mae, nome: @pessoa.nome, nomeconhecido: @pessoa.nomeconhecido, nomesocial: @pessoa.nomesocial, orgaoemissor: @pessoa.orgaoemissor, pai: @pessoa.pai, passaporte: @pessoa.passaporte, profissao: @pessoa.profissao, sexo_id: @pessoa.sexo_id } }
     assert_redirected_to pessoa_url(@pessoa)
   end
 

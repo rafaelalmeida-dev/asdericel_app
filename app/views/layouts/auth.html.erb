@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+  <body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class="card shadow p-4" style="min-width: 350px;">
+      <%= yield %> <!-- aqui vai entrar o conteúdo do login -->
+    </div>
+  </body>
+</html>

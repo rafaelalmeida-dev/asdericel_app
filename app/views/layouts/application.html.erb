@@ -6,12 +6,12 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "/layout/assets/css/core.css",                          "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "/layout/assets/css/core.css?v=#{Time.now.to_i}",       "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "/layout/assets/css/demo.css",                          "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "/layout/assets/css/page-auth.css",                     "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "/layout/assets/css/page-icons.css",                    "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "/layout/assets/css/page-misc.css",                     "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "/layout/assets/css/theme-default.css",                 "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "/layout/assets/css/theme-default.css?v=#{Time.now.to_i}","data-turbo-track": "reload" %>
     <% # Fonts %>
     <%= stylesheet_link_tag "/layout/assets/fonts/boxicons.css",                    "data-turbo-track": "reload" %>
     <% # CDN GLOBAL HEHE %>
@@ -19,9 +19,11 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <% #JAVASCRIPTO%>
+    <%= javascript_include_tag "/layout/assets/js/jquery/jquery.min.js",                                  "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/bootstrap.js",                           "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/config.js",                              "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "/layout/assets/js/main.js",                                "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "/layout/assets/js/jquery/jquery.mask.min.js",                             "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "/layout/assets/js/custom.js",                                             "data-turbo-track": "reload" %>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </head>
   <body>
@@ -30,6 +32,8 @@
         <%= render "shared/menu" %>
         <div class="layout-page">
           <div class="content-wrapper">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
             <div class="container-xxl flex-grow-1 container-p-y">
               <%= yield :context_nav %>
               <div class="content">

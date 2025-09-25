@@ -20,19 +20,35 @@
             
               <th><%= sort_link(@q, :nome, t("activerecord.attributes.pessoa.nome")) %></th>
             
+              <th><%= sort_link(@q, :nomesocial, t("activerecord.attributes.pessoa.nomesocial")) %></th>
+            
+              <th><%= sort_link(@q, :nomeconhecido, t("activerecord.attributes.pessoa.nomeconhecido")) %></th>
+            
+              <th><%= sort_link(@q, :pai, t("activerecord.attributes.pessoa.pai")) %></th>
+            
+              <th><%= sort_link(@q, :mae, t("activerecord.attributes.pessoa.mae")) %></th>
+            
+              <th><%= sort_link(@q, :datanascimento, t("activerecord.attributes.pessoa.datanascimento")) %></th>
+            
               <th><%= sort_link(@q, :cpf, t("activerecord.attributes.pessoa.cpf")) %></th>
             
-              <th><%= sort_link(@q, :rg, t("activerecord.attributes.pessoa.rg")) %></th>
+              <th><%= sort_link(@q, :cinrg, t("activerecord.attributes.pessoa.cinrg")) %></th>
+            
+              <th><%= sort_link(@q, :orgaoemissor, t("activerecord.attributes.pessoa.orgaoemissor")) %></th>
+            
+              <th><%= sort_link(@q, :dataexpedicao, t("activerecord.attributes.pessoa.dataexpedicao")) %></th>
+            
+              <th><%= sort_link(@q, :passaporte, t("activerecord.attributes.pessoa.passaporte")) %></th>
+            
+              <th><%= sort_link(@q, :profissao, t("activerecord.attributes.pessoa.profissao")) %></th>
             
               <th><%= sort_link(@q, :sexo, t("activerecord.attributes.pessoa.sexo")) %></th>
             
-              <th><%= sort_link(@q, :telefone, t("activerecord.attributes.pessoa.telefone")) %></th>
+              <th><%= sort_link(@q, :estadocivil, t("activerecord.attributes.pessoa.estadocivil")) %></th>
             
-              <th><%= sort_link(@q, :email, t("activerecord.attributes.pessoa.email")) %></th>
+              <th><%= sort_link(@q, :ensino, t("activerecord.attributes.pessoa.ensino")) %></th>
             
-              <th><%= sort_link(@q, :data_nascimento, t("activerecord.attributes.pessoa.data_nascimento")) %></th>
-            
-              <th><%= sort_link(@q, :endereco, t("activerecord.attributes.pessoa.endereco")) %></th>
+              <th><%= sort_link(@q, :funcao, t("activerecord.attributes.pessoa.funcao")) %></th>
             
           </tr>
         </thead>
@@ -59,19 +75,35 @@
               
                 <td><%= pessoa.nome %></td>
               
+                <td><%= pessoa.nomesocial %></td>
+              
+                <td><%= pessoa.nomeconhecido %></td>
+              
+                <td><%= pessoa.pai %></td>
+              
+                <td><%= pessoa.mae %></td>
+              
+                <td><%= pessoa.datanascimento %></td>
+              
                 <td><%= pessoa.cpf %></td>
               
-                <td><%= pessoa.rg %></td>
+                <td><%= pessoa.cinrg %></td>
+              
+                <td><%= pessoa.orgaoemissor %></td>
+              
+                <td><%= pessoa.dataexpedicao %></td>
+              
+                <td><%= pessoa.passaporte %></td>
+              
+                <td><%= pessoa.profissao %></td>
               
                 <td><%= pessoa.sexo %></td>
               
-                <td><%= pessoa.telefone %></td>
+                <td><%= pessoa.estadocivil %></td>
               
-                <td><%= pessoa.email %></td>
+                <td><%= pessoa.ensino %></td>
               
-                <td><%= pessoa.data_nascimento %></td>
-              
-                <td><%= pessoa.endereco %></td>
+                <td><%= pessoa.funcao %></td>
               
             </tr>
           <% end %>

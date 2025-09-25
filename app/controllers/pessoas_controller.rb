@@ -16,13 +16,11 @@ class PessoasController < ApplicationController
   def new
     @pessoa = Pessoa.new
     add_breadcrumb t("common.actions.new"), new_pessoa_path
-    @pessoa.build_endereco
   end
 
   def edit
     add_breadcrumb @pessoa.nome, pessoa_path(@pessoa)
     add_breadcrumb t("common.actions.edit"), edit_pessoa_path(@pessoa)
-    @pessoa.build_endereco unless @pessoa.endereco
   end
 
   def create
@@ -61,7 +59,6 @@ class PessoasController < ApplicationController
   def pessoa_params
     unpermitted = %w[id deleted_at created_by updated_by]
     permitted = Pessoa.column_names.reject { |col| unpermitted.include?(col) }
-    params.require(:pessoa).permit(permitted.map(&:to_sym),
-    endereco_attributes: [ :cep, :bairro, :numero, :cidade_id, :pessoa_id ])
+    params.require(:pessoa).permit(permitted.map(&:to_sym))
   end
 end

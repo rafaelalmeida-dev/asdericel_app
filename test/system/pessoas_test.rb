@@ -14,14 +14,22 @@ class PessoasTest < ApplicationSystemTestCase
     visit pessoas_url
     click_on "New pessoa"
 
+    fill_in "Cinrg", with: @pessoa.cinrg
     fill_in "Cpf", with: @pessoa.cpf
-    fill_in "Data nascimento", with: @pessoa.data_nascimento
-    fill_in "Email", with: @pessoa.email
-    fill_in "Endereco", with: @pessoa.endereco_id
+    fill_in "Dataexpedicao", with: @pessoa.dataexpedicao
+    fill_in "Datanascimento", with: @pessoa.datanascimento
+    fill_in "Ensino", with: @pessoa.ensino_id
+    fill_in "Estadocivil", with: @pessoa.estadocivil_id
+    fill_in "Funcao", with: @pessoa.funcao_id
+    fill_in "Mae", with: @pessoa.mae
     fill_in "Nome", with: @pessoa.nome
-    fill_in "Rg", with: @pessoa.rg
-    fill_in "Sexo", with: @pessoa.sexo
-    fill_in "Telefone", with: @pessoa.telefone
+    fill_in "Nomeconhecido", with: @pessoa.nomeconhecido
+    fill_in "Nomesocial", with: @pessoa.nomesocial
+    fill_in "Orgaoemissor", with: @pessoa.orgaoemissor
+    fill_in "Pai", with: @pessoa.pai
+    fill_in "Passaporte", with: @pessoa.passaporte
+    fill_in "Profissao", with: @pessoa.profissao
+    fill_in "Sexo", with: @pessoa.sexo_id
     click_on "Create Pessoa"
 
     assert_text "Pessoa was successfully created"
@@ -32,14 +40,22 @@ class PessoasTest < ApplicationSystemTestCase
     visit pessoa_url(@pessoa)
     click_on "Edit this pessoa", match: :first
 
+    fill_in "Cinrg", with: @pessoa.cinrg
     fill_in "Cpf", with: @pessoa.cpf
-    fill_in "Data nascimento", with: @pessoa.data_nascimento
-    fill_in "Email", with: @pessoa.email
-    fill_in "Endereco", with: @pessoa.endereco_id
+    fill_in "Dataexpedicao", with: @pessoa.dataexpedicao
+    fill_in "Datanascimento", with: @pessoa.datanascimento
+    fill_in "Ensino", with: @pessoa.ensino_id
+    fill_in "Estadocivil", with: @pessoa.estadocivil_id
+    fill_in "Funcao", with: @pessoa.funcao_id
+    fill_in "Mae", with: @pessoa.mae
     fill_in "Nome", with: @pessoa.nome
-    fill_in "Rg", with: @pessoa.rg
-    fill_in "Sexo", with: @pessoa.sexo
-    fill_in "Telefone", with: @pessoa.telefone
+    fill_in "Nomeconhecido", with: @pessoa.nomeconhecido
+    fill_in "Nomesocial", with: @pessoa.nomesocial
+    fill_in "Orgaoemissor", with: @pessoa.orgaoemissor
+    fill_in "Pai", with: @pessoa.pai
+    fill_in "Passaporte", with: @pessoa.passaporte
+    fill_in "Profissao", with: @pessoa.profissao
+    fill_in "Sexo", with: @pessoa.sexo_id
     click_on "Update Pessoa"
 
     assert_text "Pessoa was successfully updated"

@@ -2,20 +2,36 @@
 
 one:
   nome: MyString
+  nomesocial: MyString
+  nomeconhecido: MyString
+  pai: MyString
+  mae: MyString
+  datanascimento: 2025-09-19
   cpf: MyString
-  rg: MyString
-  sexo: MyString
-  telefone: MyString
-  email: MyString
-  data_nascimento: 2025-09-13
-  endereco: one
+  cinrg: 1
+  orgaoemissor: MyString
+  dataexpedicao: 2025-09-19
+  passaporte: MyString
+  profissao: MyString
+  sexo: one
+  estadocivil: one
+  ensino: one
+  funcao: one
 
 two:
   nome: MyString
+  nomesocial: MyString
+  nomeconhecido: MyString
+  pai: MyString
+  mae: MyString
+  datanascimento: 2025-09-19
   cpf: MyString
-  rg: MyString
-  sexo: MyString
-  telefone: MyString
-  email: MyString
-  data_nascimento: 2025-09-13
-  endereco: two
+  cinrg: 1
+  orgaoemissor: MyString
+  dataexpedicao: 2025-09-19
+  passaporte: MyString
+  profissao: MyString
+  sexo: two
+  estadocivil: two
+  ensino: two
+  funcao: two
