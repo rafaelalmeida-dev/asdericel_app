@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numeroSus: MyString
+  peso: MyString
+  altura: MyString
+  pessoa: one
+  camisa: one
+  calca: one
+
+two:
+  numeroSus: MyString
+  peso: MyString
+  altura: MyString
+  pessoa: two
+  camisa: two
+  calca: two

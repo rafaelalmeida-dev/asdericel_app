@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :atletas
+  resources :calcas
+  resources :camisas
   resources :associados
   resources :pessoas
   resources :funcaos
