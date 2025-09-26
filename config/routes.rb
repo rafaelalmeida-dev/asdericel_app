@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   resources :parentescos
   resources :sexos
   devise_for :users, controllers: {
-    sessions: "users/sessions"
+    sessions: "users/sessions",
+    registrations: "users/registrations"
   }
   resources :users, only: %i[index show edit ]
   get "pages/dashboard"

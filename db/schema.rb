@@ -11,13 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
-  create_table "alunos", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "associados", force: :cascade do |t|
     t.string "celular"
     t.string "email"
@@ -80,27 +73,28 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
 
   create_table "cidades", force: :cascade do |t|
     t.string "nome"
+    t.string "sigla"
+    t.integer "estado_id"
     t.string "created_by"
     t.string "updated_by"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["estado_id"], name: "index_cidades_on_estado_id"
   end
 
   create_table "enderecos", force: :cascade do |t|
     t.string "cep"
-    t.string "logradouro"
     t.string "bairro"
-    t.string "localidade"
-    t.string "uf"
-    t.string "pais"
-    t.string "numero"
+    t.integer "numero"
+    t.integer "cidade_id"
     t.string "created_by"
     t.string "updated_by"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "pessoa_id", null: false
+    t.index ["cidade_id"], name: "index_enderecos_on_cidade_id"
     t.index ["pessoa_id"], name: "index_enderecos_on_pessoa_id"
   end
 
@@ -158,11 +152,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
 
   create_table "eventos", force: :cascade do |t|
     t.string "nome"
-    t.string "edicao"
-    t.string "categoria"
-    t.string "municipio"
-    t.string "estado"
-    t.string "pais"
+    t.string "edicacao"
+    t.string "promotor"
+    t.string "local"
+    t.datetime "datainicio"
+    t.datetime "datafim"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -182,13 +179,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
     t.string "created_by"
     t.string "updated_by"
     t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "os", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -285,8 +275,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
   add_foreign_key "atletas", "camisas"
   add_foreign_key "atletas", "ensinos"
   add_foreign_key "atletas", "pessoas"
+  add_foreign_key "cidades", "estados"
+  add_foreign_key "enderecos", "cidades"
   add_foreign_key "enderecos", "pessoas"
-  add_foreign_key "estados", "paises"
+  add_foreign_key "estados", "paises", column: "pais_id"
   add_foreign_key "pessoas", "enderecos"
   add_foreign_key "pessoas", "estadocivils"
   add_foreign_key "pessoas", "funcaos"
