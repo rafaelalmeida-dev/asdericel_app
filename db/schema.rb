@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_27_000030) do
   create_table "associados", force: :cascade do |t|
     t.string "celular"
     t.string "email"
@@ -265,6 +265,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.string "cpf", null: false
+    t.index ["cpf"], name: "index_users_on_cpf", unique: true
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -278,7 +280,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
   add_foreign_key "cidades", "estados"
   add_foreign_key "enderecos", "cidades"
   add_foreign_key "enderecos", "pessoas"
-  add_foreign_key "estados", "paises", column: "pais_id"
+  add_foreign_key "estados", "paises"
   add_foreign_key "pessoas", "enderecos"
   add_foreign_key "pessoas", "estadocivils"
   add_foreign_key "pessoas", "funcaos"
