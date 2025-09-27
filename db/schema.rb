@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_27_000030) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_27_162524) do
   create_table "associados", force: :cascade do |t|
     t.string "celular"
     t.string "email"
@@ -71,33 +71,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_27_000030) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cidades", force: :cascade do |t|
-    t.string "nome"
-    t.string "sigla"
-    t.integer "estado_id"
-    t.string "created_by"
-    t.string "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["estado_id"], name: "index_cidades_on_estado_id"
-  end
-
-  create_table "enderecos", force: :cascade do |t|
-    t.string "cep"
-    t.string "bairro"
-    t.integer "numero"
-    t.integer "cidade_id"
-    t.string "created_by"
-    t.string "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "pessoa_id", null: false
-    t.index ["cidade_id"], name: "index_enderecos_on_cidade_id"
-    t.index ["pessoa_id"], name: "index_enderecos_on_pessoa_id"
-  end
-
   create_table "ensinos", force: :cascade do |t|
     t.string "nome"
     t.string "created_by"
@@ -138,18 +111,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_27_000030) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "estados", force: :cascade do |t|
-    t.string "nome"
-    t.string "sigla"
-    t.integer "pais_id"
-    t.string "created_by"
-    t.string "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["pais_id"], name: "index_estados_on_pais_id"
-  end
-
   create_table "eventos", force: :cascade do |t|
     t.string "nome"
     t.string "edicacao"
@@ -183,16 +144,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_27_000030) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "paises", force: :cascade do |t|
-    t.string "nome"
-    t.string "sigla"
-    t.string "created_by"
-    t.string "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "parentescos", force: :cascade do |t|
     t.string "nome"
     t.string "created_by"
@@ -204,29 +155,24 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_27_000030) do
 
   create_table "pessoas", force: :cascade do |t|
     t.string "nome"
+    t.string "nomesocial"
+    t.string "nomeconhecido"
+    t.string "pai"
+    t.string "mae"
+    t.date "datanascimento"
     t.string "cpf"
     t.integer "cinrg"
-    t.string "sexo"
-    t.string "telefone"
-    t.string "email"
-    t.date "data_nascimento"
-    t.integer "endereco_id"
+    t.string "orgaoemissor"
+    t.date "dataexpedicao"
+    t.string "passaporte"
+    t.integer "sexo_id"
+    t.integer "estadocivil_id"
+    t.integer "funcao_id"
     t.string "created_by"
     t.string "updated_by"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nomeconhecido"
-    t.string "pai"
-    t.string "mae"
-    t.string "orgaoemissor"
-    t.date "dataexpedicao"
-    t.string "passaporte"
-    t.integer "funcao_id"
-    t.integer "sexo_id"
-    t.integer "estadocivil_id"
-    t.string "nomesocial"
-    t.index ["endereco_id"], name: "index_pessoas_on_endereco_id"
     t.index ["estadocivil_id"], name: "index_pessoas_on_estadocivil_id"
     t.index ["funcao_id"], name: "index_pessoas_on_funcao_id"
     t.index ["sexo_id"], name: "index_pessoas_on_sexo_id"
@@ -245,6 +191,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_27_000030) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["parentesco_id"], name: "index_responsavels_on_parentesco_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "nome"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sexos", force: :cascade do |t|
@@ -266,10 +221,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_27_000030) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.string "cpf", null: false
+    t.string "nome", null: false
+    t.integer "role_id", null: false
     t.index ["cpf"], name: "index_users_on_cpf", unique: true
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "associados", "pessoas"
@@ -277,13 +235,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_27_000030) do
   add_foreign_key "atletas", "camisas"
   add_foreign_key "atletas", "ensinos"
   add_foreign_key "atletas", "pessoas"
-  add_foreign_key "cidades", "estados"
-  add_foreign_key "enderecos", "cidades"
-  add_foreign_key "enderecos", "pessoas"
-  add_foreign_key "estados", "paises"
-  add_foreign_key "pessoas", "enderecos"
   add_foreign_key "pessoas", "estadocivils"
   add_foreign_key "pessoas", "funcaos"
   add_foreign_key "pessoas", "sexos"
   add_foreign_key "responsavels", "parentescos"
+  add_foreign_key "users", "roles"
 end

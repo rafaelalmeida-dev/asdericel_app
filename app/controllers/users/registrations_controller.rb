@@ -3,22 +3,26 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [ :create ]
   before_action :configure_account_update_params, only: [ :update ]
-  layout "auth"
+
+  add_breadcrumb "Home", :root_path
+  add_breadcrumb "Usuário", :users_path
 
   # GET /resource/sign_up
   def new
     super
+    add_breadcrumb t("common.actions.new"), new_user_registration_path
   end
 
   # POST /resource
   def create
-    byebug
     super
   end
 
   # GET /resource/edit
   def edit
     super
+    add_breadcrumb @user.nome, user_path(@user)
+    add_breadcrumb t("common.actions.edit"), edit_user_registration_path(@user)
   end
 
   # PUT /resource
@@ -44,12 +48,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [ :cpf, :email  ])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :cpf, :email, :nome, :role_id ])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [ :cpf, :email ])
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :cpf, :email, :nome, :role_id ])
   end
 
   # The path used after sign up.

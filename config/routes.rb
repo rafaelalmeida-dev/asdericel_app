@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :responsavels
   resources :parentescos
   resources :sexos
+  resources :roles
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"

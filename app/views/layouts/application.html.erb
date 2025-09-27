@@ -31,9 +31,8 @@
       <div class="layout-container">
         <%= render "shared/menu" %>
         <div class="layout-page">
-          <div class="content-wrapper">
-            <p class="notice"><%= notice %></p>
-            <p class="alert"><%= alert %></p>
+          <%= render "shared/navbar" %>
+          <div class="content">
             <div class="container-xxl flex-grow-1 container-p-y">
               <%= yield :context_nav %>
               <div class="content">

@@ -9,4 +9,20 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include Datafilter
+  belongs_to :role
+
+  def self.ransackable_attributes(auth_object = nil)
+    # array de strings
+    %w[
+      nome
+      cpf
+    ]
+  end
+
+  # Permitir as associações buscáveis pelo Ransack
+  def self.ransackable_associations(auth_object = nil)
+    %w[
+      role
+    ]
+  end
 end

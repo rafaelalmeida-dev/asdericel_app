@@ -1,7 +1,8 @@
 <div class="card px-sm-6 px-0">
   <div class="card-body">
-    <p class="mb-6 texte-center">Login Asdericel</p>
-
+    <h3 class="mb-6" style="text-align:center;">
+      Login Asdericel
+    </h3>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="mb-3">
         <%= f.input :cpf, autofocus: true, class: "form-control" %>
@@ -9,21 +10,12 @@
       <div class="mb-3">
         <%= f.input :password, class: "form-control" %>
       </div>
-      <div class="mb-8">
+      <div class="mb-2">
         <div class="d-flex justify-content-between">
-          <div class="form-check mb-0">
-            <input class="form-check-input" type="checkbox" id="remember-me">
-            <label class="form-check-label" for="remember-me"> Me Lembre </label>
-          </div>
-          <%= link_to "Esquece a senha?", new_user_password_path %>
+          <%# <%= link_to "Esqueceu a senha?", new_user_password_path %>
         </div>
       </div>
       <%= f.button :submit, "Entrar", class: "btn btn-primary w-100" %>
     <% end %>
-
-    <p class="text-center">
-      <span>Novo na plataforma?</span>
-      <%= link_to "Criar conta", new_user_registration_path %>
-    </p>
   </div>
 </div>

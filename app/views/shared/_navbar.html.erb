@@ -1,0 +1,37 @@
+<nav class="layout-navbar container-xxl navbar-detached navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
+  <!-- Toggle (visível apenas no mobile) -->
+  <button class="btn d-xl-none me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#layout-menu" aria-controls="layout-menu">
+    <i class="bx bx-menu fs-4"></i>
+  </button>
+  <!-- Espaço flexível para empurrar itens à direita -->
+  <div class="flex-grow-1"></div>
+  <!-- Usuário -->
+  <ul class="navbar-nav align-items-center">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle d-flex align-items-center p-0" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="./assets/images/avatar.png" alt="User Avatar" class="rounded-circle me-2" width="40" height="40">
+        <span class="d-none d-sm-inline">John Doe</span>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end shadow rounded-3 border-0" aria-labelledby="userDropdown">
+        <li>
+          <a class="dropdown-item p-3">
+            <div class="d-flex align-items-center">
+
+            </div>
+          </a>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        <li>
+          <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+            <i class="bx bx-user me-2"></i> Editar
+          <% end %>
+        </li>
+        <li>
+          <%= button_to destroy_user_session_path, method: :delete, class: "dropdown-item text-danger" do %>
+            <i class="bx bx-power-off me-2"></i> Log Out
+          <% end %>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

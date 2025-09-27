@@ -51,9 +51,12 @@ pt-BR:
       atleta:
         one: "Atleta" 
         other: "Atletas"
-      User:
+      user:
         one: "Usuário"
         other: "Usuários"
+      registration:
+        one: "Registro"
+        other: "Registros"
     attributes:
       estado:
         nome: "Nome"
@@ -63,6 +66,9 @@ pt-BR:
          nome: "Nome"
       user:
         role_id: Perfil 
+        nome: "Nome"
+        email: "E-mail"
+        cpf: "CPF"
         password: "Senha"
         password_confirmation: "Confirmação de Senha"
         current_password: "Senha Atual"

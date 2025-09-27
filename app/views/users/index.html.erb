@@ -1,42 +1,63 @@
-<div class="card-datatable">
-  <div class="table-responsive">
-    <div id="DataTables_Table_0_wrapper" class="dt-container dt-bootstrap5 dt-empty-footer">
-      <div class="justify-content-between dt-layout-table border-top">
-        <div class="d-md-flex justify-content-between align-items-center col-12 dt-layout-full col-md table-responsive">
-          <table class="datatables-category-list table dataTable dtr-column" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" style="width: 100%;"><colgroup><col data-dt-column="1" style="width: 53.9062px;"><col data-dt-column="2" style="width: 584.5px;"><col data-dt-column="3" style="width: 195.234px;"><col data-dt-column="4" style="width: 164.016px;"><col data-dt-column="5" style="width: 130.344px;"></colgroup>
-            <thead>
-              <tr>
-                <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
-                <th class="text-nowrap text-sm-end dt-orderable-asc dt-orderable-desc dt-type-numeric" ><%= sort_link(@q, :nome, t("activerecord.attributes.cidade.nome")) %></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @users.each do |user| %>
-                <tr>
-                  <td class="text-center">
-                    <div>
-                      <a href="#" class="btn btn-icon dropdown-toggle hide-arrow show" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="icon-base bx bx-dots-vertical-rounded icon-md"></i>
+<%= render "shared/context_nav", title: t("activerecord.models.user.other"), new_path: new_user_registration_path do  %>
+  <span class="breadcrumb-item active"><%= t("activerecord.models.user.other") %></span>
+<% end %>
+<%= render "shared/notice" %>
+<div class="card">
+  <div class="card-header d-flex">
+    <%= search_form_for @q, html: { class: "d-flex gap-2" , autocomplete: "off"} do |f| %>
+      <%= f.search_field :nome_or_cpf_cont, class: "form-control", placeholder: t("activerecord.attributes.user.nome") %>
+      <%= link_to users_path, class: "btn btn-outline-secondary d-flex align-items-center justify-content-center" do %>
+        <i class="ph ph-x"></i>
+      <% end if params[:q] %>
+    <% end %>      
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-sm table-bordered table-striped">
+        <thead>
+          <tr>
+            <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
+            
+              <th><%= sort_link(@q, :nome, t("activerecord.attributes.user.nome")) %></th>
+              <th><%= sort_link(@q, :cpf, t("activerecord.attributes.user.cpf")) %></th>
+              <th><%= sort_link(@q, :email, t("activerecord.attributes.user.email")) %></th>
+              <th><%= sort_link(@q, :role, t("activerecord.attributes.user.role")) %></th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td class="text-center">
+                <div class="dropdown-toggle">
+                  <a href="#" class="text-body dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="ph ph-gear"></i>
+                  </a>
+                  <div class="dropdown-menu">
+                    <div class="dropdown-header"><%= t("common.table_dropdown_options") %></div>
+                    <%= link_to content_tag(:i, "", class: "ph ph-eye me-2") + t("common.actions.show"), user_path(user), class: "dropdown-item" %>
+                    <%= link_to content_tag(:i, "", class: "ph ph-pen me-2") + t("common.actions.edit"), edit_user_registration_path(user), class: "dropdown-item" %>
+                    <%= form_for user, method: :delete do |f| %>
+                      <a class="dropdown-item hand-pointer" data-confirm-delete="<%= user_path(user) %>" data-csrf-token="<%= form_authenticity_token %>">
+                        <i class="ph ph-trash-simple me-2"></i><%= t("common.actions.delete") %>
                       </a>
-                      <div class="dropdown-menu">
-                        <div class="dropdown-header"><%= t("common.table_dropdown_options") %></div>
-                        <%= link_to content_tag(:i, "", class: "ph-eye me-2") + t("common.actions.show"), user_path(user), class: "dropdown-item" %>
-                        <%= link_to content_tag(:i, "", class: "ph-pen me-2") + t("common.actions.edit"), edit_user_path(user), class: "dropdown-item" %>
-                        <%= form_for user, method: :delete do |f| %>
-                          <a class="dropdown-item hand-pointer" data-confirm-delete="<%= user_path(user) %>" data-csrf-token="<%= form_authenticity_token %>">
-                            <i class="ph-trash-simple me-2"></i><%= t("common.actions.delete") %>
-                          </a>
-                        <% end %>
-                      </div>
-                    </div>
-                  </td>
-                  <td><%= user.email %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </td>
+              
+                <td><%= user.nome %></td>
+                <td><%= user.cpf %></td>
+                <td><%= user.email %></td>
+                <td><%= user.role %></td>
+              
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
+  </div>
+  <div class="card-footer">
+    <%= pagy_navigation(@pagy) %>
   </div>
 </div>
