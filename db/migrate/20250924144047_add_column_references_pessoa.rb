@@ -2,9 +2,9 @@
 
 class AddColumnReferencesPessoa < ActiveRecord::Migration[7.2]
   def up
-            add_reference :pessoas, :sexo, null: true, foreign_key: true
-            add_reference :pessoas, :estadocivil, null: true, foreign_key: true
-            add_column :pessoas, :nomesocial, :string
+    # add_reference :pessoas, :sexo, null: true, foreign_key: true
+    # add_reference :pessoas, :estadocivil, null: true, foreign_key: true
+    # add_column :pessoas, :nomesocial, :string
   end
 
   def down
