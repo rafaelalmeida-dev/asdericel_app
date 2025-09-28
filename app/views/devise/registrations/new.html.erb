@@ -1,34 +1,48 @@
-<h2>Registro</h2>
+<%= render "shared/context_nav", title: t("activerecord.models.user.other") do  %>
+  <%= content_tag(:span, link_to(t("activerecord.models.user.other"), users_path, class: "text-dark"), class: "breadcrumb-item") %>
+  <%= content_tag(:span, t("common.actions.#{params[:action]}"),class: "breadcrumb-item active")%>
+<% end %>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-  <div class="form-inputs">
-    <%= f.input :nome,
+  <%= render "shared/model_errors" %>
+  <%= render "shared/notice" %>
+  <!-- Card e formulário -->
+  <div class="card">
+    <div class="card-header">
+      <h5 class="my-0">
+        <%= translate_concat("common.actions.#{params[:action]}", "activerecord.models.user.one") %>
+      </h5>
+    </div>
+    <div class="card-body">
+      <div class="form-inputs">
+        <%= f.input :nome,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "nome" }%>
-    <%= f.input :email,
+        <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
-    <%= f.input :cpf,
+        <%= f.input :cpf,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "cpf" }%>
-    <%= f.input :role_id, 
+        <%= f.input :role_id, 
             collection: Role.all, 
             label: "Cargo", 
             required: true,
             prompt: "Selecione um cargo", 
             input_html: { class: "form-select" } %>
-    <%= f.input :password,
+        <%= f.input :password,
                 required: true,
                 hint: ("Caracteres mínimo #{@minimum_password_length}" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+        <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-  </div>
-  <div class="form-actions">
-    <%= btn_submit(f) %>
+      </div>
+      <div class="form-actions">
+        <%= btn_submit(f) %>
+      </div>
+    </div>
   </div>
 <% end %>

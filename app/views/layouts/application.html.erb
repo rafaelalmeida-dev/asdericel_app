@@ -18,12 +18,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"/>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <% #JAVASCRIPTO%>
+    <% #JAVASCRIPTO %>
     <%= javascript_include_tag "/layout/assets/js/jquery/jquery.min.js",                                  "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/bootstrap.js",                           "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/config.js",                              "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/jquery/jquery.mask.min.js",                             "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/custom.js",                                             "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "/layout/assets/js/main.js",                              "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "/layout/assets/js/ui-toasts.js",                         "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+    <% # ICONS %>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </head>
   <body>
@@ -32,6 +36,7 @@
         <%= render "shared/menu" %>
         <div class="layout-page">
           <%= render "shared/navbar" %>
+          <%= render "shared/modal_delete" %>
           <div class="content">
             <div class="container-xxl flex-grow-1 container-p-y">
               <%= yield :context_nav %>

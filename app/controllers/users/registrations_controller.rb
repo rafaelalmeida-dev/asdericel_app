@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :authenticate_user!, only: [ :new, :create ]
+  before_action :authorize_internal_user!
   before_action :configure_sign_up_params, only: [ :create ]
   before_action :configure_account_update_params, only: [ :update ]
+  skip_before_action :require_no_authentication, only: [ :new, :create ]
 
   add_breadcrumb "Home", :root_path
   add_breadcrumb "Usuário", :users_path
@@ -15,7 +18,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    build_resource(sign_up_params)
+
+    if resource.save
+      redirect_to after_sign_up_path_for(resource), notice: "Usuário criado com sucesso."
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end
   end
 
   # GET /resource/edit
@@ -44,7 +55,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def authorize_internal_user!
+    unless current_user
+      redirect_to root_path, alert: "Acesso negado."
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
@@ -53,12 +70,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [ :cpf, :email, :nome, :role_id ])
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :email, :nome, :role_id ])
   end
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    super(resource)
+    users_path
   end
 
   # The path used after sign up for inactive accounts.

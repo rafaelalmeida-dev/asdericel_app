@@ -11,6 +11,9 @@ class User < ApplicationRecord
   include Datafilter
   belongs_to :role
 
+  validates :nome, presence: true
+  validates :cpf, presence: true, uniqueness: true
+
   def self.ransackable_attributes(auth_object = nil)
     # array de strings
     %w[

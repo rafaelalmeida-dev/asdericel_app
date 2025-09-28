@@ -4,7 +4,7 @@
 <% end %>
 <!-- Form Customizado -->
 <!-- Área de notificações -->
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= simple_form_for(@user) do |f| %>
   <%= render "shared/model_errors" %>
   <%= render "shared/notice" %>
   <!-- Card e formulário -->
