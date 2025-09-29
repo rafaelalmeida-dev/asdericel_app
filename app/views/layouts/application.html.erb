@@ -20,6 +20,7 @@
     <%= javascript_importmap_tags %>
     <% #JAVASCRIPTO %>
     <%= javascript_include_tag "/layout/assets/js/jquery/jquery.min.js",                                  "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "/layout/assets/js/sweet_alert.min.js",                                  "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/bootstrap.js",                           "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/config.js",                              "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/jquery/jquery.mask.min.js",                             "data-turbo-track": "reload" %>
@@ -36,7 +37,6 @@
         <%= render "shared/menu" %>
         <div class="layout-page">
           <%= render "shared/navbar" %>
-          <%= render "shared/modal_delete" %>
           <div class="content">
             <div class="container-xxl flex-grow-1 container-p-y">
               <%= yield :context_nav %>

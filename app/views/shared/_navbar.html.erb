@@ -15,8 +15,13 @@
         <li>
           <a class="dropdown-item">
             <div class="flex-grow">
-              <h6 class="mb-0"><%= current_user.nome %></h6>
-              <small class="text-muted"><%= current_user.role %></small>
+              <% if current_user %>
+                <h6 class="mb-0"><%= current_user.nome %></h6>
+                <small class="text-muted"><%= current_user.role %></small>
+              <% else %>
+                <h6 class="mb-0">Visitante</h6>
+                <small class="text-muted">Visitante</small>
+              <% end %>
             </div>
           </a>
         </li>
