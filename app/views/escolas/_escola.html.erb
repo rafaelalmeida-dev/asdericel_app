@@ -1,33 +1,20 @@
 <div class="row">
-
-  <div class="col-12">
-  
+  <div class="col-6">
+    <%= f.association :ensino, input_html: {  class: "select2" } %>
+  </div>
+  <div class="col-6">
     <%= f.input :nome, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "nome",disabled: local_assigns[:disabled] } %>
-  
   </div>
-
-  <div class="col-12">
-  
+  <div class="col-6">
     <%= f.input :inep, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "inep",disabled: local_assigns[:disabled] } %>
-  
   </div>
-
-  <div class="col-12">
-  
-    <%= f.input :telefone, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "telefone",disabled: local_assigns[:disabled] } %>
-  
+  <div class="col-6">
+    <%= f.input :telefone, wrapper: :vertical_form ,input_html: { class: "keyup telefone", placeholder: "telefone",disabled: local_assigns[:disabled] } %>
   </div>
-
-  <div class="col-12">
-  
-    <%= f.input :municipio, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "municipio",disabled: local_assigns[:disabled] } %>
-  
+  <div class="col-6">
+    <%= f.association :municipio,  input_html: {  class: "select2",placeholder: "municipio",disabled: local_assigns[:disabled]  }  %>
   </div>
-
-  <div class="col-12">
-  
-    <%= f.input :estado, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "estado",disabled: local_assigns[:disabled] } %>
-  
+  <div class="col-6">
+    <%= f.association :estado, input_html: { class: "select2", placeholder: "estado",disabled: local_assigns[:disabled] } %>
   </div>
-
 </div>

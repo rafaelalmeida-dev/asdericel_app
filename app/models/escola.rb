@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # Associações:
+# ensino
 
 # Atributos:
 # string - nome
@@ -13,6 +14,9 @@
 class Escola < ApplicationRecord
   include Datafilter
 
+  belongs_to :ensino
+  belongs_to :municipio
+  belongs_to :estado
 
   # Permitir os atributos buscáveis pelo Ransack
   def self.ransackable_attributes(auth_object = nil)

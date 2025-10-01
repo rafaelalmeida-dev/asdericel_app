@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_29_145530) do
   create_table "alunos", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -44,11 +44,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "ensino_id"
+    t.integer "tiposanguineo_id"
+    t.integer "escola_id"
     t.index ["calca_id"], name: "index_atletas_on_calca_id"
     t.index ["camisa_id"], name: "index_atletas_on_camisa_id"
-    t.index ["ensino_id"], name: "index_atletas_on_ensino_id"
+    t.index ["escola_id"], name: "index_atletas_on_escola_id"
     t.index ["pessoa_id"], name: "index_atletas_on_pessoa_id"
+    t.index ["tiposanguineo_id"], name: "index_atletas_on_tiposanguineo_id"
   end
 
   create_table "calcas", force: :cascade do |t|
@@ -126,13 +128,17 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
     t.string "nome"
     t.string "inep"
     t.string "telefone"
-    t.string "municipio"
-    t.string "estado"
     t.string "created_by"
     t.string "updated_by"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ensino_id"
+    t.integer "municipio_id"
+    t.integer "estado_id"
+    t.index ["ensino_id"], name: "index_escolas_on_ensino_id"
+    t.index ["estado_id"], name: "index_escolas_on_estado_id"
+    t.index ["municipio_id"], name: "index_escolas_on_municipio_id"
   end
 
   create_table "estadocivils", force: :cascade do |t|
@@ -184,6 +190,17 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "municipios", force: :cascade do |t|
+    t.string "nome"
+    t.integer "estado_id"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["estado_id"], name: "index_municipios_on_estado_id"
   end
 
   create_table "os", force: :cascade do |t|
@@ -266,6 +283,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tiposanguineos", force: :cascade do |t|
+    t.string "nome"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -283,10 +309,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_213841) do
   add_foreign_key "associados", "pessoas"
   add_foreign_key "atletas", "calcas"
   add_foreign_key "atletas", "camisas"
-  add_foreign_key "atletas", "ensinos"
+  add_foreign_key "atletas", "escolas"
   add_foreign_key "atletas", "pessoas"
+  add_foreign_key "atletas", "tiposanguineos"
   add_foreign_key "enderecos", "pessoas"
+  add_foreign_key "escolas", "ensinos"
+  add_foreign_key "escolas", "estados"
+  add_foreign_key "escolas", "municipios"
   add_foreign_key "estados", "paises"
+  add_foreign_key "municipios", "estados"
   add_foreign_key "pessoas", "enderecos"
   add_foreign_key "pessoas", "estadocivils"
   add_foreign_key "pessoas", "funcaos"

@@ -66,6 +66,16 @@
           <% end %>
         </li>
         <li class="menu-item">
+          <%= link_to escolas_path	, class:"menu-link" do %>
+            <div data-i18n="Without navbar">Escola</div>
+          <% end %>
+        </li>
+        <li class="menu-item">
+          <%= link_to tiposanguineos_path	, class:"menu-link" do %>
+            <div data-i18n="Without navbar">Tipo Sanguineo</div>
+          <% end %>
+        </li>
+        <li class="menu-item">
           <%= link_to sexos_path, class:"menu-link" do %>
             <div data-i18n="Without menu">Sexo</div>
           <% end %>
@@ -88,6 +98,16 @@
         <li class="menu-item">
           <%= link_to calcas_path, class:"menu-link" do %>
             <div data-i18n="Without navbar">Calça</div>
+          <% end %>
+        </li>
+        <li class="menu-item">
+          <%= link_to estados_path, class:"menu-link" do %>
+            <div data-i18n="Without navbar">Estado</div>
+          <% end %>
+        </li>
+        <li class="menu-item">
+          <%= link_to municipios_path, class:"menu-link" do %>
+            <div data-i18n="Without navbar">Municipio</div>
           <% end %>
         </li>
       </ul>

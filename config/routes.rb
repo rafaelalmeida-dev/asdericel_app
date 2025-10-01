@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :municipios
+  resources :estados
+  resources :tiposanguineos
   resources :atletas
   resources :calcas
   resources :camisas
