@@ -1,28 +1,4 @@
 $(document).ready(function () {
-  
-  // Basic wizard setup
-  $('.steps-basic').steps({
-    headerTag: 'h6',
-    bodyTag: 'fieldset',
-    transitionEffect: 'fade',
-    titleTemplate: '<span class="number">#index#</span> #title#',
-    labels: {
-      previous: '<i class="ph-arrow-circle-left me-2"></i> Anterior',
-      next: 'Próximo <i class="ph-arrow-circle-right ms-2"></i>',
-      finish: 'Incluir <i class="ph-paper-plane-tilt ms-1"></i>'
-    },
-
-    onFinished: function (event, currentIndex) {
-      var form = $(this).closest('form'); // Encontra o formulário pai do elemento atual
-      form.submit(); // Isso aciona o envio do formulário
-    }
-  });
-
-  
-  setTimeout(function () {
-    $('.steps-basic').removeClass('d-none');
-    $('.load-steps-basic').addClass('d-none');
-  }, 650);
 
   $('.keyup').keyup(function () {
     $(this).val($(this).val().toUpperCase());
@@ -97,32 +73,6 @@ $(document).ready(function () {
   });
 
   $('.percentual-float').mask('00,00%', { reverse: true });
-
-  $(".select2").select2({
-    placeholder: "Selecione uma opção",
-    
-    closeOnSelect: false,
-    language: {
-      noResults: function (params) {
-        return "Sem resultados";
-      }
-    }
-  });
-
-
-  // adiciona as variaveis de estilos do bootstrap aos components do select2
-  $(".select2").each(function () {
-    if ($(this).hasClass("is-invalid")) {
-      $(this).next('.select2-container').addClass('is-invalid');
-      $(this).next('.select2-container').removeClass('is-valid');
-    } else if ($(this).hasClass("is-valid")) {
-      $(this).next('.select2-container').addClass('is-valid');
-      $(this).next('.select2-container').removeClass('is-invalid');
-    } else {
-      $(this).next('.select2-container').removeClass('is-invalid');
-      $(this).next('.select2-container').removeClass('is-valid');
-    }
-  });
 
   var DateTimePickers = function () {
     const _componentDaterange = function () {
