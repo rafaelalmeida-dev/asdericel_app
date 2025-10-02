@@ -9,7 +9,7 @@
       <%= link_to sexos_path, class: "btn btn-outline-secondary d-flex align-items-center justify-content-center" do %>
         <i class="ph ph-x"></i>
       <% end if params[:q] %>
-    <% end %>      
+    <% end %>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -17,9 +17,7 @@
         <thead>
           <tr>
             <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
-            
-              <th><%= sort_link(@q, :nome, t("activerecord.attributes.sexo.nome")) %></th>
-            
+            <th><%= sort_link(@q, :nome, t("activerecord.attributes.sexo.nome")) %></th>
           </tr>
         </thead>
         <tbody>
@@ -34,17 +32,19 @@
                     <div class="dropdown-header"><%= t("common.table_dropdown_options") %></div>
                     <%= link_to content_tag(:i, "", class: "ph ph-eye me-2") + t("common.actions.show"), sexo_path(sexo), class: "dropdown-item" %>
                     <%= link_to content_tag(:i, "", class: "ph ph-pen me-2") + t("common.actions.edit"), edit_sexo_path(sexo), class: "dropdown-item" %>
-                    <%= form_for sexo, method: :delete do |f| %>
-                      <a class="dropdown-item hand-pointer" data-confirm-delete="<%= sexo_path(sexo) %>" data-csrf-token="<%= form_authenticity_token %>">
+                    <%= form_with url: sexo_path(sexo), method: :delete, html: { id: "delete-sexo-#{sexo.id}" } do %>
+                      <button type="submit"
+                              class="dropdown-item hand-pointer"
+                              data-confirm-delete="<%= sexo_path(sexo) %>"
+                              data-csrf-token="<%= form_authenticity_token %>"
+                              data-confirm-message="Deseja realmente excluir este registro?">
                         <i class="ph ph-trash-simple me-2"></i><%= t("common.actions.delete") %>
-                      </a>
+                      </button>
                     <% end %>
                   </div>
                 </div>
               </td>
-              
-                <td><%= sexo.nome %></td>
-              
+              <td><%= sexo.nome %></td>
             </tr>
           <% end %>
         </tbody>
