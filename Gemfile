@@ -69,3 +69,5 @@ end
 
 gem "pagy", "~> 9.4"
 gem "breadcrumbs_on_rails"
+
+gem "jsbundling-rails", "~> 1.3"

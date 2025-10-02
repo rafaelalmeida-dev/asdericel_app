@@ -1,8 +1,18 @@
-// // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "bootstrap"
+import "./controllers"
 
-// JS do Sneat (separado por pastas)
-import "./sneat/helpers"
-import "./sneat/menu"
-import "./controllers/confirm_delete"
+// node_modules
+import "./vendor/jquery/jquery.js";
+import "./bootstrap.js"; // se usar bootstrap.bundle.js, inclui popper também
+
+// Vendor JS
+import "./vendor/apex-charts/apexcharts.js";
+import "./vendor/perfect-scrollbar/perfect-scrollbar.js";
+import "./vendor/apex-charts/apexcharts.js";
+import "./vendor/highlight/highlight.js";
+
+// Seus JS customizados
+import "./custom.js";
+import "./helpers.js";
+import "./menu.js";
+import "./config.js";
 
