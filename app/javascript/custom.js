@@ -67,11 +67,6 @@ $(document).ready(function () {
     }
   });
 
-  $('.real').maskMoney({
-    thousands: '.',
-    decimal: ','
-  });
-
   $('.percentual-float').mask('00,00%', { reverse: true });
 
   var DateTimePickers = function () {
