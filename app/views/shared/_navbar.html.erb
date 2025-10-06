@@ -1,0 +1,42 @@
+<nav class="fixed-top layout-navbar container-xxl navbar-detached navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
+  <!-- Toggle (visível apenas no mobile) -->
+  <button class="btn d-xl-none me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#layout-menu" aria-controls="layout-menu">
+    <i class="bx bx-menu fs-4"></i>
+  </button>
+  <!-- Espaço flexível para empurrar itens à direita -->
+  <div class="flex-grow-1"></div>
+  <!-- Usuário -->
+  <ul class="navbar-nav align-items-center">
+    <li class="nav-item dropdown">
+      <a class="nav-link d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="ph-light ph-user-circle fs-1"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end shadow rounded-3 border-0" aria-labelledby="userDropdown">
+        <li>
+          <a class="dropdown-item">
+            <div class="flex-grow">
+              <% if current_user %>
+                <h6 class="mb-0"><%= current_user.nome %></h6>
+                <small class="text-muted"><%= current_user.role %></small>
+              <% else %>
+                <h6 class="mb-0">Visitante</h6>
+                <small class="text-muted">Visitante</small>
+              <% end %>
+            </div>
+          </a>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        <li>
+          <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+            <i class="bx bx-user me-2"></i> Editar
+          <% end %>
+        </li>
+        <li>
+          <%= button_to destroy_user_session_path, method: :delete, class: "dropdown-item text-danger" do %>
+            <i class="bx bx-power-off me-2"></i> Log Out
+          <% end %>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

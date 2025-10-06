@@ -15,10 +15,12 @@ Rails.application.routes.draw do
   resources :responsavels
   resources :parentescos
   resources :sexos
+  resources :roles
   devise_for :users, controllers: {
-    sessions: "users/sessions"
+    sessions: "users/sessions",
+    registrations: "users/registrations"
   }
-  resources :users, only: %i[index show edit ]
+  resources :users, only: %i[index edit update destroy]
   get "pages/dashboard"
 
   get "up" => "rails/health#show", as: :rails_health_check

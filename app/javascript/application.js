@@ -4,3 +4,5 @@ import "bootstrap"
 // JS do Sneat (separado por pastas)
 import "./sneat/helpers"
 import "./sneat/menu"
+import "./controllers/confirm_delete"
+

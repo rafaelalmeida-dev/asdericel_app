@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login</title>
+    <title><%= content_for(:title) || "Asdericel App" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag "/layout/assets/css/core.css?v=#{Time.now.to_i}",       "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "/layout/assets/css/demo.css",                          "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "/layout/assets/css/page-auth.css",                     "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
   <body class="d-flex justify-content-center align-items-center vh-100 bg-light">
     <div class="card shadow p-4" style="min-width: 350px;">
-      <%= yield %> <!-- aqui vai entrar o conteúdo do login -->
+      <%= render "shared/notice" %>
+      <%= yield %>
     </div>
   </body>
 </html>
