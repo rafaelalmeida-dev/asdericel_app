@@ -99,13 +99,11 @@ $(document).ready(function () {
     DateTimePickers.init();
   });
 
-
-
   $(document).on("click", "[data-confirm-delete]", function (event) {
     event.preventDefault();
-    var link = $(this).attr("data-confirm-delete");
-    var csrfToken = $(this).attr("data-csrf-token");
-    var confirmMessage = $(this).attr("data-confirm-message") || "Esta ação não pode ser desfeita.";
+
+    const form = $(this).closest("form");
+    const confirmMessage = $(this).attr("data-confirm-message") || "Esta ação não pode ser desfeita.";
 
     Swal.fire({
       title: 'Tem certeza?',
@@ -120,44 +118,9 @@ $(document).ready(function () {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        var form = $('#' + $(this).closest('form').attr('id'));
-
-        var methodInput = $('<input type="hidden" name="_method" value="delete">');
-        var csrfInput = $('<input type="hidden" name="authenticity_token" value="' + csrfToken + '">');
-
-        form.attr('action', link);
-        form.append(methodInput);
-        form.append(csrfInput);
-        form.submit();
+        form.submit(); 
       }
     });
   });
-
-  $(document).on("click", "[data-confirm]", function (event) {
-    event.preventDefault(); // Prevent the default form submission
-    var message = $(this).attr("data-confirm"); // Get the confirmation message
-    var form = $(this).closest('form'); // Find the closest form
-
-    // Use SweetAlert for confirmation
-    Swal.fire({
-      title: 'Confirmação',
-      text: message,
-      icon: 'warning',
-      showCancelButton: true,
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger "
-      },
-      confirmButtonText: 'Sim, tenho certeza!',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        form.submit(); // Submit the form if confirmed
-      }
-    });
-  });
-
-
-
 });
 

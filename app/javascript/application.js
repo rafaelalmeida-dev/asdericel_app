@@ -1,13 +1,21 @@
-
+// Vendors principais (dependências base)
 import "./vendor/jquery/jquery.js";
-import "./vendor/apex-charts/apexcharts.js";
+
+// Outros vendors que dependem de jQuery
+import "./vendor/mask.js";
 import "./vendor/perfect-scrollbar/perfect-scrollbar.js";
+import "./vendor/menu.js";
+
+// Vendors independentes (podem vir a seguir)
 import "./vendor/apex-charts/apexcharts.js";
 import "./vendor/highlight/highlight.js";
+import "./vendor/popper/popper.js";
 
+// Bootstrap (geralmente depende de jQuery)
 import "./bootstrap.js";
-import "./mask.js";
-import "./custom.js";
-import "./helpers.js";
-import "./menu.js";
-import "./config.js";
+
+// Scripts customizados (seu código que usa tudo acima)
+import "./custom/config.js";
+import "./custom/helpers.js";
+import "./custom/main.js";
+import "./custom/custom.js";

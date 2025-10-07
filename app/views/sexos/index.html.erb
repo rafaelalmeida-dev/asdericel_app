@@ -32,13 +32,13 @@
                     <div class="dropdown-header"><%= t("common.table_dropdown_options") %></div>
                     <%= link_to content_tag(:i, "", class: "ph ph-eye me-2") + t("common.actions.show"), sexo_path(sexo), class: "dropdown-item" %>
                     <%= link_to content_tag(:i, "", class: "ph ph-pen me-2") + t("common.actions.edit"), edit_sexo_path(sexo), class: "dropdown-item" %>
-                    <%= form_with url: sexo_path(sexo), method: :delete, html: { id: "delete-sexo-#{sexo.id}" } do %>
+                    <%= form_with url: sexo_path(sexo), method: :delete do %>
                       <button type="submit"
-                              class="dropdown-item hand-pointer"
-                              data-confirm-delete="<%= sexo_path(sexo) %>"
-                              data-csrf-token="<%= form_authenticity_token %>"
-                              data-confirm-message="Deseja realmente excluir este registro?">
-                        <i class="ph ph-trash-simple me-2"></i><%= t("common.actions.delete") %>
+                        class="dropdown-item hand-pointer"
+                        data-confirm-delete="true"
+                        data-confirm-message="Deseja realmente excluir este registro?">
+                        <i class="ph ph-trash-simple me-2"></i>
+                        <%= t("common.actions.delete") %>
                       </button>
                     <% end %>
                   </div>
