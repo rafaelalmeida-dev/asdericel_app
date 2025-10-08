@@ -6,10 +6,10 @@
 # string - nome
 
 # Adicione aqui quaisquer métodos ou validações abaixo
-class Ensino < ApplicationRecord
+class Modalidade < ApplicationRecord
   include Datafilter
 
-    has_many :atletas
+
   # Permitir os atributos buscáveis pelo Ransack
   def self.ransackable_attributes(auth_object = nil)
     # array de strings
@@ -22,5 +22,8 @@ class Ensino < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     %w[
     ]
+  end
+  def to_s
+    nome
   end
 end

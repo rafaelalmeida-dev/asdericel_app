@@ -6,10 +6,10 @@
   <div class="card-header d-flex">
     <%= search_form_for @q, html: { class: "d-flex gap-2" , autocomplete: "off"} do |f| %>
       <%= f.search_field :sigla_cont, class: "form-control", placeholder: t("activerecord.attributes.federacao.sigla") %>
-      <%= link_to federacaos_path, class: "btn btn-outline-secondary d-flex align-items-center justify-content-center" do %>
+      <%= link_to federacoes_path, class: "btn btn-outline-secondary d-flex align-items-center justify-content-center" do %>
         <i class="ph ph-x"></i>
       <% end if params[:q] %>
-    <% end %>      
+    <% end %>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -17,11 +17,8 @@
         <thead>
           <tr>
             <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
-            
-              <th><%= sort_link(@q, :sigla, t("activerecord.attributes.federacao.sigla")) %></th>
-            
-              <th><%= sort_link(@q, :nome, t("activerecord.attributes.federacao.nome")) %></th>
-            
+            <th><%= sort_link(@q, :sigla, t("activerecord.attributes.federacao.sigla")) %></th>
+            <th><%= sort_link(@q, :nome, t("activerecord.attributes.federacao.nome")) %></th>
           </tr>
         </thead>
         <tbody>
@@ -44,11 +41,8 @@
                   </div>
                 </div>
               </td>
-              
-                <td><%= federacao.sigla %></td>
-              
-                <td><%= federacao.nome %></td>
-              
+              <td><%= federacao.sigla %></td>
+              <td><%= federacao.nome %></td>
             </tr>
           <% end %>
         </tbody>

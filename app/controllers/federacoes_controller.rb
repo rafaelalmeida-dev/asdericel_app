@@ -1,8 +1,8 @@
-class FederacaosController < ApplicationController
+class FederacoesController < ApplicationController
   before_action :set_federacao, only: %i[show edit update destroy]
 
   add_breadcrumb "Home", :root_path
-  add_breadcrumb "Federacaos", :federacaos_path
+  add_breadcrumb "Federacoes", :federacoes_path
 
   def index
     @q = Federacao.ransack(params[:q])
@@ -27,7 +27,7 @@ class FederacaosController < ApplicationController
     @federacao = Federacao.new(federacao_params)
 
     if @federacao.save
-      redirect_to federacaos_path, notice: t("messages.created_successfully")
+      redirect_to federacoes_path, notice: t("messages.created_successfully")
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class FederacaosController < ApplicationController
 
   def update
     if @federacao.update(federacao_params)
-      redirect_to federacaos_path, notice: t("messages.updated_successfully"), status: :see_other
+      redirect_to federacoes_path, notice: t("messages.updated_successfully"), status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,9 +43,9 @@ class FederacaosController < ApplicationController
 
   def destroy
     if @federacao.destroy
-      redirect_to federacaos_url, notice: t("messages.deleted_successfully")
+      redirect_to federacoes_url, notice: t("messages.deleted_successfully")
     else
-      redirect_to federacaos_url, alert: t("messages.delete_failed_due_to_dependencies")
+      redirect_to federacoes_url, alert: t("messages.delete_failed_due_to_dependencies")
     end
   end
 
@@ -53,7 +53,7 @@ class FederacaosController < ApplicationController
 
   def set_federacao
     @federacao = Federacao.find_by(id: params[:id])
-    redirect_to federacaos_path, alert: t("messages.not_found") unless @federacao
+    redirect_to federacoes_path, alert: t("messages.not_found") unless @federacao
   end
 
   def federacao_params

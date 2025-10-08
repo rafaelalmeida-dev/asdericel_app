@@ -19,7 +19,7 @@
             <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
             <th><%= sort_link(@q, :nome, t("activerecord.attributes.associado.pessoa.nome")) %></th>
             <th><%= sort_link(@q, :cpf, t("activerecord.attributes.associado.pessoa.cpf")) %></th>
-            <th><%= sort_link(@q, :data_nascimento, t("activerecord.attributes.associado.pessoa.datanascimento")) %></th>
+            <th><%= sort_link(@q, :datanascimento, t("activerecord.attributes.associado.pessoa.datanascimento")) %></th>
           </tr>
         </thead>
         <tbody>
@@ -44,7 +44,7 @@
               </td>
               <td><%= associado.pessoa.nome %></td>
               <td><%= associado.pessoa.cpf %></td>
-              <td><%= associado.pessoa.data_nascimento%></td>
+              <td><%= associado.pessoa.datanascimento%></td>
             </tr>
           <% end %>
         </tbody>

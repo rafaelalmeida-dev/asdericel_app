@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_27_162524) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_08_182316) do
   create_table "associados", force: :cascade do |t|
     t.string "celular"
     t.string "email"
@@ -23,6 +23,32 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_27_162524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pessoa_id"], name: "index_associados_on_pessoa_id"
+  end
+
+  create_table "atleta_federacaos", force: :cascade do |t|
+    t.string "numero"
+    t.integer "atleta_id"
+    t.integer "federacao_id"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["atleta_id"], name: "index_atleta_federacaos_on_atleta_id"
+    t.index ["federacao_id"], name: "index_atleta_federacaos_on_federacao_id"
+  end
+
+  create_table "atleta_federacoes", force: :cascade do |t|
+    t.string "numero"
+    t.integer "atleta_id"
+    t.integer "federacao_id"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["atleta_id"], name: "index_atleta_federacoes_on_atleta_id"
+    t.index ["federacao_id"], name: "index_atleta_federacoes_on_federacao_id"
   end
 
   create_table "atletas", force: :cascade do |t|
@@ -38,9 +64,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_27_162524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ensino_id"
+    t.integer "escola_id"
     t.index ["calca_id"], name: "index_atletas_on_calca_id"
     t.index ["camisa_id"], name: "index_atletas_on_camisa_id"
     t.index ["ensino_id"], name: "index_atletas_on_ensino_id"
+    t.index ["escola_id"], name: "index_atletas_on_escola_id"
     t.index ["pessoa_id"], name: "index_atletas_on_pessoa_id"
   end
 
@@ -135,7 +163,26 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_27_162524) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "federacoes", force: :cascade do |t|
+    t.string "nome"
+    t.string "sigla"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "funcaos", force: :cascade do |t|
+    t.string "nome"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "modalidades", force: :cascade do |t|
     t.string "nome"
     t.string "created_by"
     t.string "updated_by"
@@ -231,9 +278,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_27_162524) do
   end
 
   add_foreign_key "associados", "pessoas"
+  add_foreign_key "atleta_federacaos", "atletas"
+  add_foreign_key "atleta_federacaos", "federacoes"
+  add_foreign_key "atleta_federacoes", "atletas"
+  add_foreign_key "atleta_federacoes", "federacoes"
   add_foreign_key "atletas", "calcas"
   add_foreign_key "atletas", "camisas"
   add_foreign_key "atletas", "ensinos"
+  add_foreign_key "atletas", "escolas"
   add_foreign_key "atletas", "pessoas"
   add_foreign_key "pessoas", "estadocivils"
   add_foreign_key "pessoas", "funcaos"
