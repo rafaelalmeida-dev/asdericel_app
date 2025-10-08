@@ -57,6 +57,9 @@ pt-BR:
       registration:
         one: "Registro"
         other: "Registros"
+      dirigente:
+        one: "Dirigente"
+        other: "Dirigentes"
     attributes:
       estado:
         nome: "Nome"

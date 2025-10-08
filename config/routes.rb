@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :dirigentes
   resources :modalidades
   resources :atletas
   resources :calcas

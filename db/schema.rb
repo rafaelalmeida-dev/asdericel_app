@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_08_182316) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_08_220032) do
   create_table "associados", force: :cascade do |t|
     t.string "celular"
     t.string "email"
@@ -97,6 +97,33 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_08_182316) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "dirigentes", force: :cascade do |t|
+    t.string "cref"
+    t.integer "pessoa_id"
+    t.integer "modalidade_id"
+    t.integer "federacao_id"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "ensino_id"
+    t.integer "camisa_id"
+    t.integer "calca_id"
+    t.string "peso"
+    t.string "altura"
+    t.string "numeroSus"
+    t.string "profissao"
+    t.string "celular"
+    t.string "instagram"
+    t.index ["calca_id"], name: "index_dirigentes_on_calca_id"
+    t.index ["camisa_id"], name: "index_dirigentes_on_camisa_id"
+    t.index ["ensino_id"], name: "index_dirigentes_on_ensino_id"
+    t.index ["federacao_id"], name: "index_dirigentes_on_federacao_id"
+    t.index ["modalidade_id"], name: "index_dirigentes_on_modalidade_id"
+    t.index ["pessoa_id"], name: "index_dirigentes_on_pessoa_id"
   end
 
   create_table "ensinos", force: :cascade do |t|
@@ -287,6 +314,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_08_182316) do
   add_foreign_key "atletas", "ensinos"
   add_foreign_key "atletas", "escolas"
   add_foreign_key "atletas", "pessoas"
+  add_foreign_key "dirigentes", "calcas"
+  add_foreign_key "dirigentes", "camisas"
+  add_foreign_key "dirigentes", "ensinos"
+  add_foreign_key "dirigentes", "federacoes"
+  add_foreign_key "dirigentes", "modalidades"
+  add_foreign_key "dirigentes", "pessoas"
   add_foreign_key "pessoas", "estadocivils"
   add_foreign_key "pessoas", "funcaos"
   add_foreign_key "pessoas", "sexos"
