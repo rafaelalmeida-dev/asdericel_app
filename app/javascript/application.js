@@ -10,6 +10,8 @@ import "./vendor/menu.js";
 import "./vendor/apex-charts/apexcharts.js";
 import "./vendor/highlight/highlight.js";
 import "./vendor/popper/popper.js";
+import "./vendor/sweetalert2/sweetalert2.js";
+window.Swal = window.Sweetalert2;
 
 // Bootstrap (geralmente depende de jQuery)
 import "./bootstrap.js";

@@ -101,24 +101,29 @@ $(document).ready(function () {
 
   $(document).on("click", "[data-confirm-delete]", function (event) {
     event.preventDefault();
-
-    const form = $(this).closest("form");
-    const confirmMessage = $(this).attr("data-confirm-message") || "Esta ação não pode ser desfeita.";
+    var link = $(this).attr("data-confirm-delete");
+    var csrfToken = $(this).attr("data-csrf-token");
+    var confirmMessage = $(this).attr("data-confirm-message") || "Esta ação não pode ser desfeita.";
 
     Swal.fire({
       title: 'Tem certeza?',
       text: confirmMessage,
       icon: 'warning',
       showCancelButton: true,
-      customClass: {
-        confirmButton: "btn btn-danger",
-        cancelButton: "btn btn-success"
-      },
       confirmButtonText: 'Sim, tenho certeza!',
-      cancelButtonText: 'Cancelar'
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        form.submit(); 
+        var form = $('#' + $(this).closest('form').attr('id'));
+
+        var methodInput = $('<input type="hidden" name="_method" value="delete">');
+        var csrfInput = $('<input type="hidden" name="authenticity_token" value="' + csrfToken + '">');
+
+        form.attr('action', link);
+        form.append(methodInput);
+        form.append(csrfInput);
+        form.submit();
       }
     });
   });
