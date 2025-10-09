@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :authenticate_user!, only: [ :new, :create ]
-  before_action :authorize_internal_user!
   before_action :configure_sign_up_params, only: [ :create ]
   before_action :configure_account_update_params, only: [ :update ]
+  before_action :authorize_internal_user!, only: [ :new, :create ]
   skip_before_action :require_no_authentication, only: [ :new, :create ]
 
   add_breadcrumb "Home", :root_path

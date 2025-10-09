@@ -9,7 +9,7 @@
       <%= link_to equipes_path, class: "btn btn-outline-secondary d-flex align-items-center justify-content-center" do %>
         <i class="ph ph-x"></i>
       <% end if params[:q] %>
-    <% end %>      
+    <% end %>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -17,9 +17,7 @@
         <thead>
           <tr>
             <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
-            
-              <th><%= sort_link(@q, :nome, t("activerecord.attributes.equipe.nome")) %></th>
-            
+            <th><%= sort_link(@q, :nome, t("activerecord.attributes.equipe.nome")) %></th>
           </tr>
         </thead>
         <tbody>
@@ -42,9 +40,7 @@
                   </div>
                 </div>
               </td>
-              
-                <td><%= equipe.nome %></td>
-              
+              <td><%= equipe.nome %></td>
             </tr>
           <% end %>
         </tbody>
