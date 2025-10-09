@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :dirigentes
+  resources :modalidades
   resources :atletas
   resources :calcas
   resources :camisas
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
   resources :equipes
   resources :escolas
   resources :eventos
-  resources :federacaos
+  resources :federacoes
   resources :responsavels
   resources :parentescos
   resources :sexos

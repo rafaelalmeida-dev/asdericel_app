@@ -1,0 +1,69 @@
+<%= render "shared/context_nav", title: t("activerecord.models.dirigente.other"), new_path: new_dirigente_path do  %>
+  <span class="breadcrumb-item active"><%= t("activerecord.models.dirigente.other") %></span>
+<% end %>
+<%= render "shared/notice" %>
+<div class="card">
+  <div class="card-header d-flex">
+    <%= search_form_for @q, html: { class: "d-flex gap-2" , autocomplete: "off"} do |f| %>
+      <%= f.search_field :cref_cont, class: "form-control", placeholder: t("activerecord.attributes.dirigente.cref") %>
+      <%= link_to dirigentes_path, class: "btn btn-outline-secondary d-flex align-items-center justify-content-center" do %>
+        <i class="ph ph-x"></i>
+      <% end if params[:q] %>
+    <% end %>      
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-sm table-bordered table-striped">
+        <thead>
+          <tr>
+            <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
+            
+              <th><%= sort_link(@q, :cref, t("activerecord.attributes.dirigente.cref")) %></th>
+            
+              <th><%= sort_link(@q, :pessoa, t("activerecord.attributes.dirigente.pessoa")) %></th>
+            
+              <th><%= sort_link(@q, :modalidade, t("activerecord.attributes.dirigente.modalidade")) %></th>
+            
+              <th><%= sort_link(@q, :federacao, t("activerecord.attributes.dirigente.federacao")) %></th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <% @dirigentes.each do |dirigente| %>
+            <tr>
+              <td class="text-center">
+                <div class="dropdown-toggle">
+                  <a href="#" class="text-body dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="ph ph-gear"></i>
+                  </a>
+                  <div class="dropdown-menu">
+                    <div class="dropdown-header"><%= t("common.table_dropdown_options") %></div>
+                    <%= link_to content_tag(:i, "", class: "ph ph-eye me-2") + t("common.actions.show"), dirigente_path(dirigente), class: "dropdown-item" %>
+                    <%= link_to content_tag(:i, "", class: "ph ph-pen me-2") + t("common.actions.edit"), edit_dirigente_path(dirigente), class: "dropdown-item" %>
+                    <%= form_for dirigente, method: :delete do |f| %>
+                      <a class="dropdown-item hand-pointer" data-confirm-delete="<%= dirigente_path(dirigente) %>" data-csrf-token="<%= form_authenticity_token %>">
+                        <i class="ph ph-trash-simple me-2"></i><%= t("common.actions.delete") %>
+                      </a>
+                    <% end %>
+                  </div>
+                </div>
+              </td>
+              
+                <td><%= dirigente.cref %></td>
+              
+                <td><%= dirigente.pessoa %></td>
+              
+                <td><%= dirigente.modalidade %></td>
+              
+                <td><%= dirigente.federacao %></td>
+              
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer">
+    <%= pagy_navigation(@pagy) %>
+  </div>
+</div>

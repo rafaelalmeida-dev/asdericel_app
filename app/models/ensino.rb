@@ -9,7 +9,7 @@
 class Ensino < ApplicationRecord
   include Datafilter
 
-
+    has_many :atletas
   # Permitir os atributos buscáveis pelo Ransack
   def self.ransackable_attributes(auth_object = nil)
     # array de strings

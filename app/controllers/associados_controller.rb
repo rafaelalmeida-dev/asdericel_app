@@ -10,7 +10,7 @@ class AssociadosController < ApplicationController
   end
 
   def show
-    add_breadcrumb @associado.celular, associado_path(@associado)
+    add_breadcrumb @associado.pessoa.nome, associado_path(@associado)
   end
 
   def new
@@ -35,6 +35,7 @@ class AssociadosController < ApplicationController
   end
 
   def update
+    byebug
     if @associado.update(associado_params)
       redirect_to associados_path, notice: t("messages.updated_successfully"), status: :see_other
     else

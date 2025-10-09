@@ -11,9 +11,21 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
   <body class="d-flex justify-content-center align-items-center vh-100 bg-light">
-    <div class="card shadow p-4" style="min-width: 350px;">
-      <%= render "shared/notice" %>
-      <%= yield %>
-    </div>
-  </body>
-</html>
+    <div class="row justify-content-center">
+      <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center align-items-center mb-4">
+                <%= image_tag "Logo2024.png", style: "width:200px;", alt: "Alternate Text" %>
+              </div>
+              <%= render "shared/notice" %>
+              <div class="col-12">
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>

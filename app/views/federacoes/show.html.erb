@@ -1,8 +1,7 @@
 <%= render "shared/context_nav", title: t("activerecord.models.federacao.other") do %>
-  <%= content_tag(:span, link_to(t("activerecord.models.federacao.other"), federacaos_path, class: "text-dark"), class: "breadcrumb-item") %>
+  <%= content_tag(:span, link_to(t("activerecord.models.federacao.other"),federacoes_path, class: "text-dark"), class: "breadcrumb-item") %>
   <%= content_tag(:span, t("common.actions.#{params[:action]}"), class: "breadcrumb-item active") %>
 <% end %>
-
 <%= simple_form_for(@federacao, url: "#", method: "get", html: { disabled: true }) do |f| %>
   <%= render "shared/model_errors" %>
   <%= render "shared/notice" %>
@@ -15,9 +14,9 @@
     <div class="card-body">
       <form>
         <%= render "federacao", f: f %>
-        <%= link_to t("common.back"), federacaos_path, class: "btn btn-outline-secondary" %>
+        <%= link_to t("common.back"), federacoes_path, class: "btn btn-outline-secondary" %>
         <%= btn_submit(f) %>
-      </form>    
+      </form>
     </div>
   </div>
 <% end %>

@@ -10,6 +10,8 @@
 class Federacao < ApplicationRecord
   include Datafilter
 
+  has_many :atleta_federacoes
+  has_many :atletas, through: :atleta_federacoes
 
   # Permitir os atributos buscáveis pelo Ransack
   def self.ransackable_attributes(auth_object = nil)
