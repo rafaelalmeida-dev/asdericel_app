@@ -54,6 +54,30 @@
   <div class="col-6">
     <%= f.input :instagram, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "instagram",disabled: local_assigns[:disabled] } %>
   </div>
+  <hr>
+  <%= f.simple_fields_for :endereco do |e| %>
+    <div class="col-3">
+      <%= e.input :cep %>
+    </div>
+    <div class="col-3">
+      <%= e.input :rua %>
+    </div>
+    <div class="col-3">
+      <%= e.input :bairro %>
+    </div>
+    <div class="col-3">
+      <%= e.input :numero %>
+    </div>
+    <div class="col-3">
+      <%= e.association :cidade, input_html: {  class: "select2" } %>
+    </div>
+    <div class="col-3">
+      <%= e.association :estado, input_html: {  class: "select2" } %>
+    </div>
+    <div class="col-3">
+      <%= e.association :pais, input_html: {  class: "select2" } %>
+    </div>
+  <% end%>
   <div class="col-12">
     <%= f.input :observacao, as: :text, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "observacao",disabled: local_assigns[:disabled] } %>
   </div>

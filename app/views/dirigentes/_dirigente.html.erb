@@ -60,6 +60,29 @@
   </div>
 <% end %>
 <div class="row">
+  <%= f.simple_fields_for :endereco do |e| %>
+    <div class="col-3">
+      <%= e.input :cep %>
+    </div>
+    <div class="col-3">
+      <%= e.input :rua %>
+    </div>
+    <div class="col-3">
+      <%= e.input :bairro %>
+    </div>
+    <div class="col-3">
+      <%= e.input :numero %>
+    </div>
+    <div class="col-3">
+      <%= e.association :cidade, input_html: {  class: "select2" } %>
+    </div>
+    <div class="col-3">
+      <%= e.association :estado, input_html: {  class: "select2" } %>
+    </div>
+    <div class="col-3">
+      <%= e.association :pais, input_html: {  class: "select2" } %>
+    </div>
+  <% end%>
   <div class="col-6">
     <%= f.association :ensino, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
   </div>

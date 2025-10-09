@@ -1,38 +1,41 @@
 # frozen_string_literal: true
 
 # Associações:
-# pessoa
+# cidade
+# estado
+# pais
 
 # Atributos:
-# string - celular
-# string - email
-# string - instagram
-# string - observacao
+# string - cep
+# string - rua
+# string - bairro
+# integer - numero
 
 # Adicione aqui quaisquer métodos ou validações abaixo
-class Associado < ApplicationRecord
+class Endereco < ApplicationRecord
   include Datafilter
 
-  belongs_to :pessoa
-  belongs_to :endereco
+  belongs_to :cidade
+  belongs_to :estado
+  belongs_to :pais
 
-  accepts_nested_attributes_for :pessoa
-  accepts_nested_attributes_for :endereco
   # Permitir os atributos buscáveis pelo Ransack
   def self.ransackable_attributes(auth_object = nil)
     # array de strings
     %w[
-      celular
-      email
-      instagram
-      observacao
+      cep
+      rua
+      bairro
+      numero
     ]
   end
 
   # Permitir as associações buscáveis pelo Ransack
   def self.ransackable_associations(auth_object = nil)
     %w[
-      pessoa
+      cidade
+      estado
+      pais
     ]
   end
 end

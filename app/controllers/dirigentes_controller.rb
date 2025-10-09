@@ -16,6 +16,7 @@ class DirigentesController < ApplicationController
   def new
     @dirigente = Dirigente.new
     @dirigente.build_pessoa
+    @dirigente.build_endereco
     add_breadcrumb t("common.actions.new"), new_dirigente_path
   end
 
