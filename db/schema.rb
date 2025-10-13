@@ -25,19 +25,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_08_220032) do
     t.index ["pessoa_id"], name: "index_associados_on_pessoa_id"
   end
 
-  create_table "atleta_federacaos", force: :cascade do |t|
-    t.string "numero"
-    t.integer "atleta_id"
-    t.integer "federacao_id"
-    t.string "created_by"
-    t.string "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["atleta_id"], name: "index_atleta_federacaos_on_atleta_id"
-    t.index ["federacao_id"], name: "index_atleta_federacaos_on_federacao_id"
-  end
-
   create_table "atleta_federacoes", force: :cascade do |t|
     t.string "numero"
     t.integer "atleta_id"
@@ -180,16 +167,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_08_220032) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "federacaos", force: :cascade do |t|
-    t.string "sigla"
-    t.string "nome"
-    t.string "created_by"
-    t.string "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "federacoes", force: :cascade do |t|
     t.string "nome"
     t.string "sigla"
@@ -305,8 +282,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_08_220032) do
   end
 
   add_foreign_key "associados", "pessoas"
-  add_foreign_key "atleta_federacaos", "atletas"
-  add_foreign_key "atleta_federacaos", "federacoes"
   add_foreign_key "atleta_federacoes", "atletas"
   add_foreign_key "atleta_federacoes", "federacoes"
   add_foreign_key "atletas", "calcas"

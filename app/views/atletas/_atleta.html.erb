@@ -71,22 +71,6 @@
   <div class="col-3">
     <%= f.association :calca, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
   </div>
-  <%= f.simple_fields_for :atleta do |f| %>
-    <div class="mb-3">
-      <%= f.label :nome %>
-      <%= f.text_field :nome, class: "form-control" %>
-    </div>
-    <h3>Federações</h3>
-    <div id="federacoes">
-      <%= f.fields_for :atleta_federacoes do |af| %>
-        <%= render "atleta_federacao_fields", f: af %>
-      <% end %>
-    </div>
-    <div class="col-md-2">
-      <%= link_to  "Adicionar Federação",federacao_path(f), class: "btn btn-sm btn-primary" %>
-    </div>
-    <div class="mt-3">
-      <%= f.submit "Salvar", class: "btn btn-success" %>
-    </div>
-  <% end %>
+  <hr/>
+  <%= render "modal_federacao", f:f %>
 </div>
