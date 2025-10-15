@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :dirigentes
   resources :modalidades
-  resources :atletas
+  resources :atletas do
+    resources :atleta_federacoes, only: [ :create, :remove ]
+  end
   resources :calcas
   resources :camisas
   resources :associados

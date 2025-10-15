@@ -15,6 +15,8 @@ class AtletasController < ApplicationController
 
   def new
     @atleta = Atleta.new
+    @atleta.atleta_federacoes.build
+    @federacoes = Federacao.all
     @atleta.build_pessoa
     add_breadcrumb t("common.actions.new"), new_atleta_path
   end
@@ -30,6 +32,7 @@ class AtletasController < ApplicationController
     if @atleta.save
       redirect_to atletas_path, notice: t("messages.created_successfully")
     else
+      @federacoes = Federacao.all
       render :new, status: :unprocessable_entity
     end
   end
@@ -50,6 +53,7 @@ class AtletasController < ApplicationController
     end
   end
 
+
   private
 
   def set_atleta
@@ -60,8 +64,8 @@ class AtletasController < ApplicationController
   def atleta_params
     unpermitted = %w[id deleted_at created_by updated_by]
     permitted = Atleta.column_names.reject { |col| unpermitted.include?(col) }
-    params.require(:atleta).permit(permitted.map(&:to_sym), 
-    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :pai, :mae, :cpf,:datanascimento, :sexo_id, :funcao_id, :estadocivil_id, :ensino_id ],
-    atleta_federacoes_attributes: [:id, :federacao_id, :numero, :_destroy])
+    params.require(:atleta).permit(permitted.map(&:to_sym),
+    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :pai, :mae, :cpf, :datanascimento, :sexo_id, :funcao_id, :estadocivil_id, :ensino_id ],
+    atleta_federacoes_attributes: [ :id, :federacao_id, :numero, :_destroy ])
   end
 end

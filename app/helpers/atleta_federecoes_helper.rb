@@ -1,0 +1,2 @@
+module AtletaFederecoesHelper
+end

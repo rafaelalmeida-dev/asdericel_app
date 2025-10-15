@@ -72,5 +72,40 @@
     <%= f.association :calca, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
   </div>
   <hr/>
-  <%= render "modal_federacao", f:f %>
+  <div id="federacoes" class="d-flex flex-wrap align-items-center gap-2 justify-content-between mb-3">
+    <h3>Federações do Aluno</h3>
+    <%= f.fields_for :atleta_federacoes do |ff| %>
+      <%= render "modal_federacao", f: ff, federacoes: @federacoes %>
+    <% end %>
+    <!-- Botão para abrir modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+      Associar Federação
+    </button>
+  </div>
+  <div id="lista-federacoes">
+    <%= render "lista_federacoes", f: f %>
+  </div>
 </div>
+<script>
+  document.addEventListener("turbo:load", () => {
+    const addButton = document.getElementById("add-federacao");
+    if (!addButton) return;
+
+    addButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      const container = document.getElementById("federacoes");
+      const time = new Date().getTime();
+
+      // Rails substitui `new_record` pelo índice certo no servidor
+      const template = container.dataset.template.replace(/new_record/g, time);
+      container.insertAdjacentHTML("beforeend", template);
+    });
+
+    document.addEventListener("click", (e) => {
+      if (e.target.matches(".remove-federacao")) {
+        e.preventDefault();
+        e.target.closest(".nested-fields").remove();
+      }
+    });
+  });
+</script>

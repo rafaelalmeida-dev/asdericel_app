@@ -1,44 +1,28 @@
-<div class="col-lg-4 col-md-6">
-  <small class="text-light fw-semibold"></small>
-  <div class="mt-4">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
-      Federacao
-    </button>
-    <!-- Modal -->
-    <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel1"></h5>
+
+<div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Associar Federação</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="federacoes_modal">
+        <%= form_with model: [@atleta, AtletaFederacao.new], data: { turbo_frame: "lista-federacoes" }, local: false do |f| %>
+          <div class="mb-2">
+            <%= f.collection_select :federacao_id, @federacoes, :id, :nome, { prompt: "Selecione a Federação" }, class: "form-select" %>
           </div>
-          <div class="modal-body">
-            <%= f.simple_fields_for :atleta do |f| %>
-              <h3>Federações</h3>
-              <div id="federacoes">
-                <div class="nested-fields">
-                  <div class="col-md-12">
-                    <%= f.collection_select :federacao_id, Federacao.all, :id, :nome, { prompt: "Selecione a Federação" }, class: "form-select" %>
-                  </div>
-                  <div class="col-md-12">
-                    <%= f.text_field :numero, placeholder: "Número da Federação", class: "form-control" %>
-                  </div>
-                  <div class="col-md-2">
-                    <%= link_to  "Remover",federacao_path(f) , class: "btn btn-danger" %>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <div class="col-md-2">
-                  <%= link_to  "Adicionar Federação",federacao_path(f), class: "btn btn-sm btn-primary" %>
-                </div>
-                <div class="mt-3">
-                  <%= f.submit "Salvar", class: "btn btn-success" %>
-                </div>
-              </div>
-            <% end %>
+          <div class="mb-2">
+            <%= f.text_field :numero, placeholder: "Número da Federação", class: "form-control" %>
           </div>
-        </div>
+          <div class="modal-footer">
+            <div class="mt-2">
+              <%= f.submit "Salvar", class: "btn btn-success" %>
+            </div>
+            <div class="col-md-2">
+              <%= link_to  "Adicionar Federação",federacao_path(f), class: "btn btn-sm btn-primary" %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
