@@ -59,4 +59,7 @@ class Pessoa < ApplicationRecord
       funcao
     ]
   end
+  def to_s
+    nome
+  end
 end

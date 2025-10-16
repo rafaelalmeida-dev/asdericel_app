@@ -10,7 +10,8 @@ class AtletasController < ApplicationController
   end
 
   def show
-    add_breadcrumb @atleta.numeroSus, atleta_path(@atleta)
+    @atleta.atleta_federacoes.build
+    add_breadcrumb @atleta.id, atleta_path(@atleta)
   end
 
   def new
@@ -22,7 +23,8 @@ class AtletasController < ApplicationController
   end
 
   def edit
-    add_breadcrumb @atleta.numeroSus, atleta_path(@atleta)
+    @atleta.atleta_federacoes.build
+    add_breadcrumb @atleta.id, atleta_path(@atleta)
     add_breadcrumb t("common.actions.edit"), edit_atleta_path(@atleta)
   end
 
@@ -48,9 +50,26 @@ class AtletasController < ApplicationController
   end
 
   def update
+    @atleta = Atleta.find(params[:id])
+
     if @atleta.update(atleta_params)
-      redirect_to atletas_path, notice: t("messages.updated_successfully"), status: :see_other
+      federacoes_params = params[:atleta][:federacoes]
+
+      # atualiza associações
+      @atleta.atleta_federacoes.destroy_all
+
+      if federacoes_params.present?
+        federacoes_params.each_value do |fed|
+          @atleta.atleta_federacoes.create(
+            federacao_id: fed[:federacao_id],
+            numero: fed[:numero]
+          )
+        end
+      end
+
+      redirect_to atletas_path, notice: t("messages.updated_successfully")
     else
+      @federacoes = Federacao.all
       render :edit, status: :unprocessable_entity
     end
   end
@@ -68,6 +87,7 @@ class AtletasController < ApplicationController
 
   def set_atleta
     @atleta = Atleta.find_by(id: params[:id])
+    @federacoes = Federacao.all
     redirect_to atletas_path, alert: t("messages.not_found") unless @atleta
   end
 

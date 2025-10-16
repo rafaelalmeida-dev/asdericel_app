@@ -15,7 +15,7 @@
       <form>
         <%= render "atleta", f: f , disabled: true %>
         <%= link_to t("common.back"), atletas_path, class: "btn btn-outline-secondary" %>
-        <%= btn_submit(f) %>
+        <%= link_to t("common.actions.edit"), edit_atleta_path(@atleta), class: "btn btn-primary" %>
       </form>
     </div>
   </div>

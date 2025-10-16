@@ -1,49 +1,49 @@
 <%= f.simple_fields_for :pessoa do |pf| %>
   <div class="row">
     <div class="col-6">
-      <%= pf.input :nome %>
+      <%= pf.input :nome, input_html: { disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-6">
-      <%= pf.input :nomesocial %>
+      <%= pf.input :nomesocial, input_html: { disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-6">
-      <%= pf.input :nomeconhecido ,input_html: {  placeholder: "Nome conhecido na Modalidade" }%>
+      <%= pf.input :nomeconhecido ,input_html: {  placeholder: "Nome conhecido na Modalidade", disabled: local_assigns[:disabled] }%>
     </div>
     <div class="col-3">
-      <%= pf.association :sexo, input_html: {  class: "select2" } %>
+      <%= pf.association :sexo, input_html: {  class: "select2", disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-3">
-      <%= pf.association :estadocivil, input_html: {  class: "select2" } %>
+      <%= pf.association :estadocivil, input_html: {  class: "select2", disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-6">
-      <%= pf.input :mae %>
+      <%= pf.input :mae, input_html: { disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-6">
-      <%= pf.input :pai %>
+      <%= pf.input :pai, input_html: { disabled: local_assigns[:disabled] }%>
     </div>
     <div class="col-3">
-      <%= pf.input :datanascimento,as: :tel, input_html: { class: "data"} %>
+      <%= pf.input :datanascimento,as: :tel, input_html: { class: "data" , disabled: local_assigns[:disabled]} %>
     </div>
     <div class="col-3">
-      <%= pf.association :funcao, input_html: {  class: "select2" } %>
+      <%= pf.association :funcao, input_html: {  class: "select2", disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-3">
-      <%= pf.input :cpf, input_html: { class: "cpf"}%>
+      <%= pf.input :cpf, input_html: { class: "cpf" , disabled: local_assigns[:disabled]}%>
     </div>
     <div class="col-3">
-      <%= pf.input :cinrg %>
+      <%= pf.input :cinrg, input_html: { disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-3">
-      <%= pf.input :orgaoemissor %>
+      <%= pf.input :orgaoemissor, input_html: { disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-3">
-      <%= pf.input :dataexpedicao,as: :tel,input_html: { class: "data"} %>
+      <%= pf.input :dataexpedicao,as: :tel,input_html: { class: "data", disabled: local_assigns[:disabled]} %>
     </div>
     <div class="col-3">
-      <%= pf.input :passaporte %>
+      <%= pf.input :passaporte, input_html: { disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-3">
-      <%= f.input :numeroSus, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "numeroSus",disabled: local_assigns[:disabled] } %>
+      <%= f.input :numeroSus, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "numeroSus", disabled: local_assigns[:disabled] } %>
     </div>
   </div>
 <% end %>
@@ -56,9 +56,6 @@
     <%= f.association :escola, input_html: {  class: "select2", disabled: local_assigns[:disabled]  } %>
   </div>
   <hr/>
-  <div class="col-6">
-    <%= f.association :modalidades, input_html: {  class: "select2", multiple: true, disabled: local_assigns[:disabled]  } %>
-  </div>
   <div class="col-3">
     <%= f.input :peso, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "peso",disabled: local_assigns[:disabled] } %>
   </div>
@@ -82,91 +79,94 @@
   </div>
   <!-- Lista dinâmica -->
   <div id="lista-federacoes" class="mt-3">
-    <!-- Itens aparecerão aqui -->
   </div>
 </div>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    let federacoes = []; // lista temporária
+    let federacoes = <%= raw @atleta.atleta_federacoes.includes(:federacao).map { |af|
+      {
+        federacao_id: af.federacao_id,
+        federacao_nome: af.federacao.nome,
+        numero: af.numero
+      }
+    }.to_json %>;
+
     const listaContainer = document.querySelector("#lista-federacoes");
     const btnAdicionar = document.querySelector("#adicionar-federacao");
 
     if (!btnAdicionar) return;
 
     btnAdicionar.addEventListener("click", () => {
-   const federacaoSelect = document.querySelector("#federacao_select");
-   const federacaoId = federacaoSelect.value;
-   const federacaoNome = federacaoSelect.options[federacaoSelect.selectedIndex].text;
-   const numero = document.querySelector("#federacao_numero").value.trim();
+      const federacaoSelect = document.querySelector("#federacao_select");
+      const federacaoId = federacaoSelect.value;
+      const federacaoNome = federacaoSelect.options[federacaoSelect.selectedIndex].text;
+      const numero = document.querySelector("#federacao_numero").value.trim();
 
-   if (!federacaoId || !numero) {
-     alert("Selecione uma federação e informe o número!");
-     return;
-   }
+      if (!federacaoId || !numero) {
+        alert("Selecione uma federação e informe o número!");
+        return;
+      }
 
-   // Evitar duplicidade
-   const existe = federacoes.some(f => f.federacao_id === federacaoId);
-   if (existe) {
-     alert("Esta federação já foi adicionada!");
-     return;
-   }
+      const existe = federacoes.some(f => f.federacao_id == federacaoId);
+      if (existe) {
+        alert("Esta federação já foi adicionada!");
+        return;
+      }
 
-   // Cria objeto e adiciona à lista
-   const federacao = { federacao_id: federacaoId, federacao_nome: federacaoNome, numero };
-   federacoes.push(federacao);
+      const federacao = { federacao_id: federacaoId, federacao_nome: federacaoNome, numero };
+      federacoes.push(federacao);
 
-   renderLista();
+      renderLista();
 
-   // Fecha o modal
-   const modal = bootstrap.Modal.getInstance(document.querySelector("#basicModal"));
-   modal.hide();
+      const modal = bootstrap.Modal.getInstance(document.querySelector("#basicModal"));
+      modal.hide();
 
-   // limpa campos
-   federacaoSelect.value = "";
-   document.querySelector("#federacao_numero").value = "";
+      federacaoSelect.value = "";
+      document.querySelector("#federacao_numero").value = "";
     });
 
     function renderLista() {
-   listaContainer.innerHTML = "";
+      listaContainer.innerHTML = "";
 
-   federacoes.forEach((f, i) => {
-     const item = document.createElement("div");
-     item.classList.add("card", "mb-2");
-     item.innerHTML = `
-       <div class="card-body d-flex justify-content-between align-items-center">
-         <div>
-           <strong>${f.federacao_nome}</strong> | <strong>Numeração:</strong> ${f.numero}
-         </div>
-         <button type="button" class="btn btn-danger btn-sm" data-index="${i}">Remover</button>
-       </div>
-     `;
-     listaContainer.appendChild(item);
-   });
+      federacoes.forEach((f, i) => {
+        const item = document.createElement("div");
+        item.classList.add("card", "mb-2");
+        item.innerHTML = `
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <div>
+              <strong>${f.federacao_nome}</strong> | <strong>Numeração:</strong> ${f.numero}
+            </div>
+            <button type="button" class="btn btn-danger btn-sm" data-index="${i}">Remover</button>
+          </div>
+        `;
+        listaContainer.appendChild(item);
+      });
 
-   // remove item
-   document.querySelectorAll("#lista-federacoes button[data-index]").forEach(btn => {
-     btn.addEventListener("click", (e) => {
-       const index = e.target.dataset.index;
-       federacoes.splice(index, 1);
-       renderLista();
-     });
-   });
+      // remove item
+      document.querySelectorAll("#lista-federacoes button[data-index]").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const index = e.target.dataset.index;
+          federacoes.splice(index, 1);
+          renderLista();
+        });
+      });
 
-   // cria campos ocultos
-   document.querySelectorAll("input[name^='atleta[federacoes]']").forEach(e => e.remove());
-   federacoes.forEach((f, i) => {
-     const idField = document.createElement("input");
-     idField.type = "hidden";
-     idField.name = `atleta[federacoes][${i}][federacao_id]`;
-     idField.value = f.federacao_id;
-     listaContainer.appendChild(idField);
+      // recria campos ocultos
+      document.querySelectorAll("input[name^='atleta[federacoes]']").forEach(e => e.remove());
+      federacoes.forEach((f, i) => {
+        const idField = document.createElement("input");
+        idField.type = "hidden";
+        idField.name = `atleta[federacoes][${i}][federacao_id]`;
+        idField.value = f.federacao_id;
+        listaContainer.appendChild(idField);
 
-     const numeroField = document.createElement("input");
-     numeroField.type = "hidden";
-     numeroField.name = `atleta[federacoes][${i}][numero]`;
-     numeroField.value = f.numero;
-     listaContainer.appendChild(numeroField);
-   });
+        const numeroField = document.createElement("input");
+        numeroField.type = "hidden";
+        numeroField.name = `atleta[federacoes][${i}][numero]`;
+        numeroField.value = f.numero;
+        listaContainer.appendChild(numeroField);
+      });
     }
+    renderLista();
   });
 </script>
