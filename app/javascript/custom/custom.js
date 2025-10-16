@@ -127,5 +127,8 @@ $(document).ready(function () {
       }
     });
   });
+
+  //Script para lista temporaria de atleta_federacao no form de Atleta
+ 
 });
 

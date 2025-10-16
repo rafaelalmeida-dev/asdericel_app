@@ -72,40 +72,101 @@
     <%= f.association :calca, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
   </div>
   <hr/>
-  <div id="federacoes" class="d-flex flex-wrap align-items-center gap-2 justify-content-between mb-3">
-    <h3>Federações do Aluno</h3>
-    <%= f.fields_for :atleta_federacoes do |ff| %>
-      <%= render "modal_federacao", f: ff, federacoes: @federacoes %>
-    <% end %>
+  <div class="d-flex flex-wrap align-items-center gap-2 justify-content-between mb-3">
+    <h5>Federações do Aluno</h5>
+    <%= render "modal_federacao", f: f %>
     <!-- Botão para abrir modal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
       Associar Federação
     </button>
   </div>
-  <div id="lista-federacoes">
-    <%= render "lista_federacoes", f: f %>
+  <!-- Lista dinâmica -->
+  <div id="lista-federacoes" class="mt-3">
+    <!-- Itens aparecerão aqui -->
   </div>
 </div>
 <script>
-  document.addEventListener("turbo:load", () => {
-    const addButton = document.getElementById("add-federacao");
-    if (!addButton) return;
+  document.addEventListener("DOMContentLoaded", () => {
+    let federacoes = []; // lista temporária
+    const listaContainer = document.querySelector("#lista-federacoes");
+    const btnAdicionar = document.querySelector("#adicionar-federacao");
 
-    addButton.addEventListener("click", (e) => {
-      e.preventDefault();
-      const container = document.getElementById("federacoes");
-      const time = new Date().getTime();
+    if (!btnAdicionar) return;
 
-      // Rails substitui `new_record` pelo índice certo no servidor
-      const template = container.dataset.template.replace(/new_record/g, time);
-      container.insertAdjacentHTML("beforeend", template);
+    btnAdicionar.addEventListener("click", () => {
+   const federacaoSelect = document.querySelector("#federacao_select");
+   const federacaoId = federacaoSelect.value;
+   const federacaoNome = federacaoSelect.options[federacaoSelect.selectedIndex].text;
+   const numero = document.querySelector("#federacao_numero").value.trim();
+
+   if (!federacaoId || !numero) {
+     alert("Selecione uma federação e informe o número!");
+     return;
+   }
+
+   // Evitar duplicidade
+   const existe = federacoes.some(f => f.federacao_id === federacaoId);
+   if (existe) {
+     alert("Esta federação já foi adicionada!");
+     return;
+   }
+
+   // Cria objeto e adiciona à lista
+   const federacao = { federacao_id: federacaoId, federacao_nome: federacaoNome, numero };
+   federacoes.push(federacao);
+
+   renderLista();
+
+   // Fecha o modal
+   const modal = bootstrap.Modal.getInstance(document.querySelector("#basicModal"));
+   modal.hide();
+
+   // limpa campos
+   federacaoSelect.value = "";
+   document.querySelector("#federacao_numero").value = "";
     });
 
-    document.addEventListener("click", (e) => {
-      if (e.target.matches(".remove-federacao")) {
-        e.preventDefault();
-        e.target.closest(".nested-fields").remove();
-      }
-    });
+    function renderLista() {
+   listaContainer.innerHTML = "";
+
+   federacoes.forEach((f, i) => {
+     const item = document.createElement("div");
+     item.classList.add("card", "mb-2");
+     item.innerHTML = `
+       <div class="card-body d-flex justify-content-between align-items-center">
+         <div>
+           <strong>${f.federacao_nome}</strong> | <strong>Numeração:</strong> ${f.numero}
+         </div>
+         <button type="button" class="btn btn-danger btn-sm" data-index="${i}">Remover</button>
+       </div>
+     `;
+     listaContainer.appendChild(item);
+   });
+
+   // remove item
+   document.querySelectorAll("#lista-federacoes button[data-index]").forEach(btn => {
+     btn.addEventListener("click", (e) => {
+       const index = e.target.dataset.index;
+       federacoes.splice(index, 1);
+       renderLista();
+     });
+   });
+
+   // cria campos ocultos
+   document.querySelectorAll("input[name^='atleta[federacoes]']").forEach(e => e.remove());
+   federacoes.forEach((f, i) => {
+     const idField = document.createElement("input");
+     idField.type = "hidden";
+     idField.name = `atleta[federacoes][${i}][federacao_id]`;
+     idField.value = f.federacao_id;
+     listaContainer.appendChild(idField);
+
+     const numeroField = document.createElement("input");
+     numeroField.type = "hidden";
+     numeroField.name = `atleta[federacoes][${i}][numero]`;
+     numeroField.value = f.numero;
+     listaContainer.appendChild(numeroField);
+   });
+    }
   });
 </script>

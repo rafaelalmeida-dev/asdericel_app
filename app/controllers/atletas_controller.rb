@@ -28,8 +28,18 @@ class AtletasController < ApplicationController
 
   def create
     @atleta = Atleta.new(atleta_params)
-
     if @atleta.save
+      federacoes_params = params[:atleta][:federacoes]
+      byebug
+      if federacoes_params.present?
+        federacoes_params.each_value do |fed|
+          @atleta.atleta_federacoes.create(
+            federacao_id: fed[:federacao_id],
+            numero: fed[:numero]
+          )
+        end
+      end
+
       redirect_to atletas_path, notice: t("messages.created_successfully")
     else
       @federacoes = Federacao.all
@@ -65,7 +75,6 @@ class AtletasController < ApplicationController
     unpermitted = %w[id deleted_at created_by updated_by]
     permitted = Atleta.column_names.reject { |col| unpermitted.include?(col) }
     params.require(:atleta).permit(permitted.map(&:to_sym),
-    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :pai, :mae, :cpf, :datanascimento, :sexo_id, :funcao_id, :estadocivil_id, :ensino_id ],
-    atleta_federacoes_attributes: [ :id, :federacao_id, :numero, :_destroy ])
+    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :sexo_id, :estadocivil_id, :mae, :pai, :datanascimento, :funcao_id, :cpf, :cinrg, :orgaoemissor, :dataexpedicao, :passaporte ])
   end
 end

@@ -5,6 +5,7 @@ import "./vendor/jquery/jquery.js";
 import "./vendor/mask.js";
 import "./vendor/perfect-scrollbar/perfect-scrollbar.js";
 import "./vendor/menu.js";
+import "./vendor/select2/select2.js";
 
 // Vendors independentes (podem vir a seguir)
 import "./vendor/apex-charts/apexcharts.js";
