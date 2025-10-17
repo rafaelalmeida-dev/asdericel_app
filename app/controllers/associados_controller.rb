@@ -16,6 +16,7 @@ class AssociadosController < ApplicationController
   def new
     @associado = Associado.new
     @associado.build_pessoa
+    @associado.build_endereco
     add_breadcrumb t("common.actions.new"), new_associado_path
   end
 
@@ -62,7 +63,7 @@ class AssociadosController < ApplicationController
     unpermitted = %w[id deleted_at created_by updated_by]
     permitted = Associado.column_names.reject { |col| unpermitted.include?(col) }
     params.require(:associado).permit(permitted.map(&:to_sym),
-    pessoa_attributes: [:nome, :nomesocial, :nomeconhecido, :pai, :mae, :cpf, 
-    :datanascimento, :sexo_id, :funcao_id, :estadocivil_id])
+    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :pai, :mae, :cpf,
+    :datanascimento, :sexo_id, :funcao_id, :estadocivil_id ])
   end
 end

@@ -19,6 +19,7 @@ class AtletasController < ApplicationController
     @atleta.atleta_federacoes.build
     @federacoes = Federacao.all
     @atleta.build_pessoa
+    @atleta.build_endereco
     add_breadcrumb t("common.actions.new"), new_atleta_path
   end
 

@@ -19,12 +19,14 @@ class Atleta < ApplicationRecord
   belongs_to :camisa, optional: true
   belongs_to :calca, optional: true
   belongs_to :escola, optional: true
+  belongs_to :endereco, optional: true
 
-  has_many :modalidades
-  has_many :atleta_federacoes, dependent: :destroy
-  has_many :federacoes, through: :atleta_federacoes
+  has_many   :modalidades
+  has_many   :atleta_federacoes, dependent: :destroy
+  has_many   :federacoes, through: :atleta_federacoes
 
   accepts_nested_attributes_for :pessoa
+  accepts_nested_attributes_for :endereco
   accepts_nested_attributes_for :atleta_federacoes, allow_destroy: true
 
   # Permitir os atributos buscáveis pelo Ransack
