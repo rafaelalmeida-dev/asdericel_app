@@ -48,26 +48,27 @@
   </div>
   <hr>
   <%= f.simple_fields_for :endereco do |e| %>
+    <h5>Endereço</h5>
     <div class="col-3">
-      <%= e.input :cep %>
+      <%= e.input :cep, input_html: { disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-3">
-      <%= e.input :rua %>
+      <%= e.input :rua, input_html: { disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-3">
-      <%= e.input :bairro %>
+      <%= e.input :bairro, input_html: { disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-3">
-      <%= e.input :numero %>
+      <%= e.input :numero, input_html: { disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-3">
-      <%= e.association :cidade, input_html: {  class: "select2" } %>
+      <%= e.association :cidade, input_html: {  class: "select2", disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-3">
-      <%= e.association :estado, input_html: {  class: "select2" } %>
+      <%= e.association :estado, input_html: {  class: "select2", disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-3">
-      <%= e.association :pais, input_html: {  class: "select2" } %>
+      <%= e.association :pais, input_html: {  class: "select2", disabled: local_assigns[:disabled] } %>
     </div>
   </div>
 <% end%>
@@ -78,6 +79,9 @@
   </div>
   <div class="col-6">
     <%= f.association :escola, input_html: {  class: "select2", disabled: local_assigns[:disabled]  } %>
+  </div>
+  <div class="col-6">
+    <%= f.association :modalidades, as: :select, wrapper: :vertical_multi_select, input_html: { class: "select2", multiple: true, disabled: local_assigns[:disabled] } %>
   </div>
   <hr/>
   <div class="col-3">

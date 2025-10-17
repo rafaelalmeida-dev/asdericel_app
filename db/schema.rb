@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_09_131349) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_17_163904) do
   create_table "associados", force: :cascade do |t|
     t.string "celular"
     t.string "email"
@@ -38,6 +38,18 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_09_131349) do
     t.datetime "updated_at", null: false
     t.index ["atleta_id"], name: "index_atleta_federacoes_on_atleta_id"
     t.index ["federacao_id"], name: "index_atleta_federacoes_on_federacao_id"
+  end
+
+  create_table "atleta_modalidades", force: :cascade do |t|
+    t.integer "atleta_id"
+    t.integer "modalidade_id"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["atleta_id"], name: "index_atleta_modalidades_on_atleta_id"
+    t.index ["modalidade_id"], name: "index_atleta_modalidades_on_modalidade_id"
   end
 
   create_table "atletas", force: :cascade do |t|
@@ -339,6 +351,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_09_131349) do
   add_foreign_key "associados", "pessoas"
   add_foreign_key "atleta_federacoes", "atletas"
   add_foreign_key "atleta_federacoes", "federacoes"
+  add_foreign_key "atleta_modalidades", "atletas"
+  add_foreign_key "atleta_modalidades", "modalidades"
   add_foreign_key "atletas", "calcas"
   add_foreign_key "atletas", "camisas"
   add_foreign_key "atletas", "enderecos"

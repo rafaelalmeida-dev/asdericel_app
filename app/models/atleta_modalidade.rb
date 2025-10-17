@@ -1,30 +1,30 @@
 # frozen_string_literal: true
 
 # Associações:
+# atleta
+# modalidade
 
 # Atributos:
-# string - nome
 
 # Adicione aqui quaisquer métodos ou validações abaixo
-class Modalidade < ApplicationRecord
+class AtletaModalidade < ApplicationRecord
   include Datafilter
-  has_many :atleta_modalidades
-  has_many :atletas, through: :atleta_modalidades
+
+  belongs_to :atleta
+  belongs_to :modalidade
 
   # Permitir os atributos buscáveis pelo Ransack
   def self.ransackable_attributes(auth_object = nil)
     # array de strings
     %w[
-      nome
     ]
   end
 
   # Permitir as associações buscáveis pelo Ransack
   def self.ransackable_associations(auth_object = nil)
     %w[
+      atleta
+      modalidade
     ]
-  end
-  def to_s
-    nome
   end
 end

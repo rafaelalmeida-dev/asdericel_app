@@ -83,12 +83,12 @@ class AtletasController < ApplicationController
     end
   end
 
-
   private
 
   def set_atleta
     @atleta = Atleta.find_by(id: params[:id])
     @federacoes = Federacao.all
+    @modalidades = Modalidade.all
     redirect_to atletas_path, alert: t("messages.not_found") unless @atleta
   end
 
@@ -96,6 +96,8 @@ class AtletasController < ApplicationController
     unpermitted = %w[id deleted_at created_by updated_by]
     permitted = Atleta.column_names.reject { |col| unpermitted.include?(col) }
     params.require(:atleta).permit(permitted.map(&:to_sym),
-    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :sexo_id, :estadocivil_id, :mae, :pai, :datanascimento, :funcao_id, :cpf, :cinrg, :orgaoemissor, :dataexpedicao, :passaporte ])
+    modalidades_ids: [],
+    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :sexo_id, :estadocivil_id, :mae, :pai, :datanascimento, :funcao_id, :cpf, :cinrg, :orgaoemissor, :dataexpedicao, :passaporte ],
+    endereco_attributes: [ :cep, :rua, :bairro, :numero, :cidade_id, :estado_id, :pais_id ])
   end
 end
