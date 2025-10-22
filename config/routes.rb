@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :paises
+  resources :estados
+  resources :cidades
   resources :dirigentes
   resources :modalidades
   resources :atletas do

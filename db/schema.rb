@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_17_163904) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_22_132210) do
   create_table "associados", force: :cascade do |t|
     t.string "celular"
     t.string "email"
@@ -112,11 +112,23 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_17_163904) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "dirigente_federacoes", force: :cascade do |t|
+    t.string "numero"
+    t.integer "dirigente_id"
+    t.integer "federacao_id"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dirigente_id"], name: "index_dirigente_federacoes_on_dirigente_id"
+    t.index ["federacao_id"], name: "index_dirigente_federacoes_on_federacao_id"
+  end
+
   create_table "dirigentes", force: :cascade do |t|
     t.string "cref"
     t.integer "pessoa_id"
     t.integer "modalidade_id"
-    t.integer "federacao_id"
     t.string "created_by"
     t.string "updated_by"
     t.datetime "deleted_at"
@@ -136,7 +148,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_17_163904) do
     t.index ["camisa_id"], name: "index_dirigentes_on_camisa_id"
     t.index ["endereco_id"], name: "index_dirigentes_on_endereco_id"
     t.index ["ensino_id"], name: "index_dirigentes_on_ensino_id"
-    t.index ["federacao_id"], name: "index_dirigentes_on_federacao_id"
     t.index ["modalidade_id"], name: "index_dirigentes_on_modalidade_id"
     t.index ["pessoa_id"], name: "index_dirigentes_on_pessoa_id"
   end
@@ -359,11 +370,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_17_163904) do
   add_foreign_key "atletas", "ensinos"
   add_foreign_key "atletas", "escolas"
   add_foreign_key "atletas", "pessoas"
+  add_foreign_key "dirigente_federacoes", "dirigentes"
+  add_foreign_key "dirigente_federacoes", "federacoes"
   add_foreign_key "dirigentes", "calcas"
   add_foreign_key "dirigentes", "camisas"
   add_foreign_key "dirigentes", "enderecos"
   add_foreign_key "dirigentes", "ensinos"
-  add_foreign_key "dirigentes", "federacoes"
   add_foreign_key "dirigentes", "modalidades"
   add_foreign_key "dirigentes", "pessoas"
   add_foreign_key "enderecos", "cidades"

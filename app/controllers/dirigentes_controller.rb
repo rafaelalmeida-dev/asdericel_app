@@ -10,27 +10,40 @@ class DirigentesController < ApplicationController
   end
 
   def show
+     @dirigente.dirigente_federacoes.build
     add_breadcrumb @dirigente.cref, dirigente_path(@dirigente)
   end
 
   def new
+    @federacoes = Federacao.all
     @dirigente = Dirigente.new
     @dirigente.build_pessoa
     @dirigente.build_endereco
+    @dirigente.dirigente_federacoes.build
     add_breadcrumb t("common.actions.new"), new_dirigente_path
   end
 
   def edit
+     @dirigente.dirigente_federacoes.build
     add_breadcrumb @dirigente.cref, dirigente_path(@dirigente)
     add_breadcrumb t("common.actions.edit"), edit_dirigente_path(@dirigente)
   end
 
   def create
     @dirigente = Dirigente.new(dirigente_params)
-
     if @dirigente.save
+        federacoes_params = params[:atleta][:federacoes]
+        if federacoes_params.present?
+           federacoes_params.each_value do |fed|
+          @dirigente.dirigente_federacoes.create(
+            federacao_id: fed[:federacao_id],
+            numero: fed[:numero]
+          )
+        end
+    end
       redirect_to dirigentes_path, notice: t("messages.created_successfully")
     else
+      @federacoes = Federacao.all
       render :new, status: :unprocessable_entity
     end
   end
@@ -62,7 +75,7 @@ class DirigentesController < ApplicationController
     unpermitted = %w[id deleted_at created_by updated_by]
     permitted = Dirigente.column_names.reject { |col| unpermitted.include?(col) }
     params.require(:dirigente).permit(permitted.map(&:to_sym),
-    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :pai, :mae, :cpf, :datanascimento, :sexo_id, :funcao_id, :estadocivil_id, :ensino_id ],
+    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :sexo_id, :estadocivil_id, :mae, :pai, :datanascimento, :funcao_id, :cpf, :cinrg, :orgaoemissor, :dataexpedicao, :passaporte ],
   )
   end
 end

@@ -33,7 +33,6 @@ class AtletasController < ApplicationController
     @atleta = Atleta.new(atleta_params)
     if @atleta.save
       federacoes_params = params[:atleta][:federacoes]
-      byebug
       if federacoes_params.present?
         federacoes_params.each_value do |fed|
           @atleta.atleta_federacoes.create(

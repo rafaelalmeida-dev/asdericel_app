@@ -101,7 +101,105 @@
   <div class="col-6">
     <%= f.association :calca, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
   </div>
-  <div class="col-6">
-    <%= f.association :federacao, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
+ <hr/>
+  <div class="d-flex flex-wrap align-items-center gap-2 justify-content-between mb-3">
+    <h5>Federações do Aluno</h5>
+    <%= render "modal_federacao", f: f %>
+    <!-- Botão para abrir modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+      Associar Federação
+    </button>
+  </div>
+  <!-- Lista dinâmica -->
+  <div id="lista-federacoes" class="mt-3">
   </div>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let federacoes = <%= raw @dirigente.dirigente_federacoes.includes(:federacao).map { |af|
+      {
+        federacao_id: af.federacao_id,
+        federacao_nome: af.federacao.nome,
+        numero: af.numero
+      }
+    }.to_json %>;
+
+    const listaContainer = document.querySelector("#lista-federacoes");
+    const btnAdicionar = document.querySelector("#adicionar-federacao");
+
+    if (!btnAdicionar) return;
+
+    btnAdicionar.addEventListener("click", () => {
+      const federacaoSelect = document.querySelector("#federacao_select");
+      const federacaoId = federacaoSelect.value;
+      const federacaoNome = federacaoSelect.options[federacaoSelect.selectedIndex].text;
+      const numero = document.querySelector("#federacao_numero").value.trim();
+
+      if (!federacaoId || !numero) {
+        alert("Selecione uma federação e informe o número!");
+        return;
+      }
+
+      const existe = federacoes.some(f => f.federacao_id == federacaoId);
+      if (existe) {
+        alert("Esta federação já foi adicionada!");
+        return;
+      }
+
+      const federacao = { federacao_id: federacaoId, federacao_nome: federacaoNome, numero };
+      federacoes.push(federacao);
+
+      renderLista();
+
+      const modal = bootstrap.Modal.getInstance(document.querySelector("#basicModal"));
+      modal.hide();
+
+      federacaoSelect.value = "";
+      document.querySelector("#federacao_numero").value = "";
+    });
+
+    function renderLista() {
+      listaContainer.innerHTML = "";
+
+      federacoes.forEach((f, i) => {
+        const item = document.createElement("div");
+        item.classList.add("card", "mb-2");
+        item.innerHTML = `
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <div>
+              <strong>${f.federacao_nome}</strong> | <strong>Numeração:</strong> ${f.numero}
+            </div>
+            <button type="button" class="btn btn-danger btn-sm" data-index="${i}">Remover</button>
+          </div>
+        `;
+        listaContainer.appendChild(item);
+      });
+
+      // remove item
+      document.querySelectorAll("#lista-federacoes button[data-index]").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const index = e.target.dataset.index;
+          federacoes.splice(index, 1);
+          renderLista();
+        });
+      });
+
+      // recria campos ocultos
+      document.querySelectorAll("input[name^='atleta[federacoes]']").forEach(e => e.remove());
+      federacoes.forEach((f, i) => {
+        const idField = document.createElement("input");
+        idField.type = "hidden";
+        idField.name = `atleta[federacoes][${i}][federacao_id]`;
+        idField.value = f.federacao_id;
+        listaContainer.appendChild(idField);
+
+        const numeroField = document.createElement("input");
+        numeroField.type = "hidden";
+        numeroField.name = `atleta[federacoes][${i}][numero]`;
+        numeroField.value = f.numero;
+        listaContainer.appendChild(numeroField);
+      });
+    }
+    renderLista();
+  });
+</script>

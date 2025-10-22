@@ -1,0 +1,32 @@
+<div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Associar Federação</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="federacao_select" class="form-label">Federação</label>
+          <select id="federacao_select" class="form-select select2">
+            <option value="">Selecione...</option>
+            <% Federacao.all.each do |federacao| %>
+              <option value="<%= federacao.id %>"><%= federacao.nome %></option>
+            <% end %>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="federacao_numero" class="form-label">Número de Registro</label>
+          <input type="text" id="federacao_numero" class="form-control">
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" id="adicionar-federacao">Adicionar</button>
+      </div>
+    </div>
+  </div>
+</div>

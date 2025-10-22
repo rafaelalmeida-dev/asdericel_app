@@ -17,15 +17,9 @@
         <thead>
           <tr>
             <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
-            
               <th><%= sort_link(@q, :cref, t("activerecord.attributes.dirigente.cref")) %></th>
-            
               <th><%= sort_link(@q, :pessoa, t("activerecord.attributes.dirigente.pessoa")) %></th>
-            
               <th><%= sort_link(@q, :modalidade, t("activerecord.attributes.dirigente.modalidade")) %></th>
-            
-              <th><%= sort_link(@q, :federacao, t("activerecord.attributes.dirigente.federacao")) %></th>
-            
           </tr>
         </thead>
         <tbody>
@@ -48,15 +42,9 @@
                   </div>
                 </div>
               </td>
-              
                 <td><%= dirigente.cref %></td>
-              
                 <td><%= dirigente.pessoa %></td>
-              
                 <td><%= dirigente.modalidade %></td>
-              
-                <td><%= dirigente.federacao %></td>
-              
             </tr>
           <% end %>
         </tbody>
