@@ -67,7 +67,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "pagy", "~> 9.4"
+gem "pagy", "~> 43.0"
 gem "breadcrumbs_on_rails"
 
 gem "cocoon"
