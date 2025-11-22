@@ -12,13 +12,19 @@
             <strong>Basquetebol</strong> e <strong>Atletismo</strong>, sempre com o objetivo de formar cidadãos para
             o mundo.
           </p>
+          <%= link_to '/club-history' do %>
+           <button class="btn btn-primary px-4 py-2 fw-bold">
+            CONHEÇA NOSSA HISTÓRIA
+            </button>
+           <% end %>
+
         </div>
       </div>
 
       <!-- Right side - Image -->
       <div class="col-md-6">
         <div class="overflow-hidden shadow-lg rounded">
-          <%= image_tag "female-soccer-player-in-yellow-uniform.jpg",
+          <%= image_tag "jogador.jpg",
             alt: "Jogadora do Astericel em uniforme amarelo",
             class: "img-fluid",
             style: "transition: transform 0.3s ease;"

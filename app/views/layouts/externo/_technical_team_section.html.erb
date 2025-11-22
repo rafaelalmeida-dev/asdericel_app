@@ -15,24 +15,31 @@
   <div class="container">
     <% team_members = [
       {
-        name: "Ricardo Nunes",
-        position: "Técnico de Futsal",
-        description: "Responsável pela coordenação tática e desenvolvimento dos atletas da modalidade futsal. Campeão estadual em 3 ocasiões com visão estratégica e liderança exemplar.",
-        image: "/futsal-player-in-blue-uniform-training.jpg",
+        name: "CELESTINO",
+        position: "Técnico de Futsal/ Soccer Society/ Atletismo",
+        description: "Responsável pela coordenação tática e desenvolvimento dos atletas da modalidade futsal e society.
+         Ao longo dos anos, ele desenvolveu um estilo de treinamento único que combina técnica, tática e disciplina. Seus métodos
+          têm ajudado nossos jogadores a alcançar resultados excepcionais em quadra e em suas vidas pessoais.",
+        experiencia: "+35 anos de experiência",
+        image: asset_path('celestino.jpg'),
         image_position: "left"
       },
       {
-        name: "Fernando Silva",
+        name: "HEITOR DE OLIVEIRA",
         position: "Técnico de Basquetebol",
-        description: "Especialista em desenvolvimento de jogadores e estratégias ofensivas. Traz experiência internacional e metodologia comprovada de sucesso em competições.",
-        image: "/basketball-coach-training-session.jpg",
+        description: "Ao longo de sua trajetória, construiu um histórico sólido no desenvolvimento de jogadores talentosos e na condução de times a grandes conquistas.
+
+Seu estilo de trabalho combina o aperfeiçoamento das habilidades individuais com uma forte ênfase no espírito de equipe e na estratégia de jogo. Como líder inspirador, Heitor motiva cada atleta a alcançar seu máximo potencial, sempre com disciplina, foco e entusiasmo.",
+         experiencia: "+25 anos de experiência",
+        image: asset_path('heitor.avif'),
         image_position: "right"
       },
       {
         name: "Carla Oliveira",
         position: "Técnica de Atletismo",
         description: "Coordenadora das modalidades de atletismo com foco em performance e prevenção de lesões. Forma atletas de excelência com metodologia científica.",
-        image: "/athletes-training-on-track-warm-up.jpg",
+         experiencia: "+20 anos de experiência em futsal profissional",
+        image: asset_path('celestino.jpg'),
         image_position: "left"
       }
     ] %>
@@ -42,6 +49,7 @@
                  name: member[:name],
                  position: member[:position],
                  description: member[:description],
+                  experiencia: member[:experiencia],
                  image: member[:image],
                  image_position: member[:image_position] %>
     <% end %>
