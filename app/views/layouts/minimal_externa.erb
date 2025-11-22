@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Asdericel App" %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "/layout/assets/css/core.css?v=#{Time.now.to_i}",       "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+  <body>
+    <%= render "shared/notice" %>
+    <%= render "layouts/externo/header" %>
+    <div class="container my-5">
+      <%= yield %>
+    </div>
+    <%= render "layouts/externo/footer" %>
+  </body>
+</html>

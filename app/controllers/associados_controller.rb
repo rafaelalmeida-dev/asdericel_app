@@ -35,7 +35,6 @@ class AssociadosController < ApplicationController
   end
 
   def update
-    byebug
     if @associado.update(associado_params)
       redirect_to associados_path, notice: t("messages.updated_successfully"), status: :see_other
     else

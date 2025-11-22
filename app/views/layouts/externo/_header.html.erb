@@ -1,0 +1,36 @@
+<header class="bg-white shadow">
+  <nav class="navbar navbar-expand-md navbar-light bg-white">
+    <div class="container">
+      
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center gap-3" href="/">
+        <div class="d-none d-sm-block">
+            <%= image_tag "Logo2024.png", style: "width:80px;", alt: "Logo ASDERICEL" %>
+        </div>
+      </a>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav mx-auto d-flex align-items-center gap-4">
+          <a class="nav-link fw-semibold text-dark" href="/#historia">HISTÓRIA DO CLUBE</a>
+          <a class="nav-link fw-semibold text-dark" href="/#modalidades">MODALIDADES</a>
+          <a class="nav-link fw-semibold text-dark" href="/#equipe-tecnica">EQUIPE TÉCNICA</a> <!-- Link adicionado -->
+          <a class="nav-link fw-semibold text-dark" href="/#contato">CONTATO</a>
+
+          <%= link_to "Login", new_user_session_path, class: "btn btn-primary btn-sm fw-semibold" %>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .navbar-nav .nav-link:hover {
+    color: #ea580c !important;
+  }
+</style>

@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   add_breadcrumb "Usuário", :users_path
 
   def index
-    byebug
     @q = User.ransack(params[:q])
     @pagy, @users = pagy(@q.result(distinct: true))
   end
