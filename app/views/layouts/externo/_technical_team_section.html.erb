@@ -1,0 +1,94 @@
+<section id="equipe-tecnica" class="bg-gray-200 py-5"> <!-- Alterado para bg-secondary -->
+
+  <!-- Header -->
+  <div class="bg-white py-5">
+    <div class="container">
+      <h1 class="display-4 font-weight-bold text-dark mb-2">Nossa Equipe Técnica</h1>
+      <div class="bg-warning rounded-pill mb-4" style="width: 100px; height: 4px;"></div>
+      <p class="text-muted lead max-w-2xl">
+        Conheça os profissionais que lideram o desenvolvimento técnico e tático de nossos atletas em todas as modalidades.
+      </p>
+    </div>
+  </div>
+
+  <!-- Team Members -->
+  <div class="container">
+    <% team_members = [
+      {
+        name: "CELESTINO",
+        position: "Técnico de Futsal/ Soccer Society/ Atletismo",
+        description: "Responsável pela coordenação tática e desenvolvimento dos atletas da modalidade futsal e society.
+         Ao longo dos anos, ele desenvolveu um estilo de treinamento único que combina técnica, tática e disciplina. Seus métodos
+          têm ajudado nossos jogadores a alcançar resultados excepcionais em quadra e em suas vidas pessoais.",
+        experiencia: "+35 anos de experiência",
+        image: asset_path('celestino.jpg'),
+        image_position: "left"
+      },
+      {
+        name: "HEITOR DE OLIVEIRA",
+        position: "Técnico de Basquetebol",
+        description: "Ao longo de sua trajetória, construiu um histórico sólido no desenvolvimento de jogadores talentosos e na condução de times a grandes conquistas.
+
+Seu estilo de trabalho combina o aperfeiçoamento das habilidades individuais com uma forte ênfase no espírito de equipe e na estratégia de jogo. Como líder inspirador, Heitor motiva cada atleta a alcançar seu máximo potencial, sempre com disciplina, foco e entusiasmo.",
+         experiencia: "+25 anos de experiência",
+        image: asset_path('heitor.avif'),
+        image_position: "right"
+      },
+      {
+        name: "Carla Oliveira",
+        position: "Técnica de Atletismo",
+        description: "Coordenadora das modalidades de atletismo com foco em performance e prevenção de lesões. Forma atletas de excelência com metodologia científica.",
+         experiencia: "+20 anos de experiência em futsal profissional",
+        image: asset_path('celestino.jpg'),
+        image_position: "left"
+      }
+    ] %>
+
+    <% team_members.each do |member| %>
+      <%= render "layouts/externo/team_member",
+                 name: member[:name],
+                 position: member[:position],
+                 description: member[:description],
+                  experiencia: member[:experiencia],
+                 image: member[:image],
+                 image_position: member[:image_position] %>
+    <% end %>
+  </div>
+
+  <!-- Staff Information -->
+  <div class="bg-white py-5">
+    <div class="container">
+      <h2 class="h4 font-weight-bold text-dark mb-4">Equipe de Suporte</h2>
+
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="border-left border-warning pl-3">
+            <h3 class="font-weight-bold text-primary mb-2">Preparação Física</h3>
+            <p class="text-muted small">
+              Profissionais especializados em condicionamento e recuperação de atletas
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="border-left border-warning pl-3">
+            <h3 class="font-weight-bold text-primary mb-2">Nutrição Esportiva</h3>
+            <p class="text-muted small">
+              Orientação nutricional adequada para cada modalidade e atleta
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="border-left border-warning pl-3">
+            <h3 class="font-weight-bold text-primary mb-2">Medicina do Esporte</h3>
+            <p class="text-muted small">
+              Acompanhamento médico e prevenção de lesões com tecnologia de ponta
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

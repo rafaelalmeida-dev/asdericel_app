@@ -1,0 +1,84 @@
+<section class="py-5 py-md-6">
+  <div class="container" style="max-width: 900px;">
+    
+    <!-- Title -->
+    <div class="text-center mb-5">
+      <h2 class="fw-bold display-6 text-dark mb-2">LINHA DO TEMPO</h2>
+      <div class="mx-auto" style="width: 90px; height: 5px; background-color: #FFD700; border-radius: 50px;"></div>
+    </div>
+
+    <div class="position-relative">
+
+      <!-- Vertical Line -->
+      <div class="position-absolute top-0 start-50 translate-middle-x bg-warning"
+           style="width: 4px; height: 100%;"></div>
+
+      <!-- Timeline Events -->
+      <div class="d-flex flex-column gap-5">
+
+        <% timeline_events = [
+          { year: 2001, icon: "⭐", title: "Fundação do Asdericel",
+            description: "O Asdericel é fundado como um clube de esportes dedicado a formar cidadãos campeões através do esporte." },
+
+          { year: 2005, icon: "⚽", title: "Início do Futsal",
+            description: "Lançamento da primeira equipe de futsal do clube, que rapidamente se consolidou como uma potência estadual." },
+
+          { year: 2008, icon: "🏀", title: "Expansão para Basquetebol",
+            description: "Criação da equipe de basquetebol, expandindo as modalidades do clube e alcançando novos públicos." },
+
+          { year: 2012, icon: "🏃", title: "Atletismo no Asdericel",
+            description: "Lançamento do programa de atletismo, completando as três principais modalidades do clube." },
+
+          { year: 2015, icon: "🏆", title: "Maior Campeão de Rondônia",
+            description: "Reconhecimento como o maior campeão do estado, com inúmeros títulos em todas as modalidades." },
+
+          { year: 2020, icon: "💻", title: "Pandemia - Adaptação Digital",
+            description: "Durante a pandemia, o clube se adapta com treinamentos online e mantém o engajamento da comunidade." },
+
+          { year: 2024, icon: "🌟", title: "Presente - Consolidação",
+            description: "O Asdericel segue como referência na formação de cidadãos-atletas, com projetos sociais em expansão." }
+        ] %>
+
+        <% timeline_events.each_with_index do |event, index| %>
+
+          <div class="row align-items-start <%= index.odd? ? 'flex-row-reverse' : '' %>">
+
+            <!-- Text Block -->
+            <div class="col-6">
+              <div class="bg-white p-4 rounded shadow border-start border-4 
+                  <%= index.even? ? 'border-primary text-end' : 'border-warning' %>">
+
+                <div class="fw-bold text-warning mb-1" style="font-size: 1.6rem;">
+                  <%= event[:year] %>
+                </div>
+
+                <h3 class="h5 fw-bold text-dark"><%= event[:title] %></h3>
+
+                <p class="text-muted"><%= event[:description] %></p>
+              </div>
+            </div>
+
+            <!-- Center Icon -->
+            <div class="col-6 position-relative">
+              <div class="position-absolute start-50 translate-middle-x bg-white border border-4 border-warning 
+                          rounded-circle d-flex justify-content-center align-items-center shadow"
+                   style="width: 70px; height: 70px; top: 0;">
+                <span style="font-size: 1.8rem;"><%= event[:icon] %></span>
+              </div>
+            </div>
+
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Footer message -->
+    <div class="text-center mt-5">
+      <p class="text-dark fs-5 fw-semibold">
+        Fazemos parte dessa história gloriosa do 
+        <strong>Asdericel - Clube de Campeões</strong>
+      </p>
+    </div>
+
+  </div>
+</section>

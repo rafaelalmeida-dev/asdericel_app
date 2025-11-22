@@ -1,0 +1,41 @@
+<section id="historia" class="bg-white py-5">
+  <div class="container">
+    <div class="row align-items-center g-4">
+
+      <!-- Left side - Yellow background with text -->
+      <div class="col-md-6">
+        <div class="bg-warning p-4 p-md-5 shadow-lg">
+          <h3 class="fs-3 fw-black text-dark mb-4">SOBRE O CLUBE</h3>
+          <p class="text-dark lh-lg small fw-medium">
+            O <strong>Asdericel - Clube de Campeões</strong> é um clube esportivo fundado em 2001, que se destaca como
+            o maior campeão do estado de Rondônia. Desenvolvemos atividades nas modalidades de <strong>Futsal</strong>,
+            <strong>Basquetebol</strong> e <strong>Atletismo</strong>, sempre com o objetivo de formar cidadãos para
+            o mundo.
+          </p>
+          <%= link_to '/club-history' do %>
+           <button class="btn btn-primary px-4 py-2 fw-bold">
+            CONHEÇA NOSSA HISTÓRIA
+            </button>
+           <% end %>
+
+        </div>
+      </div>
+
+      <!-- Right side - Image -->
+      <div class="col-md-6">
+        <div class="overflow-hidden shadow-lg rounded">
+          <%= image_tag "jogador.jpg",
+            alt: "Jogadora do Asdericel em uniforme amarelo",
+            class: "img-fluid",
+            style: "transition: transform 0.3s ease;"
+          %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Yellow accent line -->
+    <div class="mt-5">
+      <div class="bg-warning rounded-pill" style="width: 32px; height: 4px;"></div>
+    </div>
+  </div>
+</section>
