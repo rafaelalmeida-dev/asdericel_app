@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
   resources :users, only: %i[index edit update destroy]
-  get "pages/dashboard"
+  
 
   get "up" => "rails/health#show", as: :rails_health_check
   # Render dynamic PWA files from app/views/pwa/*
@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   get "club-history" => "externo#club_history", as: :club_history
   # Defines the root path route ("/")
-  root "home#index"
+ 
+  root "home#index"  # Página pública
+
+  get "dashboard", to: "pages#dashboard" # Página logada
 
 end
