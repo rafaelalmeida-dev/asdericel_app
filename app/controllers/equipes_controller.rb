@@ -57,8 +57,6 @@ class EquipesController < ApplicationController
   end
 
   def equipe_params
-    unpermitted = %w[id deleted_at created_by updated_by]
-    permitted = Equipe.column_names.reject { |col| unpermitted.include?(col) }
-    params.require(:equipe).permit(permitted.map(&:to_sym))
+    params.require(:equipe).permit(:nome, :modalidade_id, atleta_ids: [])
   end
 end

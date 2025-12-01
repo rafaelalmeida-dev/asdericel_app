@@ -6,8 +6,10 @@
 # string - nome
 
 # Adicione aqui quaisquer métodos ou validações abaixo
-class Categorium < ApplicationRecord
+class Categoria < ApplicationRecord
   include Datafilter
+    self.table_name = "categoria"
+
 
 
   # Permitir os atributos buscáveis pelo Ransack
