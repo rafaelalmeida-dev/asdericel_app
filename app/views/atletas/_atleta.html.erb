@@ -25,9 +25,6 @@
       <%= pf.input :datanascimento,as: :tel, input_html: { class: "data"} %>
     </div>
     <div class="col-3">
-      <%= pf.association :funcao, input_html: {  class: "select2" } %>
-    </div>
-    <div class="col-3">
       <%= pf.input :cpf, input_html: { class: "cpf"}%>
     </div>
     <div class="col-3">
@@ -57,7 +54,7 @@
   </div>
   <hr/>
   <div class="col-6">
-    <%= f.association :modalidades, input_html: {  class: "select2", multiple: true, disabled: local_assigns[:disabled]  } %>
+    <%= f.association :modalidades, input_html: {  class: " select2", multiple: true, disabled: local_assigns[:disabled]  } %>
   </div>
   <div class="col-3">
     <%= f.input :peso, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "peso",disabled: local_assigns[:disabled] } %>
@@ -72,10 +69,6 @@
     <%= f.association :calca, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
   </div>
   <%= f.simple_fields_for :atleta do |f| %>
-    <div class="mb-3">
-      <%= f.label :nome %>
-      <%= f.text_field :nome, class: "form-control" %>
-    </div>
     <h3>Federações</h3>
     <div id="federacoes">
       <%= f.fields_for :atleta_federacoes do |af| %>

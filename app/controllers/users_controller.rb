@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/:id
   def update
     if @user.update(user_params)
-      redirect_to users_path, notice: "Usuário atualizado com sucesso."
+      redirect_to users_path, notice: 'Usuário atualizado com sucesso.'
     else
       render :edit
     end
@@ -43,6 +43,9 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :nome, :role_id)
+    params.require(:user).permit(:nome, :email, :role_id, :password, :password_confirmation).tap do |user_params|
+      user_params.delete(:password) if user_params[:password].blank?
+      user_params.delete(:password_confirmation) if user_params[:password].blank?
+    end
   end
 end

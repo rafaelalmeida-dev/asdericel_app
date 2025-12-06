@@ -61,7 +61,7 @@ class AtletasController < ApplicationController
     unpermitted = %w[id deleted_at created_by updated_by]
     permitted = Atleta.column_names.reject { |col| unpermitted.include?(col) }
     params.require(:atleta).permit(permitted.map(&:to_sym), 
-    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :pai, :mae, :cpf,:datanascimento, :sexo_id, :funcao_id, :estadocivil_id, :ensino_id ],
+    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :pai, :mae, :cpf,:datanascimento, :sexo_id,  :estadocivil_id, :ensino_id ],
     atleta_federacoes_attributes: [:id, :federacao_id, :numero, :_destroy])
   end
 end

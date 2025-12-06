@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_11_26_013703) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -159,10 +159,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_26_013703) do
     t.datetime "updated_at", null: false
     t.bigint "modalidade_id"
     t.bigint "categoria_id"
-    t.bigint "sexo_id"
     t.index ["categoria_id"], name: "index_equipes_on_categoria_id"
     t.index ["modalidade_id"], name: "index_equipes_on_modalidade_id"
-    t.index ["sexo_id"], name: "index_equipes_on_sexo_id"
   end
 
   create_table "escolas", force: :cascade do |t|
@@ -262,14 +260,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_26_013703) do
     t.string "passaporte"
     t.integer "sexo_id"
     t.integer "estadocivil_id"
-    t.integer "funcao_id"
     t.string "created_by"
     t.string "updated_by"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["estadocivil_id"], name: "index_pessoas_on_estadocivil_id"
-    t.index ["funcao_id"], name: "index_pessoas_on_funcao_id"
     t.index ["sexo_id"], name: "index_pessoas_on_sexo_id"
   end
 
@@ -343,11 +339,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_26_013703) do
   add_foreign_key "dirigentes", "federacoes"
   add_foreign_key "dirigentes", "modalidades"
   add_foreign_key "dirigentes", "pessoas"
-  add_foreign_key "equipes", "categoria", column: "categoria_id"
+  add_foreign_key "equipes", "categoria"
   add_foreign_key "equipes", "modalidades"
-  add_foreign_key "equipes", "sexos"
   add_foreign_key "pessoas", "estadocivils"
-  add_foreign_key "pessoas", "funcaos"
   add_foreign_key "pessoas", "sexos"
   add_foreign_key "responsavels", "parentescos"
   add_foreign_key "users", "roles"

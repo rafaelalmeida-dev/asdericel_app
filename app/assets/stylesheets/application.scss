@@ -120,3 +120,131 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Estilos customizados para Select2 - baseado em .form-select */
+.select2-container--default .select2-selection--single {
+  display: block;
+  width: 100%;
+  padding: 0.4375rem 1.875rem 0.4375rem 0.875rem !important;
+  font-size: 0.9375rem !important;
+  font-weight: 400 !important;
+  line-height: 1.53 !important;
+  color: #697a8d !important;
+  background-color: #fff !important;
+  border: 1px solid #d9dee3 !important;
+  border-radius: 0.375rem !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+  height: auto !important;
+  min-height: 38px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #697a8d !important;
+  line-height: 1.53 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: #697a8d !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 100% !important;
+  right: 0.875rem !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: rgba(67, 89, 113, 0.6) transparent transparent transparent !important;
+  border-width: 5px 4px 0 4px !important;
+}
+
+.select2-container--default .select2-selection--multiple {
+  display: block;
+  width: 100%;
+  min-height: 38px !important;
+  padding: 0.1875rem 0.5rem !important;
+  font-size: 0.9375rem !important;
+  font-weight: 400 !important;
+  line-height: 1.53 !important;
+  color: #697a8d !important;
+  background-color: #fff !important;
+  border: 1px solid #d9dee3 !important;
+  border-radius: 0.375rem !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #696cff !important;
+  border: none !important;
+  border-radius: 0.25rem !important;
+  color: #fff !important;
+  padding: 0.25rem 0.5rem !important;
+  margin-top: 0.25rem !important;
+  margin-right: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: #fff !important;
+  margin-right: 0.25rem !important;
+  font-weight: bold !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+  color: #fff !important;
+  opacity: 0.8;
+}
+
+/* Focus state - igual ao .form-select:focus */
+.select2-container--default.select2-container--focus .select2-selection--single,
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  border-color: rgba(249, 249, 255, 0.54) !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0.25rem 0.05rem rgba(105, 108, 255, 0.1) !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #696cff !important;
+  color: white !important;
+}
+
+.select2-dropdown {
+  border: 1px solid #d9dee3 !important;
+  border-radius: 0.375rem !important;
+  background-color: #fff !important;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+  border: 1px solid #d9dee3 !important;
+  border-radius: 0.375rem !important;
+  padding: 0.4375rem 0.875rem !important;
+  font-size: 0.9375rem !important;
+  color: #697a8d !important;
+  background-color: #fff !important;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+  border-color: rgba(249, 249, 255, 0.54) !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0.25rem 0.05rem rgba(105, 108, 255, 0.1) !important;
+}
+
+/* Estados disabled */
+.select2-container--default .select2-selection--single.select2-selection--disabled,
+.select2-container--default .select2-selection--multiple.select2-selection--disabled {
+  color: #697a8d !important;
+  background-color: #eceef1 !important;
+}
+
+/* Ajuste para campos com erro */
+.is-invalid + .select2-container--default .select2-selection--single,
+.is-invalid + .select2-container--default .select2-selection--multiple {
+  border-color: #ff3e1d !important;
+}
+
+/* Ajuste para campos válidos */
+.is-valid + .select2-container--default .select2-selection--single,
+.is-valid + .select2-container--default .select2-selection--multiple {
+  border-color: #71dd37 !important;
+}

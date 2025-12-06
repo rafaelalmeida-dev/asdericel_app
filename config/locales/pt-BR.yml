@@ -64,9 +64,24 @@ pt-BR:
       estado:
         nome: "Nome"
         sigla: "Sigla"
+      pessoa:
+        nome: "Nome"
+        cinrg: "Identidade"
+        nomesocial: "Nome Social"
+        nomeconhecido: "Nome Conhecido"
+        pai: "Pai"
+        mae: "Mãe"
+        datanascimento: "Data de Nascimento"
+        cpf: "CPF"
+        orgaoemissor: "Órgão Emissor"
+        dataexpedicao: "Data de Expedição"
+        passaporte: "Passaporte"
+        profissao: "Profissão"
+        sexo_id: "Sexo"
+        estadocivil_id: "Estado Civil"
+        ensino_id: "Ensino"
       associado:
-        pessoa:
-         nome: "Nome"
+        pessoa_id: "Pessoa"
       user:
         role_id: Perfil 
         nome: "Nome"

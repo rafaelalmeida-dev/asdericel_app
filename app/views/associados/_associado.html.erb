@@ -1,7 +1,7 @@
 <%= f.simple_fields_for :pessoa do |pf| %>
   <div class="row">
     <div class="col-6">
-      <%= pf.input :nome %>
+      <%= pf.input :nome, required: true %>
     </div>
     <div class="col-6">
       <%= pf.input :nomesocial %>
@@ -10,10 +10,10 @@
       <%= pf.input :nomeconhecido ,input_html: {  placeholder: "Nome conhecido na Modalidade" }%>
     </div>
     <div class="col-3">
-      <%= pf.association :sexo, input_html: {  class: "select2" } %>
+      <%= pf.association :sexo, required: true ,input_html: {  class: "select2" } %>
     </div>
     <div class="col-3">
-      <%= pf.association :estadocivil, input_html: {  class: "select2" } %>
+      <%= pf.association :estadocivil,  required: true ,input_html: {  class: "select2" } %>
     </div>
     <div class="col-6">
       <%= pf.input :mae %>
@@ -22,22 +22,19 @@
       <%= pf.input :pai %>
     </div>
     <div class="col-3">
-      <%= pf.input :datanascimento,as: :tel, input_html: { class: "data"} %>
-    </div>
-    <div class="col-3">
-      <%= pf.association :funcao, input_html: {  class: "select2" } %>
+      <%= pf.input :datanascimento, as: :string, input_html: { class: "data"} %>
     </div>
     <div class="col-3">
       <%= pf.input :cpf, input_html: { class: "cpf"}%>
     </div>
     <div class="col-3">
-      <%= pf.input :cinrg %>
+      <%= pf.input :cinrg ,input_html: {  placeholder: "Identidade" }%>
     </div>
     <div class="col-3">
       <%= pf.input :orgaoemissor %>
     </div>
     <div class="col-3">
-      <%= pf.input :dataexpedicao,as: :tel,input_html: { class: "data"} %>
+      <%= pf.input :dataexpedicao, as: :string, input_html: { class: "data"} %>
     </div>
     <div class="col-6">
       <%= pf.input :passaporte %>

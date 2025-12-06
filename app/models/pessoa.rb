@@ -3,7 +3,6 @@
 # Associações:
 # sexo
 # estadocivil
-# funcao
 
 # Atributos:
 # string - nome
@@ -28,7 +27,6 @@ class Pessoa < ApplicationRecord
   belongs_to :sexo
   belongs_to :estadocivil
   # belongs_to :ensino
-  belongs_to :funcao
   
 
   # Permitir os atributos buscáveis pelo Ransack

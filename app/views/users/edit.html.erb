@@ -20,10 +20,6 @@
         <%= f.input :email, required: true, autofocus: true %>
         <%= f.input :role_id, collection: Role.all, required: true, prompt: "Selecione um cargo", input_html: { class: "form-select" } %>
         <%= f.input :cpf, required: true, autofocus: true, input_html: { disabled: true } %>
-        <%= f.input :current_password,
-                hint: "Precisamos da sua senha atual para confirmar suas alterações",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
         <%= f.input :password,
                 hint: "Deixe em branco se não quiser alterar",
                 required: false,

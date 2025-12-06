@@ -1,7 +1,8 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-  <div class="app-brand demo">
+  <div class="app-brand demo bg-white mb-4">
     <%= link_to dashboard_path, class: "app-brand-link" do %>
-      <span class="app-brand-text demo menu-text fw-bolder ms-2">Asdericel</span>
+      <%= image_tag "Logo2024.png", alt: "Logo Asdericel", class: "app-brand-logo", style: "width: 30px;" %>
+            <span class=" demo  fw-bolder ms-2" style="color: #1a3a7d;">Asdericel</span>
     <% end %>
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
       <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -47,7 +48,7 @@
       <% end %>
     </li>
     <li class="menu-item">
-      <%= link_to equipes_path, class: "menu-link" do %>
+      <%= link_to eventos_path, class: "menu-link" do %>
         <i class="menu-icon tf-icons bx bx-layout"></i>
         <div class="menu-title">Eventos</div>
       <% end %>

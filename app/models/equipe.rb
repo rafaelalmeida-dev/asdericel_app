@@ -9,7 +9,6 @@
 class Equipe < ApplicationRecord
   include Datafilter
   belongs_to :modalidade
-  belongs_to :sexo
   belongs_to :categoria
   has_many :atletaequipes
   has_many :atletas, through: :atletaequipes
@@ -28,6 +27,8 @@ class Equipe < ApplicationRecord
   # Permitir as associações buscáveis pelo Ransack
   def self.ransackable_associations(auth_object = nil)
     %w[
+      modalidade
+      categoria
     ]
   end
 end

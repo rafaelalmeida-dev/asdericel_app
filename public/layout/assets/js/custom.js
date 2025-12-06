@@ -1,29 +1,4 @@
 $(document).ready(function () {
-  
-  // Basic wizard setup
-  $('.steps-basic').steps({
-    headerTag: 'h6',
-    bodyTag: 'fieldset',
-    transitionEffect: 'fade',
-    titleTemplate: '<span class="number">#index#</span> #title#',
-    labels: {
-      previous: '<i class="ph-arrow-circle-left me-2"></i> Anterior',
-      next: 'Próximo <i class="ph-arrow-circle-right ms-2"></i>',
-      finish: 'Incluir <i class="ph-paper-plane-tilt ms-1"></i>'
-    },
-
-    onFinished: function (event, currentIndex) {
-      var form = $(this).closest('form'); // Encontra o formulário pai do elemento atual
-      form.submit(); // Isso aciona o envio do formulário
-    }
-  });
-
-  
-  setTimeout(function () {
-    $('.steps-basic').removeClass('d-none');
-    $('.load-steps-basic').addClass('d-none');
-  }, 650);
-
   $('.keyup').keyup(function () {
     $(this).val($(this).val().toUpperCase());
   });
@@ -91,22 +66,21 @@ $(document).ready(function () {
     }
   });
 
-  $('.real').maskMoney({
-    thousands: '.',
-    decimal: ','
-  });
-
   $('.percentual-float').mask('00,00%', { reverse: true });
 
-  $(".select2").select2({
-    placeholder: "Selecione uma opção",
+  $(".select2").each(function() {
+    var isMultiple = $(this).attr('multiple') !== undefined;
     
-    closeOnSelect: false,
-    language: {
-      noResults: function (params) {
-        return "Sem resultados";
+    $(this).select2({
+      placeholder: isMultiple ? "Selecione uma ou mais opções" : "Selecione uma opção",
+      allowClear: true,
+      closeOnSelect: !isMultiple,
+      language: {
+        noResults: function (params) {
+          return "Sem resultados";
+        }
       }
-    }
+    });
   });
 
 

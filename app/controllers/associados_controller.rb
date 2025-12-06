@@ -62,6 +62,6 @@ class AssociadosController < ApplicationController
     permitted = Associado.column_names.reject { |col| unpermitted.include?(col) }
     params.require(:associado).permit(permitted.map(&:to_sym),
     pessoa_attributes: [:nome, :nomesocial, :nomeconhecido, :pai, :mae, :cpf, 
-    :datanascimento, :sexo_id, :funcao_id, :estadocivil_id])
+    :datanascimento, :sexo_id, :estadocivil_id])
   end
 end
