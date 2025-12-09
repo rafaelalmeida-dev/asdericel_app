@@ -14,9 +14,7 @@
       <%= yield %>
     </div>
     <%= render "layouts/externo/footer" %>
-    
-    <%= javascript_include_tag "/layout/assets/js/jquery/jquery.min.js", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "/layout/assets/js/bootstrap.js", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "/layout/assets/js/jquery/jquery.min.js" %>
+    <%= javascript_include_tag "/layout/assets/js/bootstrap.js" %>
   </body>
 </html>
