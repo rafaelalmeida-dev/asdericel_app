@@ -17,9 +17,23 @@
       <!-- Navigation Links -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav mx-auto d-flex align-items-center gap-4">
-          <a class="nav-link fw-semibold text-dark" href="/#historia">HISTÓRIA DO CLUBE</a>
-          <a class="nav-link fw-semibold text-dark" href="/#modalidades">MODALIDADES</a>
-          <a class="nav-link fw-semibold text-dark" href="/#equipe-tecnica">EQUIPE TÉCNICA</a> <!-- Link adicionado -->
+          <%= link_to '/club-history', class: "nav-link fw-semibold text-dark" do %>HISTÓRIA DO CLUBE<% end %>
+          <a class="nav-link fw-semibold text-dark" href="/#noticias">NOTÍCIAS</a>
+          <a class="nav-link fw-semibold text-dark" href="/#loja">LOJA ASDERICEL</a>
+          
+          <!-- Dropdown Conheça Mais -->
+          <div class="nav-item dropdown">
+            <a class="nav-link fw-semibold text-dark dropdown-toggle" href="#" id="conhecaMaisDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              CONHEÇA MAIS
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="conhecaMaisDropdown">
+              <li><a class="dropdown-item" href="https://drive.google.com/file/d/1JF8q5cWX5LHHOnNqoYHE2MruU8jP7cz-/view?usp=sharing">E-book</a></li>
+              <li><%= link_to "Símbolo", simbolo_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Galeria de Títulos", galeria_path, class: "dropdown-item" %></li>
+              <li><a class="dropdown-item" href="https://drive.google.com/drive/folders/1srr6DATLA3Uvv6qYnjMOyDivVrxf6YLd?usp=sharing">Memorial Fotográfico</a></li>
+            </ul>
+          </div>
+          
           <a class="nav-link fw-semibold text-dark" href="/#contato">CONTATO</a>
 
           <%= link_to "Login", new_user_session_path, class: "btn btn-primary btn-sm fw-semibold" %>
@@ -32,5 +46,23 @@
 <style>
   .navbar-nav .nav-link:hover {
     color: #ea580c !important;
+  }
+  
+  .navbar-nav .dropdown-menu {
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-radius: 0.375rem;
+    margin-top: 0.5rem;
+  }
+  
+  .navbar-nav .dropdown-item {
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  .navbar-nav .dropdown-item:hover {
+    background-color: #f3f4f6;
+    color: #ea580c;
   }
 </style>

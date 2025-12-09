@@ -11,32 +11,49 @@
 
       <!-- Vertical Line -->
       <div class="position-absolute top-0 start-50 translate-middle-x bg-warning"
-           style="width: 4px; height: 100%;"></div>
+           style="width: px; height: 100%;"></div>
 
       <!-- Timeline Events -->
       <div class="d-flex flex-column gap-5">
 
         <% timeline_events = [
-          { year: 2001, icon: "⭐", title: "Fundação do Asdericel",
-            description: "O Asdericel é fundado como um clube de esportes dedicado a formar cidadãos campeões através do esporte." },
+          { year: 2001, image: "2001.png", title: "Fundação do Asdericel",
+            description: "Início das primeiras atividades esportivas nas modalidades de atletismo e futebol de salão, em parceria com a Escola Risoleta Neves.														
+Concedida a filiação junto a  Federação de Atletismo de Rondônia - FARO e Confederação Brasileira de Atletismo - CBAt														
+Primeiros títulos de CAMPEÃO -(Campeão Masculino e Feminino, categorias Menores e Adultos - XXII PORTO VELHO OPEN DE ATLETISMO - REALIZAÇÃO FARO														
+GABRIELA QUEIROZ RAMOS (GABI) - Primeira Medalhista da Asdericel  (Atletismo: Lançamento do Disco, 100 metros rasos, Arremesso de Peso e Salto em Distância." },
 
-          { year: 2005, icon: "⚽", title: "Início do Futsal",
-            description: "Lançamento da primeira equipe de futsal do clube, que rapidamente se consolidou como uma potência estadual." },
+          { year: 2003, image: "2003.png", title: "Primeiros Títulos",
+            description: "Inicia uma sequencia de títulos nas modalidades de Atletismo e Futsal em Nível Municipal e Estadual 										
+Parceria com a Faculdade de Rondônia (FARO)  obtendo bolsa de estudos possibilitando a graduação de vários atletas. 										"},
 
-          { year: 2008, icon: "🏀", title: "Expansão para Basquetebol",
-            description: "Criação da equipe de basquetebol, expandindo as modalidades do clube e alcançando novos públicos." },
+          { year: 2009, image: "2009.png", title: "Fair Play",
+            description: "Primeiro título 'Fair Play'  concedido a equpe que joga limpo com respeito às regras e ao adversário." },
 
-          { year: 2012, icon: "🏃", title: "Atletismo no Asdericel",
-            description: "Lançamento do programa de atletismo, completando as três principais modalidades do clube." },
+          { year: 2010, image: "2010.png", title: "Título Nacional",
+            description: "Primeiro Título Nacional - VI Taça Brasil de Clubes Sub 20 Feminino 1ª Divisão." },
 
-          { year: 2015, icon: "🏆", title: "Maior Campeão de Rondônia",
-            description: "Reconhecimento como o maior campeão do estado, com inúmeros títulos em todas as modalidades." },
+          { year: 2012, image: "2012.png", title: "Menção de Aplauso",
+            description: "Concedido pela Assembleia Legislativa do Estado de Rondônia apresentacao pela Deputada Estadual Epifânia Barbosa de Souza, pelos relevante serviços da Asdericel pelo Desporto Rondôniense																		
+                          Participação na Corrida Internacional de São Silvestre - São Paulo/SP (Atletas: Celestino José de Souza e Flávio)." },
 
-          { year: 2020, icon: "💻", title: "Pandemia - Adaptação Digital",
-            description: "Durante a pandemia, o clube se adapta com treinamentos online e mantém o engajamento da comunidade." },
+          { year: 2013, image: "2013.png", title: "Futebol 7 Society",
+            description: "Incia as atividades no Futebol 7 Soccer Society." },
 
-          { year: 2024, icon: "🌟", title: "Presente - Consolidação",
-            description: "O Asdericel segue como referência na formação de cidadãos-atletas, com projetos sociais em expansão." }
+          { year: 2021, image: "2021.png", title: "Titulo Nacional Futebol 7 Society",
+            description: "Primeiro Título Nacional na modalidade Futebol 7 Soccer Society Feminino - Campeonato Brasileiro Futebol 7 - Paranaguá/PR." },
+            
+          { year: 2022, image: "2022.png", title: "Pandemia",
+            description: "Durante a pandemia, o clube se adapta e mantém o engajamento dos atletase e comunidade.Participa e conquista o vice-campeonato Brasilero de Futebol 7 - Adulto Feminino- Paranaguá/PR." },
+            
+          { year: 2023, image: "2023.png", title: "Bi-Campeão Futebol 7 Society",
+            description: "Bi-Campeão Futebol 7 Soccer Sociey Adulto Feminino - Campeonato Brasileiro Futebol 7 - São Bernardo do Campo/SP." },
+            
+          { year: 2024, image: "2024.png", title: "Inicio do Basquetebol",
+            description: "Inicia as atividades na modalidade de Basquetebol em parceria com a Igreja Às Nações." },
+            
+          { year: 2025, image: "2025.png", title: "Primeiro Título Internacional",
+            description: "Campeão Taça Libertadores da América de Futebol 7 Soccer Society Adulto Feminino- Paranaguá/PR." }
         ] %>
 
         <% timeline_events.each_with_index do |event, index| %>
@@ -58,12 +75,12 @@
               </div>
             </div>
 
-            <!-- Center Icon -->
+            <!-- Center Image -->
             <div class="col-6 position-relative">
               <div class="position-absolute start-50 translate-middle-x bg-white border border-4 border-warning 
-                          rounded-circle d-flex justify-content-center align-items-center shadow"
-                   style="width: 70px; height: 70px; top: 0;">
-                <span style="font-size: 1.8rem;"><%= event[:icon] %></span>
+                          rounded shadow-lg d-flex justify-content-center align-items-center"
+                   style="width: 220px; height: 240px; top: -10px; overflow: hidden;">
+                <%= image_tag event[:image], alt: event[:year], style: "width: 100%; height: 100%; object-fit: cover; border-radius: 4px;" %>
               </div>
             </div>
 

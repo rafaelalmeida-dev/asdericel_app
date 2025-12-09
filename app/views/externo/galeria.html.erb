@@ -1,0 +1,261 @@
+<section class="py-5">
+  <div class="container-fluid px-4">
+    
+    <!-- Title -->
+    <div class="text-center mb-5">
+      <h1 class="fw-bold display-4 text-dark mb-3">GALERIA DE TÍTULOS</h1>
+      <div class="mx-auto mb-4" style="width: 90px; height: 5px; background-color: #FFD700; border-radius: 50px;"></div>
+      <p class="lead text-muted">Conquistas históricas da Asdericel</p>
+    </div>
+
+    <!-- Filtros por Modalidade -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <button class="btn btn-outline-primary filter-btn active" data-filter="all">
+            <i class="ph ph-trophy me-2"></i>Todos
+          </button>
+          <button class="btn btn-outline-primary filter-btn" data-filter="atletismo">
+            <i class="ph ph-person-simple-run me-2"></i>Atletismo
+          </button>
+          <button class="btn btn-outline-primary filter-btn" data-filter="futsal">
+            <i class="ph ph-soccer-ball me-2"></i>Futsal
+          </button>
+          <button class="btn btn-outline-primary filter-btn" data-filter="futcampo">
+            <i class="ph ph-soccer-ball me-2"></i>Futebol de Campo
+          </button>
+          <button class="btn btn-outline-primary filter-btn" data-filter="soccersociety">
+            <i class="ph ph-soccer-ball me-2"></i>Soccer Society
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <% titulos = [
+        #atletismo
+  { "ano": 2003, "titulo": "CAMPEÃO", "categoria": "JUVENIL", "genero": "MASCULINO", "evento": "CAMPEONATO ESTADUAL DE ATLETISMO", "promotor": "FARO", "local": "PISTA ESTÁDIO ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "atletismo" },
+  { "ano": 2003, "titulo": "CAMPEÃO", "categoria": "JUVENIL", "genero": "FEMININO", "evento": "CAMPEONATO ESTADUAL DE ATLETISMO", "promotor": "FARO", "local": "PISTA ESTÁDIO ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "atletismo" },
+
+  { "ano": 2003, "titulo": "CAMPEÃO", "categoria": "MENORES-SUB 14", "genero": "FEMININO", "evento": "CAMPEONATO ESTADUAL MENORES SUB 14", "promotor": "FARO", "local": "PISTA ESTÁDIO ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "atletismo" },
+  { "ano": 2003, "titulo": "CAMPEÃO", "categoria": "MENORES-SUB 14", "genero": "MASCULINO", "evento": "CAMPEONATO ESTADUAL MENORES SUB 14", "promotor": "FARO", "local": "PISTA ESTÁDIO ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "atletismo" },
+
+  { "ano": 2003, "titulo": "CAMPEÃO", "categoria": "ADULTO", "genero": "FEMININO", "evento": "CAMPEONATO ESTADUAL ADULTO", "promotor": "FARO", "local": "PISTA ESTÁDIO ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "atletismo" },
+
+  { "ano": 2003, "titulo": "CAMPEÃO", "categoria": "JUVENIL", "genero": "FEMININO", "evento": "JOER - JOGOS ESCOLARES RONDÔNIA - FASE REGIONAL", "promotor": "SEDUC", "local": "PISTA ESTÁDIO ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "atletismo" },
+
+  { "ano": 2004, "titulo": "CAMPEÃO", "categoria": "INFANTIL", "genero": "FEMININO", "evento": "CORRIDA DA PAZ", "promotor": "ASCOR", "local": "KM 13 SENTIDO CUIABÁ - PORTO VELHO/RO", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "atletismo" },
+
+  { "ano": 2012, "titulo": "PARTICIPAÇÃO", "categoria": "ADULTO", "genero": "MASCULINO", "evento": "CORRIDA INTERNACIONAL DE SÃO SILVESTRE", "promotor": "", "local": "AVENIDAS SÃO PAULO", "municipio": "SÃO PAULO/SP", "parceria": "", "modalidade": "atletismo" },
+
+  #futsal
+  { "ano": 2003, "titulo": "CAMPEÃO", "categoria": "JUVENIL", "genero": "MASCULINO", "evento": "CAMPEONATO ESTADUAL DE ATLETISMO", "promotor": "FARO", "local": "PISTA ESTÁDIO ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "futsal" },
+  { "ano": 2003, "titulo": "CAMPEÃO", "categoria": "JUVENIL", "genero": "FEMININO", "evento": "CAMPEONATO ESTADUAL DE ATLETISMO", "promotor": "FARO", "local": "PISTA ESTÁDIO ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "futsal" },
+  { "ano": 2003, "titulo": "CAMPEÃO", "categoria": "MENORES-SUB 14", "genero": "FEMININO", "evento": "CAMPEONATO ESTADUAL MENORES SUB 14", "promotor": "FARO", "local": "PISTA ESTÁDIO ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "futsal" },
+  { "ano": 2003, "titulo": "CAMPEÃO", "categoria": "MENORES-SUB 14", "genero": "MASCULINO", "evento": "CAMPEONATO ESTADUAL MENORES SUB 14", "promotor": "FARO", "local": "PISTA ESTÁDIO ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "futsal" },
+  { "ano": 2003, "titulo": "CAMPEÃO", "categoria": "ADULTO", "genero": "FEMININO", "evento": "CAMPEONATO ESTADUAL ADULTO", "promotor": "FARO", "local": "PISTA ESTÁDIO ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "futsal" },
+  { "ano": 2003, "titulo": "CAMPEÃO", "categoria": "JUVENIL", "genero": "FEMININO", "evento": "JOER - JOGOS ESCOLARES RONDÔNIA - FASE REGIONAL", "promotor": "SEDUC", "local": "PISTA ESTÁDIO ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "futsal" },
+  { "ano": 2004, "titulo": "CAMPEÃO", "categoria": "INFANTIL", "genero": "FEMININO", "evento": "CORRIDA DA PAZ", "promotor": "ASCOR", "local": "KM 13 SENTIDO CUIABÁ - PORTO VELHO/RO", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "futsal" },
+  { "ano": 2012, "titulo": "PARTICIPAÇÃO", "categoria": "ADULTO", "genero": "MASCULINO", "evento": "CORRIDA INTERNACIONAL DE SÃO SILVESTRE", "promotor": "", "local": "AVENIDAS SÃO PAULO", "municipio": "SÃO PAULO/SP", "parceria": "", "modalidade": "futsal" },
+
+  #futcampo
+  { "ano": 2002, "titulo": "CAMPEÃO", "categoria": "INFANTIL", "genero": "FEMININO", "evento": "II FESTIVAL DE FUTEBOL INFANTIL", "promotor": "JORNAL O ESTADÃO DO NORTE", "local": "", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "futcampo" },
+  { "ano": 2005, "titulo": "CAMPEÃO", "categoria": "JUVENIL", "genero": "FEMININO", "evento": "JOGOS ESCOLARES DA CIDADE DE PORTO VELHO FUT CAMPO", "promotor": "SEMED", "local": "17ª BRIGADA INF. SELVA", "municipio": "PORTO VELHO/RO", "parceria": "EEEFM RISOLETA NEVES", "modalidade": "futcampo" },
+  { "ano": 2010, "titulo": "3º LUGAR", "categoria": "ADULTO", "genero": "FEMININO", "evento": "SELETIVA PARA COPA DO BRASIL DE FUTEBOL FEMININO", "promotor": "FFER", "local": "EST. ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "MOTO CLUBE/PVH", "modalidade": "futcampo" },
+  { "ano": 2016, "titulo": "NC", "categoria": "ADULTO", "genero": "FEMININO", "evento": "Campeonato Estadual de Futebol de Campo Adulto Feminino", "promotor": "FRF", "local": "EST. ALUISIO FERREIRA", "municipio": "PORTO VELHO/RO", "parceria": "SPORT CLUB GENUS - Representando a equipe", "modalidade": "futcampo" },
+  { "ano": 2018, "titulo": "3º LUGAR", "categoria": "SUB 20", "genero": "FEMININO", "evento": "16ª SUPER COPA GENUS DE FUTEBOL", "promotor": "SPORT CLUB GENUS", "local": "", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "futcampo" },
+  { "ano": 2019, "titulo": "VICE CAMPEÃO", "categoria": "SUB 18", "genero": "MASCULINO", "evento": "17ª RECOPA GENUS DE FUTEBOL DE CAMPO", "promotor": "SPORT CLUB GENUS", "local": "PARQUE DA CIDADE", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "futcampo" },
+
+  #soccersociety
+  { "ano": 2019, "titulo": "CAMPEÃO", "categoria": "SUB 21", "genero": "FEMININO", "evento": "COPA MADEIRA MAMORÉ SOCCER SOCIETY", "promotor": "FRSS", "local": "", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2019, "titulo": "TROFÉU FAIR PLAY", "categoria": "SUB 21", "genero": "FEMININO", "evento": "COPA MADEIRA MAMORÉ SOCCER SOCIETY", "promotor": "FRSS", "local": "", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2019, "titulo": "SEM RESULTADO", "categoria": "SUB 15", "genero": "FEMININO", "evento": "COPA TENIS CLUBE SOCCER SOCIETY", "promotor": "TÊNIS CLUBE", "local": "ARENA TENIS CLUBE", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2019, "titulo": "3º LUGAR", "categoria": "SUB 20", "genero": "FEMININO", "evento": "COPA MADEIRA MAMORÉ SOCCER SOCIETY", "promotor": "", "local": "", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2019, "titulo": "4º LUGAR", "categoria": "SUB 12", "genero": "MASCULINO", "evento": "COPA TENIS CLUBE SOCCER SOCIETY", "promotor": "TENIS CLUBE", "local": "TENIS CLUBE", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2019, "titulo": "3º LUGAR", "categoria": "SUB 14", "genero": "MASCULINO", "evento": "COPA TENIS CLUBE SOCCER SOCIETY", "promotor": "TENIS CLUBE", "local": "TENIS CLUBE", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2021, "titulo": "3º LUGAR", "categoria": "ADULTO", "genero": "FEMININO", "evento": "COPA QUEEN SOCCCER SOCIETY", "promotor": "LAUDINEIA", "local": "ARENA CENTRO", "municipio": "PORTO VELHO/RO", "parceria": "Os Eventos foram suspensos devido a Pandemia por Covid 2020/21", "modalidade": "soccersociety" },
+  { "ano": 2021, "titulo": "3º LUGAR", "categoria": "ADULTO", "genero": "FEMININO", "evento": "TAÇA GENUS SOCCER SOCIETY ADULTO", "promotor": "S.C. GENUS", "local": "ARENA CENTRO", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2021, "titulo": "CAMPEÃO", "categoria": "ADULTO", "genero": "FEMININO", "evento": "CAMPEONATO INTERBAIRRO SOCCER SOCIETY", "promotor": "FRSS", "local": "ARENA ELSINHO", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2021, "titulo": "CAMPEÃO", "categoria": "ADULTO", "genero": "FEMININO", "evento": "CAMPEONATO BRASILEIRO SOCCER SOCIETY", "promotor": "CBSS", "local": "ARENA ALBERINA SALMON", "municipio": "PARANAGUÃ/PR", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2022, "titulo": "CAMPEÃO", "categoria": "ADULTO", "genero": "FEMININO", "evento": "DESAFIO INTERMUNICIPAL", "promotor": "", "local": "CAMPO DO SIMPOL", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2022, "titulo": "CAMPEÃO", "categoria": "ADULTO", "genero": "FEMININO", "evento": "DESAFIO INTERMUNICIPAL PVH/ROxHUMAITÁ/AM", "promotor": "", "local": "CAMPO DO OLARIA", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2022, "titulo": "CAMPEÃO", "categoria": "ADULTO", "genero": "FEMININO", "evento": "DESAFIO INTERESTADUAL RO vs AM", "promotor": "FRSS", "local": "ARENA ELSINHO", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2022, "titulo": "CAMPEÃO", "categoria": "ADULTO", "genero": "FEMININO", "evento": "CAMPEONATO INTERBAIRRO SOCCER SOCIETY", "promotor": "FRSS", "local": "ARENA ELSINHO", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2022, "titulo": "VICE CAMPEÃO", "categoria": "ADULTO", "genero": "FEMININO", "evento": "CAMPEONATO BRASILEIRO SOCCER SOCIETY", "promotor": "CBSS", "local": "ESTÁDIO GIGANTE DO ITIBERÊ", "municipio": "PARANAGUÃ/PR", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2023, "titulo": "CAMPEÃO", "categoria": "ADULTO", "genero": "FEMININO", "evento": "DESAFIO INTERMUNICIPAL SOCCER SOCIETY", "promotor": "", "local": "CAMPO DO SIMPOL", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2023, "titulo": "CAMPEÃO", "categoria": "ADULTO", "genero": "FEMININO", "evento": "DESAFIO INTERMUNICIPAL SOCCER SOCIETY", "promotor": "", "local": "ARENA GENUS", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2023, "titulo": "CAMPEÃO", "categoria": "SUB 20", "genero": "FEMININO", "evento": "COPA GENUS SOCCER SOCIETY", "promotor": "S.C GENUS", "local": "ARENA GENUS", "municipio": "PORTO VELHO/RO", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2023, "titulo": "BI-CAMPEÃO", "categoria": "ADULTO", "genero": "FEMININO", "evento": "CAMPEONATO BRASILEIRO SOCCER SOCIETY", "promotor": "CBSS", "local": "GINASIO POLIESPORTIVA SBC ADIB M. DIB", "municipio": "SÃO BERNARDO DO CAMPO/SP", "parceria": "", "modalidade": "soccersociety" },
+  { "ano": 2025, "titulo": "CAMPEÃO", "categoria": "ADULTO", "genero": "FEMININO", "evento": "TAÇA LIBERTADORES DA AMÉRICA", "promotor": "FIFOS", "local": "ARENA ALBERINA SALMON", "municipio": "PARANAGUÃ/PR", "parceria": "", "modalidade": "soccersociety" },
+]
+ %>
+
+    <!-- Grid de Títulos -->
+    <div class="row g-4" id="titulos-container">
+      <% titulos.each do |titulo| %>
+        <div class="col-md-6 col-lg-4 titulo-card" data-modalidade="<%= titulo[:modalidade] %>">
+          <div class="card h-100 shadow-sm border-0 titulo-item">
+            <!-- Header do Card -->
+            <div class="card-header text-white text-center py-3" 
+                 style="background: linear-gradient(135deg, #1a3a7d 0%, #e67e22 100%);">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge bg-white text-dark"><%= titulo[:ano] %></span>
+                <h4 class="mb-0 fw-bold"><%= titulo[:titulo] %></h4>
+                <span class="badge <%= titulo[:genero] == 'MASCULINO' ? 'bg-primary' : 'bg-danger' %>">
+                  <%= titulo[:genero] %>
+                </span>
+              </div>
+            </div>
+
+            <!-- Corpo do Card -->
+            <div class="card-body">
+              <div class="mb-3">
+                <span class="badge bg-warning text-dark mb-2">
+                  <%= titulo[:modalidade].upcase %>
+                </span>
+                <span class="badge bg-info text-white mb-2">
+                  <%= titulo[:categoria] %>
+                </span>
+              </div>
+
+              <h5 class="card-title text-primary fw-bold mb-3">
+                <i class="ph ph-trophy text-warning me-2"></i>
+                <%= titulo[:evento] %>
+              </h5>
+
+              <div class="info-list">
+                <div class="info-item mb-2">
+                  <i class="ph ph-buildings text-primary me-2"></i>
+                  <strong>Promotor:</strong> <%= titulo[:promotor] %>
+                </div>
+
+                <div class="info-item mb-2">
+                  <i class="ph ph-map-pin text-primary me-2"></i>
+                  <strong>Local:</strong> <%= titulo[:local] %>
+                </div>
+
+                <div class="info-item mb-2">
+                  <i class="ph ph-map-trifold text-primary me-2"></i>
+                  <strong>Município:</strong> <%= titulo[:municipio] %>
+                </div>
+
+                <% if titulo[:parceria].present? %>
+                  <div class="info-item mb-2">
+                    <i class="ph ph-handshake text-primary me-2"></i>
+                    <strong>Parceria:</strong> <%= titulo[:parceria] %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+
+            <!-- Footer com Destaque -->
+            <div class="card-footer bg-light text-center">
+              <small class="text-muted">
+                <i class="ph ph-star text-warning me-1"></i>
+                Título Oficial Asdericel
+              </small>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Contador de Títulos -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <div class="alert alert-primary text-center" role="alert">
+          <h5 class="mb-0">
+            <i class="ph ph-trophy me-2"></i>
+            Total de <strong id="total-titulos"><%= titulos.count %></strong> títulos exibidos
+          </h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botão Voltar -->
+    <div class="text-center mt-4">
+      <%= link_to "Voltar para Home", root_path, class: "btn btn-lg btn-primary px-5" %>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .filter-btn {
+    transition: all 0.3s ease;
+  }
+
+  .filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .filter-btn.active {
+    background-color: #696cff;
+    color: white;
+    border-color: #696cff;
+  }
+
+  .titulo-card {
+    transition: all 0.3s ease;
+  }
+
+  .titulo-card.hidden {
+    display: none;
+  }
+
+  .titulo-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .titulo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .info-item {
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .info-item strong {
+    color: #1a3a7d;
+  }
+
+  .card-header h4 {
+    font-size: 1.3rem;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const tituloCards = document.querySelectorAll('.titulo-card');
+    const totalElement = document.getElementById('total-titulos');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove active de todos os botões
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Adiciona active no botão clicado
+        this.classList.add('active');
+
+        const filter = this.getAttribute('data-filter');
+        let count = 0;
+
+        tituloCards.forEach(card => {
+          const modalidade = card.getAttribute('data-modalidade');
+          
+          if (filter === 'all' || modalidade === filter) {
+            card.classList.remove('hidden');
+            count++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        // Atualiza contador
+        totalElement.textContent = count;
+      });
+    });
+  });
+</script>
