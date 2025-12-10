@@ -1,33 +1,88 @@
-<section
-  class="position-relative overflow-hidden"
-  style="background-image: url('<%= asset_path('time.jpg') %>'); background-size: cover; background-position: center; height: 600px;"
->
-  <!-- Overlay -->
-  <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(to right, rgba(234, 88, 12, 0.6), rgba(251, 146, 60, 0.6), transparent);"></div>
-
-  <!-- Content -->
-  <div class="position-relative h-100 d-flex flex-column justify-content-center container">
-    
-    <h2 class="display-4 fw-black text-white mb-3" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-      Asdericel - Clube de
-      <br />
-      Campeões
-    </h2>
-
-    <p class="fs-5 text-info fw-bold fst-italic mb-4" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
-      O maior campeão do estado de
-      <br />
-      Rondônia
-    </p>
-
-    <button class="btn btn-dark btn-lg fw-bold d-inline-flex align-items-center gap-2 shadow-lg" style="transition: background-color 0.3s;">
-      JUNTE-SE A NÓS
-      
-      <!-- ArrowRight Icon -->
-      <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 12h14" />
-        <path d="M12 5l7 7-7 7" />
-      </svg>
-    </button>
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+  <!-- Indicadores -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
   </div>
-</section>
+
+  <!-- Slides -->
+  <div class="carousel-inner">
+    <!-- Slide 1: time.jpg -->
+    <div class="carousel-item active">
+      <section
+        class="position-relative overflow-hidden"
+        style="background-image: url('<%= asset_path('time.jpg') %>'); background-size: cover; background-position: center; height: 600px;"
+      >
+        <!-- Overlay -->
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(to right, rgba(234, 88, 12, 0.6), rgba(251, 146, 60, 0.6), transparent);"></div>
+
+        <!-- Content -->
+        <div class="position-relative h-100 d-flex flex-column justify-content-center container">
+          <h2 class="display-4 fw-black text-white mb-3" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+            Asdericel - Clube de
+            <br />
+            Campeões
+          </h2>
+
+          <p class="fs-5 text-info fw-bold fst-italic mb-4" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            O maior campeão do estado de
+            <br />
+            Rondônia
+          </p>
+
+          <%= link_to doacoes_path, class: "btn btn-dark btn-lg fw-bold d-inline-flex align-items-center gap-2 shadow-lg", style: "transition: background-color 0.3s;" do %>
+            JUNTE-SE A NÓS
+            <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14" />
+              <path d="M12 5l7 7-7 7" />
+            </svg>
+          <% end %>
+        </div>
+      </section>
+    </div>
+
+    <!-- Slide 2: junte-se.png -->
+    <div class="carousel-item">
+      <section
+        class="position-relative overflow-hidden"
+        style="background-image: url('<%= asset_path('junte-se.png') %>'); background-size: cover; background-position: center; height: 600px;"
+      >
+        <!-- Overlay -->
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(to right, rgba(26, 58, 125, 0.5), rgba(230, 126, 34, 0.5), transparent);"></div>
+
+        <!-- Content -->
+        <div class="position-relative h-100 d-flex flex-column justify-content-center container">
+          <h2 class="display-4 fw-black text-white mb-3" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+            Junte-se ao
+            <br />
+            Time Campeão
+          </h2>
+
+          <p class="fs-5 text-white fw-bold fst-italic mb-4" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            Faça parte da história da
+            <br />
+            Asdericel
+          </p>
+
+          <%= link_to doacoes_path, class: "btn btn-warning btn-lg fw-bold d-inline-flex align-items-center gap-2 shadow-lg", style: "transition: background-color 0.3s;" do %>
+            SAIBA MAIS
+            <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14" />
+              <path d="M12 5l7 7-7 7" />
+            </svg>
+          <% end %>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Controles -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Próximo</span>
+  </button>
+</div>

@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get "club-history" => "externo#club_history", as: :club_history
   get "simbolo" => "externo#simbolo", as: :simbolo
   get "galeria" => "externo#galeria", as: :galeria
+  get "diretoria" => "externo#diretoria", as: :diretoria
+  get "doacoes" => "externo#doacoes", as: :doacoes
   # Defines the root path route ("/")
  
   root "home#index"  # Página pública

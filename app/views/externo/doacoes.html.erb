@@ -1,0 +1,149 @@
+<% content_for :title, "Doe para ASDERICEL" %>
+
+<div class="container my-5">
+  <!-- Cabeçalho -->
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold" style="color: #1a3a7d;">JUNTE-SE A NÓS</h1>
+    <p class="lead text-muted">Apoie o maior clube campeão de Rondônia</p>
+    <div class="mx-auto" style="width: 100px; height: 4px; background: linear-gradient(to right, #1a3a7d, #e67e22); border-radius: 2px;"></div>
+  </div>
+
+  <!-- Formas de Doação -->
+  <div class="row g-4">
+    
+    <!-- Card 1: Nota Legal -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm border-0 hover-lift">
+        <div class="card-header text-white text-center py-3" style="background: linear-gradient(to right, #1a3a7d, #2a4a8d);">
+          <h4 class="mb-0 fw-bold">DOE SUAS NOTAS</h4>
+        </div>
+        <div class="card-body text-center d-flex flex-column">
+          <div class="mb-4">
+            <%= image_tag "nota-legal.png", class: "img-fluid rounded shadow-sm", style: "max-height: 200px; object-fit: contain;", alt: "Nota Legal Rondoniense" %>
+          </div>
+          
+          <h5 class="fw-bold mb-3" style="color: #1a3a7d;">NOTA LEGAL RONDONIENSE</h5>
+          
+          <p class="text-muted mb-4">
+            Baixe o aplicativo e doe suas notas fiscais para a ASDERICEL. Você não gasta nada e nos ajuda muito!
+          </p>
+          
+          <a href="https://notalegal.sefin.ro.gov.br" target="_blank" class="btn btn-primary btn-lg fw-bold mt-auto">
+            ACESSAR SITE
+            <i class="ph ph-arrow-square-out ms-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: PIX -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm border-0 hover-lift">
+        <div class="card-header text-white text-center py-3" style="background: linear-gradient(to right, #1a3a7d, #2a4a8d);">
+          <h4 class="mb-0 fw-bold">DOE QUALQUER VALOR</h4>
+        </div>
+        <div class="card-body text-center d-flex flex-column">
+          <div class="mb-4">
+            <%= image_tag "pix.png", class: "img-fluid rounded shadow-sm", style: "max-height: 200px; object-fit: contain;", alt: "PIX ASDERICEL" %>
+          </div>
+          
+          <h5 class="fw-bold mb-3" style="color: #1a3a7d;">PIX ASDERICEL</h5>
+          
+          <p class="text-muted mb-3">
+            Faça sua doação diretamente via PIX. Qualquer valor ajuda a manter nossos atletas e projetos.
+          </p>
+          
+          <div class="alert alert-warning mt-auto" role="alert">
+            <strong>Chave PIX:</strong>
+            <p class="mb-0 fw-bold" style="color: #1a3a7d; font-size: 1.1rem;">CNPJ ou Email da ASDERICEL</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Patrocínio -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm border-0 hover-lift">
+        <div class="card-header text-white text-center py-3" style="background: linear-gradient(to right, #1a3a7d, #2a4a8d);">
+          <h4 class="mb-0 fw-bold">PATROCINE ASDERICEL</h4>
+        </div>
+        <div class="card-body text-center d-flex flex-column">
+          <div class="mb-4 d-flex align-items-center justify-content-center" style="height: 200px;">
+            <i class="ph ph-hand-coins" style="font-size: 8rem; color: #e67e22;"></i>
+          </div>
+          
+          <h5 class="fw-bold mb-3" style="color: #1a3a7d;">SEJA UM PATROCINADOR</h5>
+          
+          <p class="text-muted mb-4">
+            Empresas e pessoas físicas podem patrocinar nossos atletas e projetos. Entre em contato conosco!
+          </p>
+          
+          <a href="/#contato" class="btn btn-warning btn-lg fw-bold mt-auto">
+            FALE CONOSCO
+            <i class="ph ph-chat-circle-dots ms-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Informação Adicional -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="card border-0 shadow-sm" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+        <div class="card-body p-4">
+          <div class="d-flex align-items-start gap-3">
+            <i class="ph ph-heart text-danger" style="font-size: 2.5rem;"></i>
+            <div>
+              <h5 class="fw-bold mb-2" style="color: #1a3a7d;">Por que doar?</h5>
+              <p class="mb-0 text-muted">
+                A ASDERICEL é uma associação sem fins lucrativos que trabalha há mais de 20 anos formando atletas e promovendo o esporte em Rondônia. 
+                Suas doações nos ajudam a manter as atividades, adquirir equipamentos, custear viagens para competições e oferecer oportunidades para centenas de jovens atletas.
+                <strong>Juntos, fazemos a diferença!</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  .card-header {
+    border-bottom: 3px solid #e67e22;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(to right, #1a3a7d, #2a4a8d);
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(to right, #0f2555, #1a3a7d);
+    transform: scale(1.05);
+  }
+  
+  .btn-warning {
+    background: #e67e22;
+    border: none;
+    color: white;
+  }
+  
+  .btn-warning:hover {
+    background: #d35400;
+    color: white;
+    transform: scale(1.05);
+  }
+</style>

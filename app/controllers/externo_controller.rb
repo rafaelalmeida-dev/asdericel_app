@@ -4,6 +4,8 @@ class ExternoController < ApplicationController
   def club_history;  end
   def simbolo; end
   def galeria; end
+  def diretoria; end
+  def doacoes; end
   def hero; end
   def about; end
   def team; end
