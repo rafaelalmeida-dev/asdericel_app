@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :noticias
   resources :dirigentes
   resources :modalidades
   resources :atletas
@@ -34,6 +35,10 @@ Rails.application.routes.draw do
   get "galeria" => "externo#galeria", as: :galeria
   get "diretoria" => "externo#diretoria", as: :diretoria
   get "doacoes" => "externo#doacoes", as: :doacoes
+  
+  # Rotas públicas de notícias
+  get "noticias-publico" => "noticias#index_publico", as: :noticias_publico
+  get "noticia/:id" => "noticias#show_publico", as: :noticia
   # Defines the root path route ("/")
  
   root "home#index"  # Página pública

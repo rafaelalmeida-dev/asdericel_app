@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_14_024553) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -235,6 +235,34 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "noticia", force: :cascade do |t|
+    t.string "titulo"
+    t.text "conteudo"
+    t.string "categoria"
+    t.string "imagem"
+    t.date "data_publicacao"
+    t.boolean "destaque"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "noticias", force: :cascade do |t|
+    t.string "titulo"
+    t.text "conteudo"
+    t.string "categoria"
+    t.string "imagem"
+    t.date "data_publicacao"
+    t.boolean "destaque", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["categoria"], name: "index_noticias_on_categoria"
+    t.index ["data_publicacao"], name: "index_noticias_on_data_publicacao"
+    t.index ["destaque"], name: "index_noticias_on_destaque"
   end
 
   create_table "parentescos", force: :cascade do |t|
