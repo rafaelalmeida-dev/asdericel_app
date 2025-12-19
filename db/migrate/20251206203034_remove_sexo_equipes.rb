@@ -6,7 +6,7 @@ class RemoveSexoEquipes < ActiveRecord::Migration[7.2]
     if foreign_key_exists?(:equipes, :sexos)
       remove_foreign_key :equipes, :sexos
     end
-    
+
     if column_exists?(:equipes, :sexo_id)
       remove_column :equipes, :sexo_id
     end

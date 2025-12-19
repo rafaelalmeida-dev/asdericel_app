@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_14_024553) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_18_215154) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -98,15 +98,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_14_024553) do
 
   create_table "camisas", force: :cascade do |t|
     t.string "numero"
-    t.string "created_by"
-    t.string "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "categoria", force: :cascade do |t|
-    t.string "nome"
     t.string "created_by"
     t.string "updated_by"
     t.datetime "deleted_at"
@@ -367,7 +358,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_14_024553) do
   add_foreign_key "dirigentes", "federacoes"
   add_foreign_key "dirigentes", "modalidades"
   add_foreign_key "dirigentes", "pessoas"
-  add_foreign_key "equipes", "categoria"
   add_foreign_key "equipes", "modalidades"
   add_foreign_key "pessoas", "estadocivils"
   add_foreign_key "pessoas", "sexos"
