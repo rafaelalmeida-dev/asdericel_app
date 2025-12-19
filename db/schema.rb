@@ -12,6 +12,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema[7.2].define(version: 2025_12_18_215154) do
 =======
 ActiveRecord::Schema[7.2].define(version: 2025_12_20_023139) do
@@ -19,6 +20,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_20_023139) do
 =======
 ActiveRecord::Schema[7.2].define(version: 2025_12_21_000132) do
 >>>>>>> 38b1cad (adicionado categorias)
+=======
+ActiveRecord::Schema[7.2].define(version: 2025_12_21_000132) do
+=======
+ActiveRecord::Schema[7.2].define(version: 2025_12_18_215154) do
+>>>>>>> 9027e2b (refactor: remocao de model incorreta categoria e drop table de categoria.)
+>>>>>>> a98ef8d (refactor: remocao de model incorreta categoria e drop table de categoria.)
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -141,6 +148,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_21_000132) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
   create_table "categorias", force: :cascade do |t|
     t.string "nome", null: false
     t.string "sexo", null: false
@@ -155,6 +163,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_21_000132) do
     t.index ["sexo"], name: "index_categorias_on_sexo"
   end
 
+=======
+>>>>>>> 9027e2b (refactor: remocao de model incorreta categoria e drop table de categoria.)
   create_table "dirigentes", force: :cascade do |t|
     t.string "cref"
     t.integer "pessoa_id"

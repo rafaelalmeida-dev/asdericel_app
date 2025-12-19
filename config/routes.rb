@@ -13,8 +13,8 @@ Rails.application.routes.draw do
 <<<<<<< HEAD
 =======
   resources :estadocivils
+<<<<<<< HEAD
   resources :categorias
->>>>>>> 38b1cad (adicionado categorias)
   resources :equipes
   resources :escolas
   resources :eventos
