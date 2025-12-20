@@ -74,4 +74,16 @@ module ApplicationHelper
   def nav_link_controller(controller)
     "nav-link #{'active' if params[:controller] == controller}"
   end
+
+  def categoria_cor(categoria)
+    cores = {
+      "FUTEBOL" => "#FF6B6B",
+      "ATLETISMO" => "#4ECDC4",
+      "CLUBE" => "#1a3a7d",
+      "FUTSAL" => "#FFD93D",
+      "FUTCAMPO" => "#6BCB77",
+      "SOCCER SOCIETY" => "#FF9770"
+    }
+    cores[categoria&.upcase] || "#999999"
+  end
 end

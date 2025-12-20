@@ -1,0 +1,22 @@
+<%= render "shared/context_nav", title: t("activerecord.models.noticia.other") do %>
+  <%= content_tag(:span, link_to(t("activerecord.models.noticia.other"), noticias_path, class: "text-dark"), class: "breadcrumb-item") %>
+  <%= content_tag(:span, t("common.actions.show"), class: "breadcrumb-item active") %>
+<% end %>
+
+<%= simple_form_for(@noticia, url: "#", method: :get, html: { disabled: true }) do |f| %>
+  <%= render "shared/model_errors" %>
+  <%= render "shared/notice" %>
+  <div class="card">
+    <div class="card-header">
+      <h5 class="my-0">
+        <%= translate_concat("common.actions.#{params[:action]}", "activerecord.models.noticia.one") %>
+      </h5>
+    </div>
+    <div class="card-body">
+      <form>
+        <%= render "noticia", f: f, disabled: true %>
+        <%= link_to t("common.back"), noticias_path, class: "btn btn-outline-secondary" %>
+      </form>
+    </div>
+  </div>
+<% end %>
