@@ -34,8 +34,8 @@ Rails.application.routes.draw do
   get "doacoes" => "externo#doacoes", as: :doacoes
 
   # Rotas públicas de notícias
-  get "noticias-publico" => "noticias#index_publico", as: :noticias_publico
-  get "noticia/:id" => "noticias#show_publico", as: :noticias
+  get "noticias-publico" => "externo#noticias", as: :noticias_publico
+  get "noticia/:id" => "externo#noticia", as: :noticia_publico
   # Defines the root path route ("/")
 
   root "home#index"  # Página pública

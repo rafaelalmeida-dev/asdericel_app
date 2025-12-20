@@ -76,14 +76,14 @@ module ApplicationHelper
   end
 
   def categoria_cor(categoria)
-    case categoria
-    when "FUTEBOL" then "#1a3a7d"
-    when "ATLETISMO" then "#e67e22"
-    when "CLUBE" then "#16a34a"
-    when "FUTSAL" then "#dc2626"
-    when "FUTCAMPO" then "#9333ea"
-    when "SOCCER SOCIETY" then "#0891b2"
-    else "#6b7280"
-    end
+    cores = {
+      "FUTEBOL" => "#FF6B6B",
+      "ATLETISMO" => "#4ECDC4",
+      "CLUBE" => "#1a3a7d",
+      "FUTSAL" => "#FFD93D",
+      "FUTCAMPO" => "#6BCB77",
+      "SOCCER SOCIETY" => "#FF9770"
+    }
+    cores[categoria&.upcase] || "#999999"
   end
 end
