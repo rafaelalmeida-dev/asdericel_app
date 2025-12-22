@@ -2,7 +2,7 @@ class EstadosCivisController < ApplicationController
   before_action :set_estado_civil, only: %i[show edit update destroy]
 
   add_breadcrumb "Home", :root_path
-  add_breadcrumb "Estados_civis", :estados_civis_path
+  add_breadcrumb "Estado Civil", :estados_civis_path
 
   def index
     @q = EstadoCivil.ransack(params[:q])

@@ -1,29 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<%= render "shared/context_nav", title: t("activerecord.models.noticia.other"), new_path: new_noticia_path do  %>
-=======
 <%= render "shared/context_nav", title: t("activerecord.models.noticia.other"), new_path: new_noticia_path do %>
->>>>>>> 660cd8a (criado partes de noticias)
-=======
-<%= render "shared/context_nav", title: t("activerecord.models.noticia.other"), new_path: new_noticia_path do  %>
->>>>>>> 5d150bf (refactor: view de noticias corrigido, e metodo para cor das categorias de noticias movido para helper.)
   <span class="breadcrumb-item active"><%= t("activerecord.models.noticia.other") %></span>
 <% end %>
 <%= render "shared/notice" %>
 <div class="card">
   <div class="card-header d-flex">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 5d150bf (refactor: view de noticias corrigido, e metodo para cor das categorias de noticias movido para helper.)
-    <%= search_form_for @q, html: { class: "d-flex gap-2" , autocomplete: "off"} do |f| %>
-      <%= f.search_field :titulo_cont, class: "form-control", placeholder: t("activerecord.attributes.noticia.titulo") %>
-      <%= link_to noticia_path, class: "btn btn-outline-secondary d-flex align-items-center justify-content-center" do %>
-        <i class="ph ph-x"></i>
-      <% end if params[:q] %>
-    <% end %>      
-<<<<<<< HEAD
-=======
     <%= search_form_for @q, url: noticias_path, html: { class: "d-flex gap-2", autocomplete: "off" } do |f| %>
       <%= f.search_field :titulo_cont, class: "form-control", placeholder: t("activerecord.attributes.noticia.titulo", default: "Título") %>
       <% if params[:q] %>
@@ -32,9 +12,6 @@
         <% end %>
       <% end %>
     <% end %>
->>>>>>> 660cd8a (criado partes de noticias)
-=======
->>>>>>> 5d150bf (refactor: view de noticias corrigido, e metodo para cor das categorias de noticias movido para helper.)
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -42,29 +19,6 @@
         <thead>
           <tr>
             <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 5d150bf (refactor: view de noticias corrigido, e metodo para cor das categorias de noticias movido para helper.)
-            
-              <th><%= sort_link(@q, :titulo, t("activerecord.attributes.noticia.titulo")) %></th>
-            
-              <th><%= sort_link(@q, :conteudo, t("activerecord.attributes.noticia.conteudo")) %></th>
-            
-              <th><%= sort_link(@q, :categoria, t("activerecord.attributes.noticia.categoria")) %></th>
-            
-              <th><%= sort_link(@q, :imagem, t("activerecord.attributes.noticia.imagem")) %></th>
-            
-              <th><%= sort_link(@q, :data_publicacao, t("activerecord.attributes.noticia.data_publicacao")) %></th>
-            
-              <th><%= sort_link(@q, :destaque, t("activerecord.attributes.noticia.destaque")) %></th>
-            
-<<<<<<< HEAD
-          </tr>
-        </thead>
-        <tbody>
-          <% @noticia.each do |noticia| %>
-=======
             <th><%= sort_link(@q, :titulo, t("activerecord.attributes.noticia.titulo", default: "Título")) %></th>
             <th><%= sort_link(@q, :conteudo, t("activerecord.attributes.noticia.conteudo", default: "Conteúdo")) %></th>
             <th><%= sort_link(@q, :categoria, t("activerecord.attributes.noticia.categoria", default: "Categoria")) %></th>
@@ -75,13 +29,6 @@
         </thead>
         <tbody>
           <% @noticias.each do |noticia| %>
->>>>>>> 660cd8a (criado partes de noticias)
-=======
-          </tr>
-        </thead>
-        <tbody>
-          <% @noticia.each do |noticia| %>
->>>>>>> 5d150bf (refactor: view de noticias corrigido, e metodo para cor das categorias de noticias movido para helper.)
             <tr>
               <td class="text-center">
                 <div class="dropdown-toggle">
@@ -92,33 +39,6 @@
                     <div class="dropdown-header"><%= t("common.table_dropdown_options") %></div>
                     <%= link_to content_tag(:i, "", class: "ph ph-eye me-2") + t("common.actions.show"), noticia_path(noticia), class: "dropdown-item" %>
                     <%= link_to content_tag(:i, "", class: "ph ph-pen me-2") + t("common.actions.edit"), edit_noticia_path(noticia), class: "dropdown-item" %>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 5d150bf (refactor: view de noticias corrigido, e metodo para cor das categorias de noticias movido para helper.)
-                    <%= form_for noticia, method: :delete do |f| %>
-                      <a class="dropdown-item hand-pointer" data-confirm-delete="<%= noticia_path(noticia) %>" data-csrf-token="<%= form_authenticity_token %>">
-                        <i class="ph ph-trash-simple me-2"></i><%= t("common.actions.delete") %>
-                      </a>
-                    <% end %>
-<<<<<<< HEAD
-                  </div>
-                </div>
-              </td>
-              
-                <td><%= noticia.titulo %></td>
-              
-                <td><%= noticia.conteudo %></td>
-              
-                <td><%= noticia.categoria %></td>
-              
-                <td><%= noticia.imagem %></td>
-              
-                <td><%= noticia.data_publicacao %></td>
-              
-                <td><%= noticia.destaque %></td>
-              
-=======
                     <a class="dropdown-item hand-pointer" data-confirm-delete="<%= noticia_path(noticia) %>" data-csrf-token="<%= form_authenticity_token %>">
                       <i class="ph ph-trash-simple me-2"></i><%= t("common.actions.delete") %>
                     </a>
@@ -131,25 +51,6 @@
               <td><%= noticia.imagem %></td>
               <td><%= noticia.data_publicacao %></td>
               <td><%= noticia.destaque %></td>
->>>>>>> 660cd8a (criado partes de noticias)
-=======
-                  </div>
-                </div>
-              </td>
-              
-                <td><%= noticia.titulo %></td>
-              
-                <td><%= noticia.conteudo %></td>
-              
-                <td><%= noticia.categoria %></td>
-              
-                <td><%= noticia.imagem %></td>
-              
-                <td><%= noticia.data_publicacao %></td>
-              
-                <td><%= noticia.destaque %></td>
-              
->>>>>>> 5d150bf (refactor: view de noticias corrigido, e metodo para cor das categorias de noticias movido para helper.)
             </tr>
           <% end %>
         </tbody>

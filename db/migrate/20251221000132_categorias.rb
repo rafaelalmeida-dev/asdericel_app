@@ -6,7 +6,6 @@ class Categorias < ActiveRecord::Migration[7.2]
     add_column :categorias, :created_by, :string
     add_column :categorias, :updated_by, :string
     add_column :categorias, :deleted_at, :datetime
-    
   end
 
   def down

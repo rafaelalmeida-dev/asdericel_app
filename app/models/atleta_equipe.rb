@@ -5,26 +5,8 @@
 # equipe
 
 # Atributos:
-<<<<<<< HEAD
-
-# Adicione aqui quaisquer métodos ou validações abaixo
 class AtletaEquipe < ApplicationRecord
   include Datafilter
-=======
-<<<<<<<< HEAD:app/models/categoria.rb
-# string - nome
-
-# Adicione aqui quaisquer métodos ou validações abaixo
-class Categoria < ApplicationRecord
-========
-
-# Adicione aqui quaisquer métodos ou validações abaixo
-class AtletaEquipe < ApplicationRecord
->>>>>>>> 5627994 (refactor: refatoracoes de scaffold: estado_civil, funcao, responsavel, atleta_equipe, noticia.):app/models/atleta_equipe.rb
-  include Datafilter
-  self.table_name = "categorias"
-
->>>>>>> e898f74 (refactor: refatoracoes de scaffold: estado_civil, funcao, responsavel, atleta_equipe, noticia.)
 
   belongs_to :atleta
   belongs_to :equipe
@@ -33,13 +15,6 @@ class AtletaEquipe < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     # array de strings
     %w[
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:app/models/categoria.rb
-      nome
-========
->>>>>>>> 5627994 (refactor: refatoracoes de scaffold: estado_civil, funcao, responsavel, atleta_equipe, noticia.):app/models/atleta_equipe.rb
->>>>>>> e898f74 (refactor: refatoracoes de scaffold: estado_civil, funcao, responsavel, atleta_equipe, noticia.)
     ]
   end
 

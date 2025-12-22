@@ -9,7 +9,6 @@
 class EstadoCivil < ApplicationRecord
   include Datafilter
 
-
   # Permitir os atributos buscáveis pelo Ransack
   def self.ransackable_attributes(auth_object = nil)
     # array de strings
