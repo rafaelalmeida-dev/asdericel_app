@@ -95,7 +95,7 @@
           <% noticias_recentes = Noticia.recentes.limit(4) %>
           <% if noticias_recentes.any? %>
             <% noticias_recentes.each do |noticia| %>
-              <%= link_to noticia_path(noticia), class: "text-decoration-none" do %>
+              <%= link_to noticias_path(noticia), class: "text-decoration-none" do %>
                 <div class="card mb-3 border-0 shadow-sm hover-news">
                   <div class="row g-0">
                     <div class="col-4">
@@ -156,18 +156,3 @@
     }
   }
 </style>
-
-<%
-def categoria_cor(categoria)
-  case categoria
-  when 'FUTEBOL' then '#1a3a7d'
-  when 'ATLETISMO' then '#e67e22'
-  when 'CLUBE' then '#16a34a'
-  when 'FUTSAL' then '#dc2626'
-  when 'FUTCAMPO' then '#9333ea'
-  when 'SOCCER SOCIETY' then '#0891b2'
-  else '#6b7280'
-  end
-end
-%>
-
