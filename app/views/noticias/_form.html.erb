@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <%= render "shared/context_nav", title: t("activerecord.models.noticia.other") do  %>
   <%= content_tag(:span, link_to(t("activerecord.models.noticia.other"), noticia_path, class: "text-dark"), class: "breadcrumb-item") %>
   <%= content_tag(:span, t("common.actions.#{params[:action]}"),class: "breadcrumb-item active")%>
@@ -33,9 +34,13 @@
 >>>>>>>> 660cd8a (criado partes de noticias):app/views/noticias/_form.html.erb
 =======
 =======
+=======
+<%= render "shared/context_nav", title: t("activerecord.models.noticia.other") do  %>
+>>>>>>> 5d150bf (refactor: view de noticias corrigido, e metodo para cor das categorias de noticias movido para helper.)
   <%= content_tag(:span, link_to(t("activerecord.models.noticia.other"), noticia_path, class: "text-dark"), class: "breadcrumb-item") %>
-  <%= content_tag(:span, t("common.actions.#{params[:action]}"), class: "breadcrumb-item active") %>
+  <%= content_tag(:span, t("common.actions.#{params[:action]}"),class: "breadcrumb-item active")%>
 <% end %>
+<<<<<<< HEAD
 
 <%= simple_form_for(@noticia, url: "#", method: "get", html: { disabled: true }) do |f| %>
 >>>>>>> 5627994 (refactor: refatoracoes de scaffold: estado_civil, funcao, responsavel, atleta_equipe, noticia.):app/views/noticia/show.html.erb
@@ -43,6 +48,14 @@
   <%= render "shared/model_errors" %>
   <%= render "shared/notice" %>
 >>>>>>> 660cd8a (criado partes de noticias)
+=======
+<!-- Form Customizado -->
+<%= simple_form_for(@noticia) do |f| %>
+  <!-- Área de notificações -->
+  <%= render "shared/model_errors" %>
+  <%= render "shared/notice" %>
+  <!-- Card e formulário -->
+>>>>>>> 5d150bf (refactor: view de noticias corrigido, e metodo para cor das categorias de noticias movido para helper.)
   <div class="card">
     <div class="card-header">
       <h5 class="my-0">
@@ -54,15 +67,18 @@
         <%= render "noticia", f: f %>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD:app/views/noticias/_form.html.erb
 >>>>>>> e898f74 (refactor: refatoracoes de scaffold: estado_civil, funcao, responsavel, atleta_equipe, noticia.)
         <%= link_to t("common.back"), noticias_path, class: "btn btn-outline-secondary" %>
 =======
+=======
+>>>>>>> 5d150bf (refactor: view de noticias corrigido, e metodo para cor das categorias de noticias movido para helper.)
         <%= link_to t("common.back"), noticia_path, class: "btn btn-outline-secondary" %>
->>>>>>> 5627994 (refactor: refatoracoes de scaffold: estado_civil, funcao, responsavel, atleta_equipe, noticia.):app/views/noticia/show.html.erb
         <%= btn_submit(f) %>
       </form>    
+<<<<<<< HEAD
     </div>
   </div>
 <% end %>
@@ -78,3 +94,8 @@
   </div>
 <% end %>
 >>>>>>> 660cd8a (criado partes de noticias)
+=======
+    </div>
+  </div>
+<% end %>
+>>>>>>> 5d150bf (refactor: view de noticias corrigido, e metodo para cor das categorias de noticias movido para helper.)
