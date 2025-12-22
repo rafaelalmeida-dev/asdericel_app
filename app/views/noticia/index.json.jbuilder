@@ -1,1 +1,1 @@
-json.array! @noticia, partial: "noticia/noticium", as: :noticium
+json.array! @noticia, partial: "noticia/noticia", as: :noticia

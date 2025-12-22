@@ -1,1 +1,1 @@
-json.partial! "noticia/noticium", noticium: @noticium
+json.partial! "noticia/noticia", noticia: @noticia

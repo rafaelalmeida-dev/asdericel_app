@@ -1,20 +1,20 @@
-<%= render "shared/context_nav", title: t("activerecord.models.noticium.other") do %>
-  <%= content_tag(:span, link_to(t("activerecord.models.noticium.other"), noticia_path, class: "text-dark"), class: "breadcrumb-item") %>
+<%= render "shared/context_nav", title: t("activerecord.models.noticia.other") do %>
+  <%= content_tag(:span, link_to(t("activerecord.models.noticia.other"), noticia_path, class: "text-dark"), class: "breadcrumb-item") %>
   <%= content_tag(:span, t("common.actions.#{params[:action]}"), class: "breadcrumb-item active") %>
 <% end %>
 
-<%= simple_form_for(@noticium, url: "#", method: "get", html: { disabled: true }) do |f| %>
+<%= simple_form_for(@noticia, url: "#", method: "get", html: { disabled: true }) do |f| %>
   <%= render "shared/model_errors" %>
   <%= render "shared/notice" %>
   <div class="card">
     <div class="card-header">
       <h5 class="my-0">
-        <%= translate_concat("common.actions.#{params[:action]}", "activerecord.models.noticium.one") %>
+        <%= translate_concat("common.actions.#{params[:action]}", "activerecord.models.noticia.one") %>
       </h5>
     </div>
     <div class="card-body">
       <form>
-        <%= render "noticium", f: f %>
+        <%= render "noticia", f: f %>
         <%= link_to t("common.back"), noticia_path, class: "btn btn-outline-secondary" %>
         <%= btn_submit(f) %>
       </form>    
