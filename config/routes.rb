@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   resources :responsaveis
   resources :estados_civis
   resources :funcoes
+=======
+<<<<<<< HEAD
+  resources :noticias
+=======
+  resources :responsaveis
+  resources :estados_civis
+  resources :funcoes
+>>>>>>> 5627994 (refactor: refatoracoes de scaffold: estado_civil, funcao, responsavel, atleta_equipe, noticia.)
+>>>>>>> e898f74 (refactor: refatoracoes de scaffold: estado_civil, funcao, responsavel, atleta_equipe, noticia.)
   resources :dirigentes
   resources :modalidades
   resources :atletas
@@ -11,10 +21,20 @@ Rails.application.routes.draw do
   resources :pessoas
   resources :ensinos
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   resources :estadocivils
 <<<<<<< HEAD
   resources :categorias
+=======
+  resources :estadocivils
+<<<<<<< HEAD
+  resources :categorias
+=======
+>>>>>>> 9027e2b (refactor: remocao de model incorreta categoria e drop table de categoria.)
+=======
+>>>>>>> 5627994 (refactor: refatoracoes de scaffold: estado_civil, funcao, responsavel, atleta_equipe, noticia.)
+>>>>>>> e898f74 (refactor: refatoracoes de scaffold: estado_civil, funcao, responsavel, atleta_equipe, noticia.)
   resources :equipes
   resources :escolas
   resources :eventos
