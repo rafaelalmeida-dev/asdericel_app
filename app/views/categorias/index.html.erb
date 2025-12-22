@@ -1,0 +1,28 @@
+<h1><%= t('activerecord.models.categoria.other') %></h1>
+
+<%= link_to t('common.new'), new_categoria_path, class: 'btn btn-primary mb-3' %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= Categoria.human_attribute_name(:nome) %></th>
+      <th><%= Categoria.human_attribute_name(:sexo) %></th>
+      <th><%= Categoria.human_attribute_name(:idade) %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categorias.each do |categoria| %>
+      <tr>
+        <td><%= categoria.nome %></td>
+        <td><%= categoria.sexo %></td>
+        <td><%= categoria.idade %></td>
+        <td>
+          <%= link_to t('common.actions.show'), categoria_path(categoria), class: 'btn btn-outline-secondary btn-sm' %>
+          <%= link_to t('common.actions.edit'), edit_categoria_path(categoria), class: 'btn btn-outline-primary btn-sm' %>
+          <%= link_to t('common.actions.destroy'), categoria_path(categoria), method: :delete, data: { confirm: t('common.confirm') }, class: 'btn btn-outline-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
