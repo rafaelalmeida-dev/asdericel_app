@@ -8,7 +8,7 @@
 # Adicione aqui quaisquer métodos ou validações abaixo
 class Categoria < ApplicationRecord
   include Datafilter
-    self.table_name = "categoria"
+  self.table_name = "categorias"
 
 
 

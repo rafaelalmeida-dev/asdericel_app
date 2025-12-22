@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :funcaos
   resources :ensinos
   resources :estadocivils
-  resources :categoria
+  resources :categorias
   resources :equipes
   resources :escolas
   resources :eventos

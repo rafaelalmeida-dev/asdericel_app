@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_20_023139) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_21_000132) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -131,6 +131,20 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_20_023139) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categorias", force: :cascade do |t|
+    t.string "nome", null: false
+    t.string "sexo", null: false
+    t.integer "idade", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
+    t.index ["idade"], name: "index_categorias_on_idade"
+    t.index ["nome"], name: "index_categorias_on_nome"
+    t.index ["sexo"], name: "index_categorias_on_sexo"
   end
 
   create_table "dirigentes", force: :cascade do |t|
