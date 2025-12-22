@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Federacao < ActiveRecord::Migration[7.2]
+class CreateFederacoes < ActiveRecord::Migration[7.2]
   def up
    unless table_exists?(:federacoes)
       create_table :federacoes do |t|
