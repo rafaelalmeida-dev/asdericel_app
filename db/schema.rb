@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_22_195539) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_23_192000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -123,15 +123,24 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_22_195539) do
   create_table "categorias", force: :cascade do |t|
     t.string "nome", null: false
     t.string "sexo", null: false
-    t.integer "idade", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "created_by"
     t.string "updated_by"
     t.datetime "deleted_at"
-    t.index ["idade"], name: "index_categorias_on_idade"
+    t.integer "idade_minima", default: 0, null: false
+    t.integer "idade_maxima", default: 0, null: false
     t.index ["nome"], name: "index_categorias_on_nome"
     t.index ["sexo"], name: "index_categorias_on_sexo"
+  end
+
+  create_table "categorias_modalidades", force: :cascade do |t|
+    t.bigint "categoria_id", null: false
+    t.bigint "modalidade_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["categoria_id"], name: "index_categorias_modalidades_on_categoria_id"
+    t.index ["modalidade_id"], name: "index_categorias_modalidades_on_modalidade_id"
   end
 
   create_table "dirigentes", force: :cascade do |t|
@@ -357,6 +366,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_22_195539) do
   add_foreign_key "atletas", "ensinos"
   add_foreign_key "atletas", "escolas"
   add_foreign_key "atletas", "pessoas"
+  add_foreign_key "categorias_modalidades", "categorias"
+  add_foreign_key "categorias_modalidades", "modalidades"
   add_foreign_key "dirigentes", "calcas"
   add_foreign_key "dirigentes", "camisas"
   add_foreign_key "dirigentes", "ensinos"
