@@ -6,7 +6,7 @@ class RemoveFuncao < ActiveRecord::Migration[7.2]
     if foreign_key_exists?(:pessoas, :funcaos)
       remove_foreign_key :pessoas, :funcaos
     end
-    
+
     if column_exists?(:pessoas, :funcao_id)
       remove_column :pessoas, :funcao_id
     end

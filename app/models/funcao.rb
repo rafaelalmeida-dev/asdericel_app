@@ -23,7 +23,4 @@ class Funcao < ApplicationRecord
     %w[
     ]
   end
-  def to_s 
-    nome
-  end
 end
