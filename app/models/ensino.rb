@@ -23,4 +23,7 @@ class Ensino < ApplicationRecord
     %w[
     ]
   end
+  def to_s
+    nome
+  end
 end

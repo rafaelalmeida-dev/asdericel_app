@@ -25,7 +25,7 @@ class Pessoa < ApplicationRecord
   has_one :associado
 
   belongs_to :sexo
-  belongs_to :estadocivil
+  belongs_to :estado_civil, class_name: 'EstadoCivil'
   # belongs_to :ensino
 
 
@@ -56,5 +56,8 @@ class Pessoa < ApplicationRecord
       ensino
       funcao
     ]
+  end
+  def to_s
+    nome
   end
 end
