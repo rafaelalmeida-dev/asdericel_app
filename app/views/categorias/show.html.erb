@@ -2,7 +2,8 @@
 
 <ul class="list-group mb-3">
   <li class="list-group-item"><strong><%= Categoria.human_attribute_name(:sexo) %>:</strong> <%= @categoria.sexo %></li>
-  <li class="list-group-item"><strong><%= Categoria.human_attribute_name(:idade) %>:</strong> <%= @categoria.idade %></li>
+  <li class="list-group-item"><strong><%= Categoria.human_attribute_name(:idade_minima) %>:</strong> <%= @categoria.idade_minima %></li>
+  <li class="list-group-item"><strong><%= Categoria.human_attribute_name(:idade_maxima) %>:</strong> <%= @categoria.idade_maxima %></li>
 </ul>
 
 <%= link_to t('common.actions.edit'), edit_categoria_path(@categoria), class: 'btn btn-outline-primary' %>

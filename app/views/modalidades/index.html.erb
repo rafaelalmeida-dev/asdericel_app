@@ -17,8 +17,8 @@
         <thead>
           <tr>
             <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
-            
-              <th><%= sort_link(@q, :nome, t("activerecord.attributes.modalidade.nome")) %></th>
+            <th><%= sort_link(@q, :nome, t("activerecord.attributes.modalidade.nome")) %></th>
+            <th><%= t('activerecord.models.categoria.other') %></th>
             
           </tr>
         </thead>
@@ -44,6 +44,13 @@
               </td>
               
                 <td><%= modalidade.nome %></td>
+                <td>
+                  <% if modalidade.categorias.any? %>
+                    <%= modalidade.categorias.map(&:nome).join(', ') %>
+                  <% else %>
+                    <span class="text-muted">Nenhuma</span>
+                  <% end %>
+                </td>
               
             </tr>
           <% end %>

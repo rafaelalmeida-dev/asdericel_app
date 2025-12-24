@@ -59,6 +59,6 @@ class ModalidadesController < ApplicationController
   def modalidade_params
     unpermitted = %w[id deleted_at created_by updated_by]
     permitted = Modalidade.column_names.reject { |col| unpermitted.include?(col) }
-    params.require(:modalidade).permit(permitted.map(&:to_sym))
+    params.require(:modalidade).permit(permitted.map(&:to_sym), categoria_ids: [])
   end
 end

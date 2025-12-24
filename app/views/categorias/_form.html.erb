@@ -20,9 +20,12 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :idade, class: 'form-label' %>
-    <%= form.number_field :idade, class: 'form-control' %>
+    <%= form.label :idade_minima, class: 'form-label' %>
+    <%= form.number_field :idade_minima, class: 'form-control' %>
   </div>
-
+ <div class="mb-3">
+    <%= form.label :idade_maxima, class: 'form-label' %>
+    <%= form.number_field :idade_maxima, class: 'form-control' %>
+  </div>
   <%= form.submit nil, class: 'btn btn-primary' %>
 <% end %>

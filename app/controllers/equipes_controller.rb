@@ -57,6 +57,6 @@ class EquipesController < ApplicationController
   end
 
   def equipe_params
-    params.require(:equipe).permit(:nome, :modalidade_id, atleta_ids: [])
+    params.require(:equipe).permit(:nome, :modalidade_id)
   end
 end

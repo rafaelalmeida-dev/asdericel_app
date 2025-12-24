@@ -1,9 +1,9 @@
+
 <div class="row">
-  
     <div class="col-6">
-      
         <%= f.input :nome, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "nome",disabled: local_assigns[:disabled] } %>
-      
     </div>
-  
+    <div class="col-6">
+        <%= f.input :categoria_ids, as: :check_boxes, collection: Categoria.all, label_method: :nome, value_method: :id, label: 'Categorias', input_html: { multiple: true } %>
+    </div>
 </div>

@@ -43,6 +43,6 @@ class CategoriasController < ApplicationController
     end
 
     def categoria_params
-      params.require(:categoria).permit(:nome, :sexo, :idade)
+      params.require(:categoria).permit(:nome, :sexo, :idade_minima, :idade_maxima)
     end
 end

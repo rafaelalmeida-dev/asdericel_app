@@ -7,7 +7,8 @@
     <tr>
       <th><%= Categoria.human_attribute_name(:nome) %></th>
       <th><%= Categoria.human_attribute_name(:sexo) %></th>
-      <th><%= Categoria.human_attribute_name(:idade) %></th>
+      <th><%= Categoria.human_attribute_name(:idade_minima) %></th>
+      <th><%= Categoria.human_attribute_name(:idade_maxima) %></th>
       <th></th>
     </tr>
   </thead>
@@ -16,7 +17,8 @@
       <tr>
         <td><%= categoria.nome %></td>
         <td><%= categoria.sexo %></td>
-        <td><%= categoria.idade %></td>
+        <td><%= categoria.idade_minima %></td>
+        <td><%= categoria.idade_maxima %></td>
         <td>
           <%= link_to t('common.actions.show'), categoria_path(categoria), class: 'btn btn-outline-secondary btn-sm' %>
           <%= link_to t('common.actions.edit'), edit_categoria_path(categoria), class: 'btn btn-outline-primary btn-sm' %>
