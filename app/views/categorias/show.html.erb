@@ -1,0 +1,9 @@
+<h1><%= @categoria.nome %></h1>
+
+<ul class="list-group mb-3">
+  <li class="list-group-item"><strong><%= Categoria.human_attribute_name(:sexo) %>:</strong> <%= @categoria.sexo %></li>
+  <li class="list-group-item"><strong><%= Categoria.human_attribute_name(:idade) %>:</strong> <%= @categoria.idade %></li>
+</ul>
+
+<%= link_to t('common.actions.edit'), edit_categoria_path(@categoria), class: 'btn btn-outline-primary' %>
+<%= link_to t('common.back'), categorias_path, class: 'btn btn-outline-secondary ms-2' %>

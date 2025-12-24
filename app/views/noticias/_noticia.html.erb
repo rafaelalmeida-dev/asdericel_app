@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-6">
+    <%= f.input :titulo, wrapper: :vertical_form, input_html: { class: "keyup", placeholder: "titulo", disabled: local_assigns[:disabled] } %>
+  </div>
+  <div class="col-6">
+    <%= f.input :conteudo, wrapper: :vertical_form, input_html: { class: "keyup", placeholder: "conteudo", disabled: local_assigns[:disabled] } %>
+  </div>
+  <div class="col-6">
+    <%= f.input :categoria, wrapper: :vertical_form, input_html: { class: "keyup", placeholder: "categoria", disabled: local_assigns[:disabled] } %>
+  </div>
+  <div class="col-12">
+    <%= f.input :imagem_upload, as: :file, wrapper: :vertical_form, label: "Imagem", input_html: { accept: "image/*", disabled: local_assigns[:disabled] } %>
+    <% if f.object.imagem_upload.attached? && !local_assigns[:disabled] %>
+      <div class="mt-2">
+        <%= image_tag f.object.imagem_upload, class: "img-thumbnail", style: "max-width: 200px;" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-6">
+    <%= f.input :imagem, wrapper: :vertical_form, label: "URL da Imagem (opcional)", input_html: { class: "keyup", placeholder: "URL alternativa", disabled: local_assigns[:disabled] } %>
+  </div>
+  <div class="col-6">
+    <%= f.input :data_publicacao, as: :string, wrapper: :vertical_form, input_html: { class: "keyup", placeholder: "data_publicacao", disabled: local_assigns[:disabled] } %>
+    </div>
+  <div class="col-6">
+    <%= f.input :destaque, wrapper: :vertical_form, as: :boolean, input_html: { disabled: local_assigns[:disabled] } %>
+  </div>
+</div>

@@ -2,7 +2,7 @@ require "test_helper"
 
 class CategoriaControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @categorium = categoria(:one)
+    @categoria = categoria(:one)
   end
 
   test "should get index" do
@@ -11,36 +11,36 @@ class CategoriaControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_categorium_url
+    get new_categoria_url
     assert_response :success
   end
 
-  test "should create categorium" do
-    assert_difference("Categorium.count") do
-      post categoria_url, params: { categorium: { nome: @categorium.nome } }
+  test "should create categoria" do
+    assert_difference("Categoria.count") do
+      post categoria_url, params: { categoria: { nome: @categoria.nome } }
     end
 
-    assert_redirected_to categorium_url(Categorium.last)
+    assert_redirected_to categoria_url(Categoria.last)
   end
 
-  test "should show categorium" do
-    get categorium_url(@categorium)
+  test "should show categoria" do
+    get categoria_url(@categoria)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_categorium_url(@categorium)
+    get edit_categoria_url(@categoria)
     assert_response :success
   end
 
-  test "should update categorium" do
-    patch categorium_url(@categorium), params: { categorium: { nome: @categorium.nome } }
-    assert_redirected_to categorium_url(@categorium)
+  test "should update categoria" do
+    patch categoria_url(@categoria), params: { categoria: { nome: @categoria.nome } }
+    assert_redirected_to categoria_url(@categoria)
   end
 
-  test "should destroy categorium" do
-    assert_difference("Categorium.count", -1) do
-      delete categorium_url(@categorium)
+  test "should destroy categoria" do
+    assert_difference("Categoria.count", -1) do
+      delete categoria_url(@categoria)
     end
 
     assert_redirected_to categoria_url

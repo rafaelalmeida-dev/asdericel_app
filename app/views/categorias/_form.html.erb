@@ -1,0 +1,28 @@
+<%= form_with(model: categoria, local: true) do |form| %>
+  <% if categoria.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% categoria.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :nome, class: 'form-label' %>
+    <%= form.text_field :nome, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :sexo, class: 'form-label' %>
+    <%= form.text_field :sexo, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :idade, class: 'form-label' %>
+    <%= form.number_field :idade, class: 'form-control' %>
+  </div>
+
+  <%= form.submit nil, class: 'btn btn-primary' %>
+<% end %>

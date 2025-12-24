@@ -23,11 +23,11 @@ class Pessoa < ApplicationRecord
   include Datafilter
 
   has_one :associado
-  
+
   belongs_to :sexo
   belongs_to :estadocivil
   # belongs_to :ensino
-  
+
 
   # Permitir os atributos buscáveis pelo Ransack
   def self.ransackable_attributes(auth_object = nil)

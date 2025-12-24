@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_22_195539) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
 
   create_table "associados", force: :cascade do |t|
     t.string "celular"
@@ -28,17 +56,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
     t.index ["pessoa_id"], name: "index_associados_on_pessoa_id"
   end
 
-  create_table "atleta_federacaos", force: :cascade do |t|
-    t.string "numero"
-    t.integer "atleta_id"
-    t.integer "federacao_id"
+  create_table "atleta_equipes", force: :cascade do |t|
+    t.bigint "atleta_id"
+    t.bigint "equipe_id"
     t.string "created_by"
     t.string "updated_by"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["atleta_id"], name: "index_atleta_federacaos_on_atleta_id"
-    t.index ["federacao_id"], name: "index_atleta_federacaos_on_federacao_id"
+    t.index ["atleta_id"], name: "index_atleta_equipes_on_atleta_id"
+    t.index ["equipe_id"], name: "index_atleta_equipes_on_equipe_id"
   end
 
   create_table "atleta_federacoes", force: :cascade do |t|
@@ -52,18 +79,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
     t.datetime "updated_at", null: false
     t.index ["atleta_id"], name: "index_atleta_federacoes_on_atleta_id"
     t.index ["federacao_id"], name: "index_atleta_federacoes_on_federacao_id"
-  end
-
-  create_table "atletaequipes", force: :cascade do |t|
-    t.bigint "atleta_id"
-    t.bigint "equipe_id"
-    t.string "created_by"
-    t.string "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["atleta_id"], name: "index_atletaequipes_on_atleta_id"
-    t.index ["equipe_id"], name: "index_atletaequipes_on_equipe_id"
   end
 
   create_table "atletas", force: :cascade do |t|
@@ -105,13 +120,18 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categoria", force: :cascade do |t|
-    t.string "nome"
+  create_table "categorias", force: :cascade do |t|
+    t.string "nome", null: false
+    t.string "sexo", null: false
+    t.integer "idade", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "created_by"
     t.string "updated_by"
     t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["idade"], name: "index_categorias_on_idade"
+    t.index ["nome"], name: "index_categorias_on_nome"
+    t.index ["sexo"], name: "index_categorias_on_sexo"
   end
 
   create_table "dirigentes", force: :cascade do |t|
@@ -176,7 +196,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "estadocivils", force: :cascade do |t|
+  create_table "estados_civis", force: :cascade do |t|
     t.string "nome"
     t.string "created_by"
     t.string "updated_by"
@@ -199,16 +219,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "federacaos", force: :cascade do |t|
-    t.string "sigla"
-    t.string "nome"
-    t.string "created_by"
-    t.string "updated_by"
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "federacoes", force: :cascade do |t|
     t.string "nome"
     t.string "sigla"
@@ -219,7 +229,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "funcaos", force: :cascade do |t|
+  create_table "funcoes", force: :cascade do |t|
     t.string "nome"
     t.string "created_by"
     t.string "updated_by"
@@ -235,6 +245,20 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "noticias", force: :cascade do |t|
+    t.string "titulo"
+    t.text "conteudo"
+    t.string "categoria"
+    t.string "imagem"
+    t.date "data_publicacao"
+    t.boolean "destaque", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["categoria"], name: "index_noticias_on_categoria"
+    t.index ["data_publicacao"], name: "index_noticias_on_data_publicacao"
+    t.index ["destaque"], name: "index_noticias_on_destaque"
   end
 
   create_table "parentescos", force: :cascade do |t|
@@ -259,29 +283,29 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
     t.date "dataexpedicao"
     t.string "passaporte"
     t.integer "sexo_id"
-    t.integer "estadocivil_id"
     t.string "created_by"
     t.string "updated_by"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["estadocivil_id"], name: "index_pessoas_on_estadocivil_id"
+    t.bigint "estado_civil_id"
+    t.index ["estado_civil_id"], name: "index_pessoas_on_estado_civil_id"
     t.index ["sexo_id"], name: "index_pessoas_on_sexo_id"
   end
 
-  create_table "responsavels", force: :cascade do |t|
+  create_table "responsaveis", force: :cascade do |t|
     t.string "nome"
     t.string "rg"
     t.string "cpf"
     t.string "telefone"
     t.string "email"
-    t.integer "parentesco_id"
+    t.bigint "parentesco_id"
     t.string "created_by"
     t.string "updated_by"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["parentesco_id"], name: "index_responsavels_on_parentesco_id"
+    t.index ["parentesco_id"], name: "index_responsaveis_on_parentesco_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -321,13 +345,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "associados", "pessoas"
-  add_foreign_key "atleta_federacaos", "atletas"
-  add_foreign_key "atleta_federacaos", "federacoes"
+  add_foreign_key "atleta_equipes", "atletas"
+  add_foreign_key "atleta_equipes", "equipes"
   add_foreign_key "atleta_federacoes", "atletas"
   add_foreign_key "atleta_federacoes", "federacoes"
-  add_foreign_key "atletaequipes", "atletas"
-  add_foreign_key "atletaequipes", "equipes"
   add_foreign_key "atletas", "calcas"
   add_foreign_key "atletas", "camisas"
   add_foreign_key "atletas", "ensinos"
@@ -339,10 +363,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_06_203034) do
   add_foreign_key "dirigentes", "federacoes"
   add_foreign_key "dirigentes", "modalidades"
   add_foreign_key "dirigentes", "pessoas"
-  add_foreign_key "equipes", "categoria"
   add_foreign_key "equipes", "modalidades"
-  add_foreign_key "pessoas", "estadocivils"
+  add_foreign_key "pessoas", "estados_civis"
   add_foreign_key "pessoas", "sexos"
-  add_foreign_key "responsavels", "parentescos"
+  add_foreign_key "responsaveis", "parentescos"
   add_foreign_key "users", "roles"
 end

@@ -12,7 +12,7 @@ class Equipe < ApplicationRecord
   belongs_to :categoria
   has_many :atletaequipes
   has_many :atletas, through: :atletaequipes
-  
+
   validates :nome, presence: true
   validates :modalidade_id, presence: true
 
