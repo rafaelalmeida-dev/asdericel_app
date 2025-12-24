@@ -10,7 +10,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   include Datafilter
   belongs_to :role
-
   validates :nome, presence: true
   validates :cpf, presence: true, uniqueness: true
 
