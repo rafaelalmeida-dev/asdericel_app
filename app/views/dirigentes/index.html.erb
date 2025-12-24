@@ -53,8 +53,7 @@
               
                 <td><%= dirigente.pessoa %></td>
               
-                <td><%= dirigente.modalidade %></td>
-              
+                <td><%= dirigente.modalidades.map(&:nome).join(', ') %></td>
                 <td><%= dirigente.federacao %></td>
               
             </tr>

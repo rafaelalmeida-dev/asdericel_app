@@ -60,8 +60,13 @@ class DirigentesController < ApplicationController
   def dirigente_params
     unpermitted = %w[id deleted_at created_by updated_by]
     permitted = Dirigente.column_names.reject { |col| unpermitted.include?(col) }
-    params.require(:dirigente).permit(permitted.map(&:to_sym),
-    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :pai, :mae, :cpf, :datanascimento, :sexo_id, :estadocivil_id, :ensino_id ],
-  )
+    params.require(:dirigente).permit(
+      permitted.map(&:to_sym),
+      :modalidade_ids => [],
+      pessoa_attributes: [
+        :nome, :nomesocial, :nomeconhecido, :pai, :mae, :cpf, :datanascimento, :sexo_id, :estado_civil_id, :ensino_id,
+        :cinrg, :orgaoemissor, :dataexpedicao, :passaporte
+      ]
+    )
   end
 end

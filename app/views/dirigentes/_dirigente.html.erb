@@ -13,7 +13,7 @@
       <%= pf.association :sexo, input_html: {  class: "select2" } %>
     </div>
     <div class="col-3">
-      <%= pf.association :estadocivil, input_html: {  class: "select2" } %>
+      <%= pf.association :estado_civil, input_html: {  class: "select2" } %>
     </div>
     <div class="col-6">
       <%= pf.input :mae %>
@@ -49,7 +49,7 @@
       <%= f.input :profissao, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "profissao",disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-3">
-      <%= f.input :celular, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "celular",disabled: local_assigns[:disabled] } %>
+      <%= f.input :celular, wrapper: :vertical_form ,input_html: { class: "keyup telefone", placeholder: "celular",disabled: local_assigns[:disabled] } %>
     </div>
     <div class="col-3">
       <%= f.input :instagram, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "instagram",disabled: local_assigns[:disabled] } %>
@@ -61,7 +61,7 @@
     <%= f.association :ensino, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
   </div>
   <div class="col-6">
-    <%= f.association :modalidade, input_html: { class: "select2", disabled: local_assigns[:disabled] } %>
+    <%= f.input :modalidade_ids, collection: Modalidade.all, as: :select, input_html: { multiple: true, class: "select2", disabled: local_assigns[:disabled] } %>
   </div>
   <div class="col-6">
     <%= f.input :peso, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "peso",disabled: local_assigns[:disabled] } %>

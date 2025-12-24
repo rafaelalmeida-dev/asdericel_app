@@ -13,13 +13,13 @@ class Dirigente < ApplicationRecord
   include Datafilter
 
   belongs_to :pessoa
-  belongs_to :modalidade
   belongs_to :federacao
   belongs_to :calca
   belongs_to :camisa
   belongs_to :ensino
+  has_and_belongs_to_many :modalidades, join_table: :dirigente_modalidades
 
-    accepts_nested_attributes_for :pessoa
+  accepts_nested_attributes_for :pessoa
 
   # Permitir os atributos buscáveis pelo Ransack
   def self.ransackable_attributes(auth_object = nil)
