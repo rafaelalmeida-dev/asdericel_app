@@ -59,6 +59,6 @@ class EstadosCivisController < ApplicationController
   def estado_civil_params
     unpermitted = %w[id deleted_at created_by updated_by]
     permitted = EstadoCivil.column_names.reject { |col| unpermitted.include?(col) }
-    params.require(:estado_civil).permit(permitted.map(&:to_sym))
+    params.require(:estado_civil_id).permit(permitted.map(&:to_sym))
   end
 end

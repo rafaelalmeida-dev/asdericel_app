@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_23_192000) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_24_165038) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -143,10 +143,18 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_23_192000) do
     t.index ["modalidade_id"], name: "index_categorias_modalidades_on_modalidade_id"
   end
 
+  create_table "dirigente_modalidades", force: :cascade do |t|
+    t.bigint "dirigente_id", null: false
+    t.bigint "modalidade_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dirigente_id"], name: "index_dirigente_modalidades_on_dirigente_id"
+    t.index ["modalidade_id"], name: "index_dirigente_modalidades_on_modalidade_id"
+  end
+
   create_table "dirigentes", force: :cascade do |t|
     t.string "cref"
     t.integer "pessoa_id"
-    t.integer "modalidade_id"
     t.integer "federacao_id"
     t.string "created_by"
     t.string "updated_by"
@@ -166,7 +174,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_23_192000) do
     t.index ["camisa_id"], name: "index_dirigentes_on_camisa_id"
     t.index ["ensino_id"], name: "index_dirigentes_on_ensino_id"
     t.index ["federacao_id"], name: "index_dirigentes_on_federacao_id"
-    t.index ["modalidade_id"], name: "index_dirigentes_on_modalidade_id"
     t.index ["pessoa_id"], name: "index_dirigentes_on_pessoa_id"
   end
 
@@ -366,11 +373,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_23_192000) do
   add_foreign_key "atletas", "pessoas"
   add_foreign_key "categorias_modalidades", "categorias"
   add_foreign_key "categorias_modalidades", "modalidades"
+  add_foreign_key "dirigente_modalidades", "dirigentes"
+  add_foreign_key "dirigente_modalidades", "modalidades"
   add_foreign_key "dirigentes", "calcas"
   add_foreign_key "dirigentes", "camisas"
   add_foreign_key "dirigentes", "ensinos"
   add_foreign_key "dirigentes", "federacoes"
-  add_foreign_key "dirigentes", "modalidades"
   add_foreign_key "dirigentes", "pessoas"
   add_foreign_key "equipes", "modalidades"
   add_foreign_key "pessoas", "estados_civis"

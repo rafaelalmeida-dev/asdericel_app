@@ -20,4 +20,7 @@ class Categoria < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     %w[modalidades]
   end
+  def to_s
+    nome
+  end
 end
