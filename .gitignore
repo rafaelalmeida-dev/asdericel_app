@@ -38,6 +38,7 @@
 
 /node_modules
 
+
 # Não versionar configurações sensíveis do banco de dados
 config/database.yml
 
