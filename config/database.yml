@@ -5,19 +5,12 @@ default: &default
 
 development:
   <<: *default
-  database: postgres
-  username: postgres
-  password: db@producao
-  host: 72.60.255.26
-  port: 5432
+  database: <%= ENV['PGDATABASE_DEVELOPMENT'] %>
+  username: <%= ENV['PGUSER_DEVELOPMENT'] %>
+  password: <%= ENV['PGPASSWORD_DEVELOPMENT'] %>
+  host: <%= ENV['PGHOST_DEVELOPMENT'] %>
+  port: <%= ENV['PGPORT_DEVELOPMENT'] %>
 
-test:
-  <<: *default
-  database: asdericel_test
-  username: postgres
-  password: postgres
-  host: db
-  port: 5432
 
 production:
   <<: *default
