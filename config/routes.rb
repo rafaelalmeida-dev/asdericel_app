@@ -12,7 +12,12 @@ Rails.application.routes.draw do
   resources :pessoas
   resources :ensinos
   resources :categorias
-  resources :equipes
+  resources :equipes do
+    member do
+      get  :atletas
+      post :associar_atletas
+    end
+  end
   resources :escolas
   resources :eventos
   resources :federacoes

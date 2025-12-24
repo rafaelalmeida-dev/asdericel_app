@@ -33,6 +33,7 @@
                     <div class="dropdown-header"><%= t("common.table_dropdown_options") %></div>
                     <%= link_to content_tag(:i, "", class: "ph ph-eye me-2") + t("common.actions.show"), equipe_path(equipe), class: "dropdown-item" %>
                     <%= link_to content_tag(:i, "", class: "ph ph-pen me-2") + t("common.actions.edit"), edit_equipe_path(equipe), class: "dropdown-item" %>
+                    <%= link_to content_tag(:i, "", class: "ph ph-users-three me-2") + t("common.actions.atletas"), atletas_equipe_path(equipe), class: "dropdown-item" %>
                     <%= form_for equipe, method: :delete do |f| %>
                       <a class="dropdown-item hand-pointer" data-confirm-delete="<%= equipe_path(equipe) %>" data-csrf-token="<%= form_authenticity_token %>">
                         <i class="ph ph-trash-simple me-2"></i><%= t("common.actions.delete") %>

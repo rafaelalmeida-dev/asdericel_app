@@ -8,9 +8,11 @@
 # Adicione aqui quaisquer métodos ou validações abaixo
 class Equipe < ApplicationRecord
   include Datafilter
+
   belongs_to :modalidade
-  has_many :atletaequipes
-  has_many :atletas, through: :atletaequipes
+
+  has_many :atleta_equipes, dependent: :destroy
+  has_many :atletas, through: :atleta_equipes
 
   validates :nome, presence: true
   validates :modalidade_id, presence: true

@@ -21,8 +21,12 @@ class Atleta < ApplicationRecord
   belongs_to :escola, optional: true
 
   has_many   :modalidades
+
   has_many   :atleta_federacoes, dependent: :destroy
   has_many   :federacoes, through: :atleta_federacoes
+
+  has_many :atleta_equipes, dependent: :destroy
+  has_many :equipes, through: :atleta_equipes
 
   accepts_nested_attributes_for :pessoa
   accepts_nested_attributes_for :atleta_federacoes, allow_destroy: true

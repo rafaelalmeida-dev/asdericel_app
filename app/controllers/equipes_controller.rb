@@ -1,5 +1,5 @@
 class EquipesController < ApplicationController
-  before_action :set_equipe, only: %i[show edit update destroy]
+  before_action :set_equipe, only: %i[show edit update destroy atletas]
 
   add_breadcrumb "Home", :root_path
   add_breadcrumb "Equipes", :equipes_path
@@ -18,6 +18,11 @@ class EquipesController < ApplicationController
     add_breadcrumb t("common.actions.new"), new_equipe_path
   end
 
+  def atletas
+    @atletas = Atleta.all
+    add_breadcrumb t("common.actions.atletas")
+  end
+
   def edit
     add_breadcrumb @equipe.nome, equipe_path(@equipe)
     add_breadcrumb t("common.actions.edit"), edit_equipe_path(@equipe)
@@ -30,6 +35,15 @@ class EquipesController < ApplicationController
       redirect_to equipes_path, notice: t("messages.created_successfully")
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def associar_atletas
+    @equipe = AtletaEquipe.new
+    if @equipe.save
+      redirect_to equipes_path, notice: t("messages.created_successfully")
+    else
+      render :atletas, status: :unprocessable_entity
     end
   end
 
