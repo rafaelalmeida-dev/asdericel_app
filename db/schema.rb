@@ -187,8 +187,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_23_192000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "modalidade_id"
-    t.bigint "categoria_id"
-    t.index ["categoria_id"], name: "index_equipes_on_categoria_id"
     t.index ["modalidade_id"], name: "index_equipes_on_modalidade_id"
   end
 

@@ -19,7 +19,6 @@
             <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
             <th><%= sort_link(@q, :nome, t("activerecord.attributes.equipe.nome")) %></th>
             <th><%= sort_link(@q, :modalidade_nome, "Modalidade") %></th>
-            <th><%= sort_link(@q, :categoria_nome, "Categoria") %></th>
           </tr>
         </thead>
         <tbody>
@@ -44,7 +43,6 @@
               </td>
               <td><%= equipe.nome %></td>
               <td><%= equipe.modalidade&.nome %></td>
-              <td><%= equipe.categoria&.nome %></td>
             </tr>
           <% end %>
         </tbody>
