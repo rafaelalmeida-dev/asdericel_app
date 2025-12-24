@@ -5,12 +5,11 @@ default: &default
 
 development:
   <<: *default
-  database: postgres
-  username: postgres
-  password: db@5ervidor
-  host: 72.60.255.26
-  port: 5432
-
+  database: <%= ENV['PGDATABASE_DEVELOPMENT'] %>
+  username: <%= ENV['PGUSER'] %>
+  password: <%= ENV['PGPASSWORD'] %>
+  host: <%= ENV['PGHOST'] %>
+  port: <%= ENV['PGPORT'] %>
 
 production:
   <<: *default
