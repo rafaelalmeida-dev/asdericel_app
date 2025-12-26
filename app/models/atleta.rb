@@ -49,4 +49,8 @@ class Atleta < ApplicationRecord
       calca
     ]
   end
+
+  def to_s
+    pessoa.nome
+  end
 end

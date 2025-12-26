@@ -39,6 +39,7 @@ class EquipesController < ApplicationController
   end
 
   def associar_atletas
+    byebug
     @equipe = AtletaEquipe.new
     if @equipe.save
       redirect_to equipes_path, notice: t("messages.created_successfully")
