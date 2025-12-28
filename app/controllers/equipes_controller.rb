@@ -39,13 +39,24 @@ class EquipesController < ApplicationController
   end
 
   def associar_atletas
-    byebug
-    @equipe = AtletaEquipe.new
-    if @equipe.save
-      redirect_to equipes_path, notice: t("messages.created_successfully")
-    else
-      render :atletas, status: :unprocessable_entity
+    equipe = Equipe.find(params[:id])
+    atleta = Atleta.find_by(id: params[:atleta_id])
+
+    return render json: { error: "Atleta não informado" }, status: :unprocessable_entity if atleta.nil?
+
+    if AtletaEquipe.exists?(equipe_id: equipe.id, atleta_id: atleta.id, deleted_at: nil)
+      return render json: { error: "Atleta já associado a esta equipe" }, status: :unprocessable_entity
     end
+
+    atleta_equipe = AtletaEquipe.create!(
+      equipe_id: equipe.id,
+      atleta_id: atleta.id
+    )
+
+    render json: {
+      success: true,
+      atleta_equipe_id: atleta_equipe.id
+    }
   end
 
   def update
@@ -62,6 +73,14 @@ class EquipesController < ApplicationController
     else
       redirect_to equipes_url, alert: t("messages.delete_failed_due_to_dependencies")
     end
+  end
+
+  def remover_atleta
+    atleta_equipe = AtletaEquipe.find_by(id: params[:id], deleted_at: nil)
+    return render json: { error: "Registro não encontrado" }, status: :not_found unless atleta_equipe
+
+    atleta_equipe.update!(deleted_at: Time.current)
+    render json: { success: true }
   end
 
   private

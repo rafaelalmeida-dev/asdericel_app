@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     member do
       get  :atletas
       post :associar_atletas
+      delete :remover_atleta
     end
   end
   resources :escolas
