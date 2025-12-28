@@ -86,4 +86,7 @@ module ApplicationHelper
     }
     cores[categoria&.upcase] || "#999999"
   end
+  def show_action?
+    action_name == "show"
+  end
 end

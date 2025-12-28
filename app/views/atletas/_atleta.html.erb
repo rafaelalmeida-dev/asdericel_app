@@ -53,9 +53,6 @@
   <div class="col-6">
     <%= f.association :escola, input_html: {  class: "select2", disabled: local_assigns[:disabled]  } %>
   </div>
-  <div class="col-6">
-    <%= f.association :modalidades, as: :select, wrapper: :vertical_multi_select, input_html: { class: "select2", multiple: true, disabled: local_assigns[:disabled] } %>
-  </div>
   <hr>
   <div class="col-3">
     <%= f.input :peso, wrapper: :vertical_form ,input_html: { class: "keyup", placeholder: "peso",disabled: local_assigns[:disabled] } %>
@@ -74,15 +71,20 @@
     <h5>Federações do Aluno</h5>
     <%= render "modal_federacao", f: f %>
     <!-- Botão para abrir modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
-      Associar Federação
-    </button>
+    <% unless show_action? %>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+        Associar Federação
+      </button>
+    <% end %>
   </div>
   <!-- Lista dinâmica -->
   <div id="lista-federacoes" class="mt-3">
 
   </div>
 </div>
+<script>
+  window.isShowAction = <%= action_name == "show" ? "true" : "false" %>;
+</script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     let federacoes = <%= raw @atleta.atleta_federacoes.includes(:federacao).map { |af|
@@ -138,7 +140,13 @@
             <div>
               <strong>${f.federacao_nome}</strong> | <strong>Numeração:</strong> ${f.numero}
             </div>
-            <button type="button" class="btn btn-danger btn-sm" data-index="${i}">Remover</button>
+            ${window.isShowAction ? "" : `
+              <button type="button"
+                      class="btn btn-danger btn-sm"
+                      data-index="${i}">
+                Remover
+              </button>
+            `}
           </div>
         `;
         listaContainer.appendChild(item);

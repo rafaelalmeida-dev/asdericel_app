@@ -20,8 +20,6 @@ class Atleta < ApplicationRecord
   belongs_to :calca, optional: true
   belongs_to :escola, optional: true
 
-  has_many   :modalidades
-
   has_many   :atleta_federacoes, dependent: :destroy
   has_many   :federacoes, through: :atleta_federacoes
 
