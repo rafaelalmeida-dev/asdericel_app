@@ -194,6 +194,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_24_165038) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "modalidade_id"
+    t.bigint "categoria_id"
+    t.index ["categoria_id"], name: "index_equipes_on_categoria_id"
     t.index ["modalidade_id"], name: "index_equipes_on_modalidade_id"
   end
 
@@ -268,6 +270,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_24_165038) do
     t.string "imagem"
     t.date "data_publicacao"
     t.boolean "destaque", default: false
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["categoria"], name: "index_noticias_on_categoria"
@@ -321,6 +326,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_24_165038) do
     t.datetime "updated_at", null: false
     t.index ["parentesco_id"], name: "index_responsaveis_on_parentesco_id"
   end
+
 
   create_table "roles", force: :cascade do |t|
     t.string "nome"
@@ -380,6 +386,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_24_165038) do
   add_foreign_key "dirigentes", "ensinos"
   add_foreign_key "dirigentes", "federacoes"
   add_foreign_key "dirigentes", "pessoas"
+  add_foreign_key "equipes", "categorias"
   add_foreign_key "equipes", "modalidades"
   add_foreign_key "pessoas", "estados_civis"
   add_foreign_key "pessoas", "sexos"
