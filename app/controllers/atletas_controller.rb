@@ -10,34 +10,65 @@ class AtletasController < ApplicationController
   end
 
   def show
-    add_breadcrumb @atleta.numeroSus, atleta_path(@atleta)
+    @atleta.atleta_federacoes.build
+    add_breadcrumb @atleta.id, atleta_path(@atleta)
   end
 
   def new
     @atleta = Atleta.new
+    @atleta.atleta_federacoes.build
+    @federacoes = Federacao.all
     @atleta.build_pessoa
     add_breadcrumb t("common.actions.new"), new_atleta_path
   end
 
   def edit
-    add_breadcrumb @atleta.numeroSus, atleta_path(@atleta)
+    @atleta.atleta_federacoes.build
+    add_breadcrumb @atleta.id, atleta_path(@atleta)
     add_breadcrumb t("common.actions.edit"), edit_atleta_path(@atleta)
   end
 
   def create
     @atleta = Atleta.new(atleta_params)
-
     if @atleta.save
+      federacoes_params = params[:atleta][:federacoes]
+      if federacoes_params.present?
+        federacoes_params.each_value do |fed|
+          @atleta.atleta_federacoes.create(
+            federacao_id: fed[:federacao_id],
+            numero: fed[:numero]
+          )
+        end
+      end
+
       redirect_to atletas_path, notice: t("messages.created_successfully")
     else
+      @federacoes = Federacao.all
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
+    @atleta = Atleta.find(params[:id])
+
     if @atleta.update(atleta_params)
-      redirect_to atletas_path, notice: t("messages.updated_successfully"), status: :see_other
+      federacoes_params = params[:atleta][:federacoes]
+
+      # atualiza associações
+      @atleta.atleta_federacoes.destroy_all
+
+      if federacoes_params.present?
+        federacoes_params.each_value do |fed|
+          @atleta.atleta_federacoes.create(
+            federacao_id: fed[:federacao_id],
+            numero: fed[:numero]
+          )
+        end
+      end
+
+      redirect_to atletas_path, notice: t("messages.updated_successfully")
     else
+      @federacoes = Federacao.all
       render :edit, status: :unprocessable_entity
     end
   end
@@ -54,14 +85,16 @@ class AtletasController < ApplicationController
 
   def set_atleta
     @atleta = Atleta.find_by(id: params[:id])
+    @federacoes = Federacao.all
+    @modalidades = Modalidade.all
     redirect_to atletas_path, alert: t("messages.not_found") unless @atleta
   end
 
   def atleta_params
     unpermitted = %w[id deleted_at created_by updated_by]
     permitted = Atleta.column_names.reject { |col| unpermitted.include?(col) }
-    params.require(:atleta).permit(permitted.map(&:to_sym), 
-    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :pai, :mae, :cpf,:datanascimento, :sexo_id,  :estadocivil_id, :ensino_id ],
-    atleta_federacoes_attributes: [:id, :federacao_id, :numero, :_destroy])
+    params.require(:atleta).permit(permitted.map(&:to_sym),
+    modalidades_ids: [],
+    pessoa_attributes: [ :nome, :nomesocial, :nomeconhecido, :sexo_id, :estado_civil_id, :mae, :pai, :datanascimento, :cpf, :cinrg, :orgaoemissor, :dataexpedicao, :passaporte ])
   end
 end
