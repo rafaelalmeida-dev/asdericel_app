@@ -1,5 +1,6 @@
 pt-BR:
   common:
+    back: "Voltar"
     table_th_actions: "Ações"
     table_dropdown_options: "Opções"
     actions:
@@ -61,6 +62,21 @@ pt-BR:
       dirigente:
         one: "Dirigente"
         other: "Dirigentes"
+      noticia:
+        one: "Notícia"
+        other: "Notícias"
+      estado_civil:
+        one: "Estado Civil"
+        other: "Estados Civis"
+      camisa:
+        one: "Camisa"
+        other: "Camisetas"
+      calca:  
+        one: "Calça"
+        other: "Calças"
+      modalidade:
+        one: "Modalidade"
+        other: "Modalidades"
     attributes:
       estado:
         nome: "Nome"
@@ -83,6 +99,7 @@ pt-BR:
         ensino_id: "Ensino"
       associado:
         pessoa_id: "Pessoa"
+      
       user:
         role_id: Perfil 
         nome: "Nome"

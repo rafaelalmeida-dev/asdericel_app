@@ -20,11 +20,8 @@
           <tr>
             <th class="text-center col-1"><%= t("common.table_th_actions") %></th>
             <th><%= sort_link(@q, :titulo, t("activerecord.attributes.noticia.titulo", default: "Título")) %></th>
-            <th><%= sort_link(@q, :conteudo, t("activerecord.attributes.noticia.conteudo", default: "Conteúdo")) %></th>
             <th><%= sort_link(@q, :categoria, t("activerecord.attributes.noticia.categoria", default: "Categoria")) %></th>
-            <th><%= sort_link(@q, :imagem, t("activerecord.attributes.noticia.imagem", default: "Imagem")) %></th>
             <th><%= sort_link(@q, :data_publicacao, t("activerecord.attributes.noticia.data_publicacao", default: "Data")) %></th>
-            <th><%= sort_link(@q, :destaque, t("activerecord.attributes.noticia.destaque", default: "Destaque")) %></th>
           </tr>
         </thead>
         <tbody>
@@ -46,11 +43,8 @@
                 </div>
               </td>
               <td><%= noticia.titulo %></td>
-              <td><%= noticia.conteudo %></td>
               <td><%= noticia.categoria %></td>
-              <td><%= noticia.imagem %></td>
               <td><%= noticia.data_publicacao %></td>
-              <td><%= noticia.destaque %></td>
             </tr>
           <% end %>
         </tbody>
