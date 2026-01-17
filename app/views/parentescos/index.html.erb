@@ -35,9 +35,9 @@
                     <%= link_to content_tag(:i, "", class: "ph ph-eye me-2") + t("common.actions.show"), parentesco_path(parentesco), class: "dropdown-item" %>
                     <%= link_to content_tag(:i, "", class: "ph ph-pen me-2") + t("common.actions.edit"), edit_parentesco_path(parentesco), class: "dropdown-item" %>
                     <%= form_for parentesco, method: :delete do |f| %>
-                      <a class="dropdown-item hand-pointer" data-confirm-delete="<%= parentesco_path(parentesco) %>" data-csrf-token="<%= form_authenticity_token %>">
+                      <button class="dropdown-item hand-pointer" data-confirm-delete="<%= parentesco_path(parentesco) %>" data-csrf-token="<%= form_authenticity_token %>">
                         <i class="ph ph-trash-simple me-2"></i><%= t("common.actions.delete") %>
-                      </a>
+                      </button>
                     <% end %>
                   </div>
                 </div>

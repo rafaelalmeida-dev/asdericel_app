@@ -1,0 +1,12 @@
+
+@import "./css/core.css";
+@import "./css/demo.css";
+@import "./css/page-auth.css";
+@import "./css/page-icons.css";
+@import "./css/page-misc.css";
+@import "./css/theme-default.css";
+@import "./fonts/boxicons.css";
+@import "./apex-charts/apex-charts.css";
+@import "./highlight/highlight.css";
+@import "./perfect-scrollbar/perfect-scrollbar.css";
+@import "./sweetalert2/sweetalert2.min.css";
